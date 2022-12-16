@@ -85,7 +85,8 @@ endif " has("autocmd")
 
 vim.cmd("syntax on")
 -- vim.cmd("colorscheme tokyonight")
-vim.cmd("colorscheme duskfox")
+-- vim.cmd("colorscheme duskfox")
+vim.cmd("colorscheme nightfox")
 -- vim.cmd("colorscheme catppuccin")
 vim.o.termguicolors = true -- for modern terminals - force 24bit colors
 
@@ -212,8 +213,11 @@ vim.g.indent_blankline_context_patterns = {
 -- keymap('n', '<leader>dd', '<cmd>colorscheme tokyonight<CR>', opts)
 -- keymap('n', '<leader>dl', '<cmd>colorscheme tokyonight-day<CR>', opts)
 
-keymap('n', '<leader>dd', '<cmd>colorscheme duskfox<CR>', opts)
-keymap('n', '<leader>dl', '<cmd>colorscheme dawnfox<CR>', opts)
+-- keymap('n', '<leader>dd', '<cmd>colorscheme duskfox<CR>', opts)
+-- keymap('n', '<leader>dl', '<cmd>colorscheme dawnfox<CR>', opts)
+
+keymap('n', '<leader>dd', '<cmd>colorscheme nightfox<CR>', opts)
+keymap('n', '<leader>dl', '<cmd>colorscheme dayfox<CR>', opts)
 
 vim.cmd([[
 map <leader>y "+y
@@ -240,8 +244,8 @@ vim.api.nvim_set_keymap(
    {noremap = true}
 )
 
-local opt = vim.opt
-opt.winbar = "%{%v:lua.require'zylad.winbar'.get_winbar()%}"
+-- local opt = vim.opt
+-- opt.winbar = "%{%v:lua.require'zylad.winbar'.get_winbar()%}"
 
 
 keymap('n', '<leader>ev', '<cmd>:e $MYVIMRC<CR>', opts)
