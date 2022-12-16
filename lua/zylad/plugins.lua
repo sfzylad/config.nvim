@@ -55,6 +55,24 @@ local on_attach = function(client, bufnr)
   -- vim.api.nvim_exec([[ autocmd BufWritePre *.go :silent! lua require('go.format').gofmt() ]], false)
 end
 
+local border = {
+      {"🭽", "FloatBorder"},
+
+      {"▔", "FloatBorder"},
+      {"🭾", "FloatBorder"},
+      {"▕", "FloatBorder"},
+      {"🭿", "FloatBorder"},
+      {"▁", "FloatBorder"},
+      {"🭼", "FloatBorder"},
+      {"▏", "FloatBorder"},
+}
+
+local handlers =  {
+  ["textDocument/hover"] =  vim.lsp.with(vim.lsp.handlers.hover, {border = border}),
+  ["textDocument/signatureHelp"] =  vim.lsp.with(vim.lsp.handlers.signature_help, {border = border }),
+}
+
+
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
 local servers = { "rust_analyzer", "gopls", "pylsp"}
@@ -68,9 +86,10 @@ for _, lsp in ipairs(servers) do
                     maxLineLength = 80,
                 },
             },
+            handlers = handlers,
         }
     else
-        nvim_lsp[lsp].setup { on_attach = on_attach }
+        nvim_lsp[lsp].setup { on_attach = on_attach, handlers = handlers }
     end
 end
 
