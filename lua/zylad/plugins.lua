@@ -51,6 +51,15 @@ local on_attach = function(client, bufnr)
     navic.attach(client, bufnr)
   end
 
+  require "lsp_signature".on_attach({
+      bind = true,
+      hint_enable = false,
+      handler_opts = {
+          border = "rounded"
+      },
+      toggle_key = '<M-x>'
+  })
+
   -- Run gofmt on save
   -- vim.api.nvim_exec([[ autocmd BufWritePre *.go :silent! lua require('go.format').gofmt() ]], false)
 end

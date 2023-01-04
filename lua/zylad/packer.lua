@@ -15,6 +15,7 @@ return require('packer').startup(function(use)
   -----------------------------------------------------------------------
   use 'ray-x/go.nvim'
   use 'ray-x/guihua.lua'
+  use 'ray-x/lsp_signature.nvim'
 
   use 'lewis6991/gitsigns.nvim'
   use 'nvim-lua/plenary.nvim'
