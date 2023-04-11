@@ -20,8 +20,8 @@ let g:vim_home_path = "~/.vim"
 let g:indent_blankline_use_treesitter=v:true
 ]])
 
--- vim.g.loaded = 1
--- vim.g.loaded_netrwPlugin = 1
+vim.g.loaded = 1
+vim.g.loaded_netrwPlugin = 1
 
 keymap("", ",", "<Nop>", opts)
 vim.g.mapleader = ","
@@ -86,8 +86,14 @@ endif " has("autocmd")
 vim.cmd("syntax on")
 -- vim.cmd("colorscheme tokyonight")
 -- vim.cmd("colorscheme duskfox")
-vim.cmd("colorscheme nightfox")
+-- vim.cmd("colorscheme nightfox")
 -- vim.cmd("colorscheme catppuccin")
+-- vim.cmd("colorscheme solarized")
+-- vim.cmd("colorscheme catppuccin-macchiato")
+--
+-- vim.cmd("colorscheme github_dark")
+
+vim.cmd("colorscheme rose-pine")
 vim.o.termguicolors = true -- for modern terminals - force 24bit colors
 
 vim.cmd([[
@@ -216,8 +222,13 @@ vim.g.indent_blankline_context_patterns = {
 -- keymap('n', '<leader>dd', '<cmd>colorscheme duskfox<CR>', opts)
 -- keymap('n', '<leader>dl', '<cmd>colorscheme dawnfox<CR>', opts)
 
-keymap('n', '<leader>dd', '<cmd>colorscheme nightfox<CR>', opts)
-keymap('n', '<leader>dl', '<cmd>colorscheme dayfox<CR>', opts)
+-- keymap('n', '<leader>dd', '<cmd>colorscheme nightfox<CR>', opts)
+-- keymap('n', '<leader>dl', '<cmd>colorscheme dayfox<CR>', opts)
+
+keymap('n', '<leader>dd', '<cmd>set background=dark<CR>', opts)
+keymap('n', '<leader>dl', '<cmd>set background=light<CR>', opts)
+-- keymap('n', '<leader>dd', '<cmd>colorscheme github_dark<CR>', opts)
+-- keymap('n', '<leader>dl', '<cmd>colorscheme github_light<CR>', opts)
 
 vim.cmd([[
 map <leader>y "+y
@@ -255,3 +266,5 @@ vim.api.nvim_create_user_command('Rg', function(cmd_opts)
     vim.cmd("copen 15")
 end, {nargs = '*'})
 
+
+vim.o.updatetime = 750

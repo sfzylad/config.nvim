@@ -46,6 +46,17 @@ local on_attach = function(client, bufnr)
   buf_set_keymap("n", "<space>dw", "<cmd>lua require('diaglist').open_all_diagnostics()<CR>", opts)
   buf_set_keymap("n", "<space>d0", "<cmd>lua require('diaglist').open_buffer_diagnostics()<CR>", opts)
 
+  buf_set_keymap("n", '<F5>', "<cmd>lua  require('dap').continue()<CR>", opts)
+  buf_set_keymap("n", '<F10>', "<cmd>lua require('dap').step_over()<CR>", opts)
+  buf_set_keymap("n", '<F11>', "<cmd>lua require('dap').step_into()<CR>", opts)
+  buf_set_keymap("n", '<F12>', "<cmd>lua require('dap').step_out()<CR>", opts)
+  buf_set_keymap("n", '<Leader>b', "<cmd>lua require('dap').toggle_breakpoint()<CR>", opts)
+  buf_set_keymap("n", '<Leader>B', "<cmd>lua require('dap').set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>", opts)
+  buf_set_keymap("n", '<Leader>lp', "<cmd>lua require('dap').set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<CR>", opts)
+  buf_set_keymap("n", '<Leader>dr', "<cmd>lua require('dap').repl_open()<CR>", opts)
+  buf_set_keymap("n", '<Leader><Leader>dl', "<cmd>lua function() require('dap').repl_open()<CR>", opts)
+  buf_set_keymap("n", '<Leader>dt', "<cmd>lua require('dap-go').debug_test()<CR>", opts)
+
   if client.server_capabilities.documentSymbolProvider then
     local navic = require "nvim-navic"
     navic.attach(client, bufnr)
@@ -198,7 +209,7 @@ require'lspconfig'.rust_analyzer.setup{}
 ----------------------------------------------------------------------------
 -- bufferline setup
 ----------------------------------------------------------------------------
-require("zylad.config.bufferline").setup()
+-- require("zylad.config.bufferline").setup()
 
 ----------------------------------------------------------------------------
 -- treesitter-context setup
@@ -215,6 +226,15 @@ require('go').setup()
 -- Telescope setup
 ----------------------------------------------------------------------------
 require('telescope').setup{
+  extensions = {
+      file_browser = {
+          hidden = false,
+          respect_gitignore = false,
+          hide_parent_dir = false,
+          hijack_netrw = true,
+          git_status = true,
+      },
+  },
   defaults = {
     extensions = {
         file_browser = {
@@ -234,6 +254,7 @@ require('telescope').setup{
     } -- mappings
   }, -- defaults
 } -- telescope setup
+require("telescope").load_extension "file_browser"
 
 vim.keymap.set('n', '<C-b>', '<Cmd>Telescope buffers<CR>')
 vim.keymap.set('n', '<C-p>', '<Cmd>Telescope find_files<CR>')
@@ -273,7 +294,8 @@ require'nvim-treesitter.configs'.setup {
 ----------------------------------------------------------------------------
 -- lua language server
 ----------------------------------------------------------------------------
-require'lspconfig'.sumneko_lua.setup {
+-- require'lspconfig'.sumneko_lua.setup {
+require'lspconfig'.lua_ls.setup {
   on_attach = on_attach,
   settings = {
     Lua = {
@@ -314,51 +336,106 @@ require'lspconfig'.sumneko_lua.setup {
 ----------------------------------------------------------------------------
 -- DAP virtual text
 ----------------------------------------------------------------------------
-require("nvim-dap-virtual-text").setup({})
 
-----------------------------------------------------------------------------
--- start dashboard
-----------------------------------------------------------------------------
--- require("zylad.config.dashboard").setup()
+require('dap-go').setup()
+require('dapui').setup({
+    	layouts = {
+		{
+			elements = {
+				{ id = "scopes", size = 0.25 },
+				{ id = "breakpoints", size = 0.25 },
+				{ id = "stacks", size = 0.25 },
+				{ id = "watches", size = 0.25 },
+			},
+			size = 40,
+			position = "left",
+		},
+		{
+			elements = {},
+			size = 10,
+			position = "bottom",
+		},
+	},
+})
 
-----------------------------------------------------------------------------
--- Windows.nvim setup
-----------------------------------------------------------------------------
--- require('windows').setup(),
--- vim.keymap.set('n', '<C-w>m', '<Cmd>WindowsMaximize<CR>'),
--- vim.keymap.set('n', '<C-w>t', '<Cmd>WindowsToggleAutowidth<CR>'),
--- vim.keymap.set('n', '<C-w>e', '<Cmd>WindowsEnableAutowidth<CR>'),
--- vim.keymap.set('n', '<C-w>z', '<Cmd>WindowsDisableAutowidth<CR>'),
+local dap, dapui = require("dap"), require("dapui")
+dap.listeners.after.event_initialized["dapui_config"] = function ()
+    dapui.open()
+end
 
+dap.listeners.before.event_terminated["dapui_config"] = function ()
+    dapui.close()
+end
 
-----------------------------------------------------------------------------
--- nvim-tree setup
-----------------------------------------------------------------------------
--- require("nvim-tree").setup {
---     sort_by = "case_sensitive",
---     open_on_setup = false,
---     open_on_setup_file = false,
---     hijack_unnamed_buffer_when_opening = false,
---     view = {
---         adaptive_size = true,
---         signcolumn = "yes",
---         float = {
---             enable = true,
---             quit_on_focus_loss = true,
---             open_win_config = {
---                 relative = "editor",
---                 border = "rounded",
---                 width = 30,
---                 height = 50,
---                 row = 1,
---                 col = 1,
---             },
---         },
---     },
---     renderer = {
---         group_empty = true,
---         highlight_git = true,
---     },
+dap.listeners.before.event_exit["dapui_config"] = function ()
+    dapui.close()
+end
 --
--- },
--- vim.keymap.set('n', '<leader>t', '<Cmd>NvimTreeToggle<CR>'),
+----------------------------------------------------------------------------
+-- tabline
+----------------------------------------------------------------------------
+require('tabline').setup({
+    enable = true,
+    options = {
+        -- section_separators = {'', ''},
+        -- component_separators = {'', ''},
+        modified_icon = "[+] ",
+        show_devicons = true,
+    }
+})
+
+
+require('rose-pine').setup({
+	--- @usage 'auto'|'main'|'moon'|'dawn'
+	variant = 'auto',
+	--- @usage 'main'|'moon'|'dawn'
+	dark_variant = 'main',
+	bold_vert_split = true,
+	dim_nc_background = false,
+	disable_background = false,
+	disable_float_background = false,
+	disable_italics = false,
+
+	--- @usage string hex value or named color from rosepinetheme.com/palette
+	groups = {
+		background = 'base',
+		background_nc = '_experimental_nc',
+		panel = 'surface',
+		panel_nc = 'base',
+		border = 'highlight_med',
+		comment = 'muted',
+		link = 'iris',
+		punctuation = 'subtle',
+
+		error = 'love',
+		hint = 'iris',
+		info = 'foam',
+		warn = 'gold',
+
+		headings = {
+			h1 = 'iris',
+			h2 = 'foam',
+			h3 = 'rose',
+			h4 = 'gold',
+			h5 = 'pine',
+			h6 = 'foam',
+		}
+		-- or set all headings at once
+		-- headings = 'subtle'
+	},
+
+	-- Change specific vim highlight groups
+	-- https://github.com/rose-pine/neovim/wiki/Recipes
+	highlight_groups = {
+		ColorColumn = { bg = 'rose' },
+        Cursor = { guifg = 'love', guibg = 'iris'  },
+
+		-- Blend colours against the "base" background
+		CursorLine = { bg = 'foam', blend = 10 },
+		StatusLine = { fg = 'love', bg = 'love', blend = 10 },
+	}
+})
+
+for _, group in ipairs(vim.fn.getcompletion("@lsp", "highlight")) do
+  vim.api.nvim_set_hl(0, group, {})
+end

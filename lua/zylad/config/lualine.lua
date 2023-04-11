@@ -30,8 +30,11 @@ local config = {
       -- component_separators = { left = '', right = ''},
       -- section_separators = { left = '', right = ''},
 
-      component_separators = {},
-      section_separators = {},
+      component_separators = { left = '', right = ''},
+      section_separators = { left = '', right = ''},
+      -- component_separators = '|',
+      -- section_separators = { left = '', right = '' },
+
 
       disabled_filetypes = {
         statusline = {},
@@ -67,8 +70,29 @@ local config = {
     },
     sections = {
       lualine_a = {'mode'},
-      lualine_b = {'branch', 'diff', {'diagnostics', source = {'nvim_lsp'}}},
-      lualine_c = {'filename'},
+      lualine_b = {'branch'},
+      lualine_c = {'filename', 'diff', {'diagnostics', source = {'nvim_lsp'}},
+      -- {
+      --       function()
+      --         local msg = 'No Active Lsp'
+      --         local buf_ft = vim.api.nvim_buf_get_option(0, 'filetype')
+      --         local clients = vim.lsp.get_active_clients()
+      --         if next(clients) == nil then
+      --           return msg
+      --         end
+      --         for _, client in ipairs(clients) do
+      --           local filetypes = client.config.filetypes
+      --           if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
+      --             return client.name
+      --           end
+      --         end
+      --         return msg
+      --       end,
+      --       icon = ' LSP:',
+      --       -- color = { fg = '#ffffff', gui = 'bold' },
+      --       color = { fg = colors.dark_blue },
+      --   }
+    },
       -- lualine_c = { 'filename',
       --     { navic.get_location, cond = navic.is_available },
       -- },
@@ -78,7 +102,7 @@ local config = {
     },
 
     inactive_sections = {
-      lualine_a = {},
+      lualine_a = {'mode'},
       lualine_b = {},
       lualine_c = {'filename'},
       lualine_x = {'location'},

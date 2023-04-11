@@ -67,7 +67,8 @@ return require('packer').startup(function(use)
   -- Debugging
   use 'mfussenegger/nvim-dap'
   use 'rcarriga/nvim-dap-ui'
-  use 'theHamsta/nvim-dap-virtual-text'
+  use 'leoluz/nvim-dap-go'
+  -- use 'theHamsta/nvim-dap-virtual-text'
   use 'nvim-telescope/telescope-dap.nvim'
 
   use 'simrat39/symbols-outline.nvim'
@@ -82,6 +83,13 @@ return require('packer').startup(function(use)
   use "EdenEast/nightfox.nvim"
   use "projekt0n/github-nvim-theme"
   use { 'lifepillar/vim-solarized8', as = "solarized8" }
+  use { 'sainnhe/sonokai' }
+  use { 'tjdevries/colorbuddy.nvim' }
+  use { 'ishan9299/nvim-solarized-lua' }
+
+  use {'nyoom-engineering/oxocarbon.nvim'}
+
+  use({ 'rose-pine/neovim', as = 'rose-pine' })
 
   -----------------------------------------------------------------------
   -- Workflow improvements
@@ -89,17 +97,30 @@ return require('packer').startup(function(use)
   use 'ThePrimeagen/harpoon'
   use 'ThePrimeagen/git-worktree.nvim'
 
-  use 'iamcco/markdown-preview.nvim'
+
+  use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install", setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
 
   -----------------------------------------------------------------------
   -- Telescope
   -----------------------------------------------------------------------
   use {'nvim-telescope/telescope.nvim', tag = '0.1.0' }
-  use "nvim-telescope/telescope-file-browser.nvim"
+  use { "nvim-telescope/telescope.nvim" }
+
   use {
       "SmiteshP/nvim-navic",
       requires = "neovim/nvim-lspconfig"
   }
+
+  use {
+      "nvim-telescope/telescope-file-browser.nvim",
+      requires = {
+          "nvim-telescope/telescope.nvim",
+          "nvim-lua/plenary.nvim",
+          "SmiteshP/nvim-navic",
+      }
+  }
+
+  use 'mbbill/undotree'
 
   -----------------------------------------------------------------------
   -- Fancy icons
@@ -113,8 +134,24 @@ return require('packer').startup(function(use)
   }
 
   -----------------------------------------------------------------------
+  -- tab line
+  -----------------------------------------------------------------------
+  use {
+      'kdheepak/tabline.nvim',
+      requires = {
+          { 'hoob3rt/lualine.nvim', opt=true },
+          {'kyazdani42/nvim-web-devicons', opt = true}
+      }
+  }
+
+  -----------------------------------------------------------------------
   -- Buffer line
   -----------------------------------------------------------------------
-  use {'akinsho/bufferline.nvim', tag = "v3.*", requires = 'nvim-tree/nvim-web-devicons'}
+  -- use {'akinsho/bufferline.nvim', tag = "v3.*", requires = 'nvim-tree/nvim-web-devicons'}
+
+  -----------------------------------------------------------------------
+  -- OIL file explorer
+  -----------------------------------------------------------------------
+  -- use 'stevearc/oil.nvim'
 
 end)
