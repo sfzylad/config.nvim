@@ -2,11 +2,7 @@
 -- NeoVim config --
 -------------------
 local nnoremap = require('zylad.keymap').nnoremap
-local inoremap = require("zylad.keymap").inoremap
 local map = require("zylad.keymap").map
-local nmap = require("zylad.keymap").nmap
-local iunmap = require("zylad.keymap").iunmap
-local nunmap = require("zylad.keymap").nunmap
 
 local opts = { noremap = true, silent = true }
 
@@ -225,10 +221,11 @@ vim.g.indent_blankline_context_patterns = {
 -- keymap('n', '<leader>dd', '<cmd>colorscheme nightfox<CR>', opts)
 -- keymap('n', '<leader>dl', '<cmd>colorscheme dayfox<CR>', opts)
 
-keymap('n', '<leader>dd', '<cmd>set background=dark<CR>', opts)
-keymap('n', '<leader>dl', '<cmd>set background=light<CR>', opts)
 -- keymap('n', '<leader>dd', '<cmd>colorscheme github_dark<CR>', opts)
 -- keymap('n', '<leader>dl', '<cmd>colorscheme github_light<CR>', opts)
+
+keymap('n', '<leader>dd', '<cmd>set background=dark<CR>', opts)
+keymap('n', '<leader>dl', '<cmd>set background=light<CR>', opts)
 
 vim.cmd([[
 map <leader>y "+y
@@ -237,7 +234,6 @@ map <leader>p "+p
 
 -- Run gofmt + goimport on save
 vim.api.nvim_exec([[ autocmd BufWritePre *.go :silent! lua require('go.format').goimport() ]], false)
-
 
 keymap('n', '<leader>gl', "<cmd>:lua require('telescope').extensions.git_worktree.git_worktrees()<CR>", opts)
 keymap('n', '<leader>gn', "<cmd>:lua require('telescope').extensions.git_worktree.create_git_worktree()<CR>", opts)

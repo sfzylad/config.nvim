@@ -25,10 +25,10 @@ return require('packer').startup(function(use)
 
   use "tpope/vim-fugitive"
   -- use 'mhinz/vim-startify'
-  -- use {
-  --     'goolord/alpha-nvim',
-  --     requires = { 'nvim-tree/nvim-web-devicons' },
-  -- }
+  use {
+      'goolord/alpha-nvim',
+      requires = { 'nvim-tree/nvim-web-devicons' },
+  }
 
   use {
     'numToStr/Comment.nvim',

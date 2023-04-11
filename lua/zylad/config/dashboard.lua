@@ -2,7 +2,7 @@ local M = {}
 
 function M.setup()
     require("alpha").setup(
-        require'alpha.themes.startify'.config
+        require'alpha.themes.theta'.config
     )
 end
 

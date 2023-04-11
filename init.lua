@@ -1,3 +1,3 @@
 require("zylad.packer")
-require("zylad.set")
+require("zylad.options")
 require("zylad.plugins")
