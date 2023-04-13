@@ -35,7 +35,8 @@ function M.setup()
   } -- telescope setup
   require("telescope").load_extension "file_browser"
 
-  vim.keymap.set('n', '<C-b>', '<Cmd>Telescope buffers<CR>')
+  -- vim.keymap.set('n', '<C-b>', '<Cmd>Telescope buffers<CR>')
+  vim.keymap.set('n', '<leader>fB', '<Cmd>Telescope buffers<CR>')
   vim.keymap.set('n', '<C-p>', '<Cmd>Telescope find_files<CR>')
 end
 
