@@ -93,6 +93,11 @@ require('tabline').setup({
         show_devicons = true,
     }
 })
+--
+----------------------------------------------------------------------------
+-- leap
+----------------------------------------------------------------------------
+require('leap').add_default_mappings()
 
 -- NOTE: This has to go at the end
 require("zylad.config.ui").setup()
