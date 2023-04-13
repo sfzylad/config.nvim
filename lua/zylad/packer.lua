@@ -37,6 +37,7 @@ return require('packer').startup(function(use)
     end
   }
   use 'editorconfig/editorconfig-vim'
+  -- use 'christoomey/vim-tmux-navigator'
   use 'mrjones2014/smart-splits.nvim'
   use {
       'nvim-treesitter/nvim-treesitter',
