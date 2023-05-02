@@ -72,7 +72,7 @@ require("nvim-autopairs").setup {
 ----------------------------------------------------------------------------
 -- rust_analyzer setup
 ----------------------------------------------------------------------------
-require'lspconfig'.rust_analyzer.setup{}
+-- require'lspconfig'.rust_analyzer.setup{}
 
 ----------------------------------------------------------------------------
 -- go setup
@@ -97,7 +97,7 @@ require('tabline').setup({
 ----------------------------------------------------------------------------
 -- leap
 ----------------------------------------------------------------------------
-require('leap').add_default_mappings()
+-- require('leap').add_default_mappings()
 
 -- NOTE: This has to go at the end
 require("zylad.config.ui").setup()

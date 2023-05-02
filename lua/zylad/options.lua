@@ -19,9 +19,10 @@ let g:indent_blankline_use_treesitter=v:true
 vim.g.loaded = 1
 vim.g.loaded_netrwPlugin = 1
 
-keymap("", ",", "<Nop>", opts)
-vim.g.mapleader = ","
-vim.g.maplocalleader = ","
+-- Disable coma to use it as leader.
+-- keymap("", ",", "<Nop>", opts)
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 
 
 vim.cmd([[
@@ -165,6 +166,9 @@ keymap('n', '<C-t>n', '<Cmd>tabnext<CR>', opts)
 keymap('n', '<leader>fh', '<cmd>Telescope help_tags<cr>', opts)
 keymap('n', '<leader>ff', '<cmd>Telescope find_files<cr>', opts)
 keymap('n', '<leader>fg', '<cmd>Telescope live_grep<cr>', opts)
+keymap('n', '<leader>fr', '<cmd>Telescope resume<cr>', opts)
+keymap('n', '<leader>fo', '<cmd>Telescope oldfiles<cr>', opts)
+keymap('n', '<leader>fd', '<cmd>Telescope diagnostics<cr>', opts)
 
 vim.cmd([[
 autocmd BufWritePre * :%s/\s\+$//e

@@ -37,13 +37,13 @@ return require('packer').startup(function(use)
     end
   }
   use 'editorconfig/editorconfig-vim'
-  -- use 'christoomey/vim-tmux-navigator'
   use 'mrjones2014/smart-splits.nvim'
   use {
       'nvim-treesitter/nvim-treesitter',
       run = ':TSUpdate'
   }
   use 'nvim-treesitter/nvim-treesitter-context'
+  use 'nvim-treesitter/playground'
 
   use 'neovim/nvim-lspconfig'
   use 'saadparwaiz1/cmp_luasnip'
@@ -149,7 +149,7 @@ return require('packer').startup(function(use)
   -----------------------------------------------------------------------
   -- leap / better easy motion
   -----------------------------------------------------------------------
-use { 'ggandor/leap.nvim' }
+-- use { 'ggandor/leap.nvim' }
   -----------------------------------------------------------------------
   -- Buffer line
   -----------------------------------------------------------------------

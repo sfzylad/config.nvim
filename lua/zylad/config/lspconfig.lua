@@ -118,6 +118,14 @@ for _, lsp in ipairs(servers) do
             },
             handlers = handlers,
         }
+    elseif lsp == "rust_analyzer" then
+        nvim_lsp[lsp].setup {
+            handlers = handlers,
+            on_attach = on_attach,
+            cmd = {
+                "rustup", "run", "stable", "rust-analyzer"
+            },
+        }
     else
         nvim_lsp[lsp].setup { on_attach = on_attach, handlers = handlers }
     end
@@ -166,8 +174,8 @@ require'lspconfig'.lua_ls.setup {
   },
 }
 
-require("rust-tools").setup{
-    server = {
-      on_attach = on_attach,
-    }
-}
+-- require("rust-tools").setup{
+--     server = {
+--       on_attach = on_attach,
+--     }
+-- }
