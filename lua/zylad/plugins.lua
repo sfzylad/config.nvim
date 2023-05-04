@@ -13,6 +13,8 @@ require("zylad.config.treesitter-context").setup()
 require("zylad.config.telescope").setup()
 require("zylad.config.smart-split").setup()
 require("zylad.config.undotree")
+require("zylad.config.fugitive")
+require("zylad.config.remap")
 
 -----------------------------------------------------------------------------
 -- git worktree

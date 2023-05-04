@@ -48,7 +48,7 @@ vim.o.list = true --- show white chars
 vim.o.number = true
 vim.o.ruler = true
 vim.o.t_Co = 256 -- use 256 colors
--- vim.o.scrolloff = 999 -- keep the cursor centered on the screen
+-- vim.o.scrolloff = 999 -- keep the cursor centered on the screen_w
 vim.o.showmatch = true -- highlight search
 vim.o.showmode = true -- show the current mode on the opened buffer
 vim.o.splitbelow = true -- split shows up below by default
@@ -61,6 +61,8 @@ vim.o.sessionoptions = "curdir,folds,help,options,tabpages,winsize"
 vim.o.completeopt = "menu,menuone,noselect"
 
 vim.g.fugitive_git_executable = '/usr/local/bin/git'
+
+vim.o.termguicolors = true
 
 vim.cmd([[
 if exists('+termguicolors')
@@ -268,3 +270,10 @@ end, {nargs = '*'})
 
 
 vim.o.updatetime = 750
+
+-- fat cursor on insert
+vim.o.guicursor = ""
+
+-- don't scroll to the top or bottom
+vim.o.scrolloff = 8
+-- vim.o.scrolloff = 999 -- keep the cursor centered on the screen_w
