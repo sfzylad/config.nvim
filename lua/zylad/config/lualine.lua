@@ -71,7 +71,10 @@ local config = {
     sections = {
       lualine_a = {'mode'},
       lualine_b = {'branch'},
-      lualine_c = {'filename', 'diff', {'diagnostics', source = {'nvim_lsp'}},
+      -- -- lualine_c = {'filename', 'diff', {'diagnostics', source = {'nvim_lsp'}},
+      -- lualine_c = {'filename', 'diff', {'diagnostics', source = {'nvim_diagnostic'}},
+      -- lualine_c = {'filename', 'diff', {'diagnostics', update_in_insert = false,  source = {'nvim_diagnostic'}},
+      lualine_c = {'filename', 'diff', {'diagnostics', update_in_insert = false,  source = {'nvim_diagnostic'}},
       -- {
       --       function()
       --         local msg = 'No Active Lsp'
@@ -109,50 +112,6 @@ local config = {
       lualine_y = {},
       lualine_z = {'filetype'},
     },
-    -- tabline = {
-    --   lualine_a = {'buffers'},
-    --   lualine_z = {'tabs'}
-    --
-    -- },
-    -- tabline = {},
-    -- winbar = {
-    --     lualine_a = {
-    --         {
-    --             "diagnostics",
-    --             sources = { "nvim_diagnostic" },
-    --             diagnostics_color = {
-    --                 error = "DiagnosticError",
-    --                 warn = "DiagnosticWarn",
-    --                 info = "DiagnosticInfo",
-    --                 hint = "DiagnosticHint",
-    --             },
-    --             colored = true,
-    --         },
-    --     },
-    --     lualine_c = {},
-    --     lualine_x = {
-    --         {
-    --             winbar.get_winbar,
-    --             color = { fg = colors.violet, gui = "bold" },
-    --         },
-    --     },
-    --     lualine_y = {},
-    --     lualine_z = {},
-    -- },
-    -- inactive_winbar = {
-    --     lualine_a = {},
-    --     lualine_b = {},
-    --     lualine_c = {},
-    --     lualine_x = {
-    --         {
-    --             winbar.get_winbar,
-    --             color = { fg = colors.green, gui = "bold" },
-    --         },
-    --     },
-    --     lualine_y = {},
-    --     lualine_z = {},
-    -- },
-    -- extensions = {}
     extensions = { "nvim-tree", "toggleterm", "quickfix" },
 }
 

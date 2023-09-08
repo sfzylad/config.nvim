@@ -58,7 +58,8 @@ return require('packer').startup(function(use)
   use 'hrsh7th/nvim-cmp'
   use 'windwp/nvim-autopairs'
   use 'lukas-reineke/cmp-rg'
-  use 'nvim-lua/lsp-status.nvim'
+  -- Causes rust-analyzer to slow down.
+  -- use 'nvim-lua/lsp-status.nvim'
   use 'onsails/lspkind.nvim'
 
   use 'onsails/diaglist.nvim'
@@ -74,6 +75,8 @@ return require('packer').startup(function(use)
 
   use 'simrat39/symbols-outline.nvim'
   use 'simrat39/rust-tools.nvim'
+
+  use 'google/vim-jsonnet'
 
   -----------------------------------------------------------------------
   -- colorscheme

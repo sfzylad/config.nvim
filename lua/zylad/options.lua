@@ -58,7 +58,7 @@ vim.o.visualbell = true -- use a visual bell
 -- unloaded buffers or empty windows.
 vim.o.sessionoptions = "curdir,folds,help,options,tabpages,winsize"
 
-vim.o.completeopt = "menu,menuone,noselect"
+-- vim.o.completeopt = "menu,menuone,noselect"
 
 vim.g.fugitive_git_executable = '/usr/local/bin/git'
 
@@ -249,6 +249,15 @@ vim.o.mouse = ""
 -- on hover diagnostics
 -- vim.o.updatetime = 250
 -- vim.cmd [[autocmd! CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]]
+vim.diagnostic.config({
+    float = {
+        source = "always",
+        show_header = true,
+        border = "rounded",
+        focusable = true,
+    },
+    enabled = true,
+})
 
 vim.api.nvim_set_keymap(
    "n",

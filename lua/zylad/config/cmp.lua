@@ -6,14 +6,14 @@ local has_words_before = function()
   return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
 end
 
-vim.o.completeopt = "menu,menuone,noselect"
+-- vim.o.completeopt = "menu,menuone,noselect"
 
 function M.setup()
   -----------------------------------------------------------------------------
   -- Set up nvim-cmp
   -----------------------------------------------------------------------------
   local cmp_autopairs = require('nvim-autopairs.completion.cmp')
-  local luasnip = require("luasnip")
+  -- local luasnip = require("luasnip")
   local cmp = require'cmp'
   local lspkind = require('lspkind')
 
@@ -27,6 +27,9 @@ function M.setup()
   )
 
   cmp.setup({
+    completion = {
+        autocomplete = false,
+    },
     snippet = {
       -- REQUIRED - you must specify a snippet engine
       expand = function(args)
@@ -45,9 +48,12 @@ function M.setup()
     mapping = cmp.mapping.preset.insert({
       ['<C-b>'] = cmp.mapping.scroll_docs(-4),
       ['<C-f>'] = cmp.mapping.scroll_docs(4),
+      ['<C-j>'] = cmp.mapping.select_next_item(),
+      ['<C-k>'] = cmp.mapping.select_prev_item(),
       ['<C-Space>'] = cmp.mapping.complete(),
       ['<C-e>'] = cmp.mapping.abort(),
-      ['<CR>'] = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Insert, select = false }), -- Accept currently selected item. Set `select` to `false`
+      -- ['<CR>'] = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Insert, select = false }), -- Accept currently selected item. Set `select` to `false`
+      ['<CR>'] = cmp.mapping.confirm({  select = true }), -- Accept currently selected item. Set `select` to `false`
 
     }),
     sources = cmp.config.sources({
@@ -58,7 +64,8 @@ function M.setup()
     }),
 
     formatting = {
-      fields = { "abbr", "kind", "menu" },
+      -- fields = { "abbr", "kind", "menu" },
+      fields = { "abbr", "kind" },
       format = lspkind.cmp_format({
           mode = "symbol_text",
           preset = "codicons",

@@ -49,6 +49,7 @@ local on_attach = function(client, bufnr)
   buf_set_keymap("n", '<Leader>dr', "<cmd>lua require('dap').repl_open()<CR>", opts)
   buf_set_keymap("n", '<Leader><Leader>dl', "<cmd>lua function() require('dap').repl_open()<CR>", opts)
   buf_set_keymap("n", '<Leader>dt', "<cmd>lua require('dap-go').debug_test()<CR>", opts)
+  buf_set_keymap("n", '<Leader>k', "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
 
   local function map(mode, l, r, desc)
     vim.keymap.set(mode, l, r, { buffer = bufnr, desc = desc })
@@ -174,8 +175,44 @@ require'lspconfig'.lua_ls.setup {
   },
 }
 
--- require("rust-tools").setup{
---     server = {
---       on_attach = on_attach,
---     }
--- }
+require("rust-tools").setup{
+    server = {
+      on_attach = on_attach,
+    }
+}
+
+local util = require 'lspconfig.util'
+
+require'lspconfig'.jsonnet_ls.setup{
+    cmd = {"jsonnet-language-server", "-t"},
+    root_dir = util.root_pattern("jsonnetfile.json"),
+    on_attach = on_attach,
+	settings = {
+		ext_vars = {
+			foo = 'bar',
+		},
+		formatting = {
+			-- default values
+			Indent              = 2,
+			MaxBlankLines       = 2,
+			StringStyle         = 'single',
+			CommentStyle        = 'slash',
+			PrettyFieldNames    = true,
+			PadArrays           = false,
+			PadObjects          = true,
+			SortImports         = true,
+			UseImplicitPlus     = true,
+			StripEverything     = false,
+			StripComments       = false,
+			StripAllButComments = false,
+		},
+      diagnostics = {
+        -- Get the language server to recognize the `vim` global
+        globals = {'vim'},
+      },
+      completion = {
+        autoRequire = true,
+        callSnippet = true,
+      },
+	},
+}
