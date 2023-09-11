@@ -165,13 +165,6 @@ keymap('n', '<C-t>', '<Cmd>tabnew<CR>', opts)
 keymap('n', '<C-t>p', '<Cmd>tabprevious<CR>', opts)
 keymap('n', '<C-t>n', '<Cmd>tabnext<CR>', opts)
 
-keymap('n', '<leader>fh', '<cmd>Telescope help_tags<cr>', opts)
-keymap('n', '<leader>ff', '<cmd>Telescope find_files<cr>', opts)
-keymap('n', '<leader>fg', '<cmd>Telescope live_grep<cr>', opts)
-keymap('n', '<leader>fr', '<cmd>Telescope resume<cr>', opts)
-keymap('n', '<leader>fo', '<cmd>Telescope oldfiles<cr>', opts)
-keymap('n', '<leader>fd', '<cmd>Telescope diagnostics<cr>', opts)
-
 vim.cmd([[
 autocmd BufWritePre * :%s/\s\+$//e
 autocmd BufWinEnter * set foldlevel=999999
@@ -239,9 +232,10 @@ map <leader>p "+p
 ]])
 
 -- Run gofmt + goimport on save
-vim.api.nvim_exec([[ autocmd BufWritePre *.go :silent! lua require('go.format').goimport() ]], false)
+-- vim.api.nvim_exec([[ autocmd BufWritePre *.go :silent! lua require('go.format').goimport() ]], false)
+vim.api.nvim_exec2([[ autocmd BufWritePre *.go :silent! lua require('go.format').goimport() ]], {output = false})
 
-keymap('n', '<leader>gl', "<cmd>:lua require('telescope').extensions.git_worktree.git_worktrees()<CR>", opts)
+-- keymap('n', '<leader>gl', "<cmd>:lua require('telescope').extensions.git_worktree.git_worktrees()<CR>", opts)
 keymap('n', '<leader>gn', "<cmd>:lua require('telescope').extensions.git_worktree.create_git_worktree()<CR>", opts)
 
 vim.o.mouse = ""
