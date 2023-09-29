@@ -80,7 +80,18 @@ require("nvim-autopairs").setup {
 ----------------------------------------------------------------------------
 -- go setup
 ----------------------------------------------------------------------------
-require('go').setup()
+require('go').setup({
+    lsp_inlay_hints = {
+        enable = true,
+        show_variable_name = true,
+        -- prefix for parameter hints
+        parameter_hints_prefix = "󰊕 ",
+        show_parameter_hints = true,
+        -- prefix for all the other hints (type, chaining)
+        other_hints_prefix = "=> ",
+        highlight = "Comment",
+    }
+})
 
 
 
