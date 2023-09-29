@@ -35,13 +35,9 @@ require('gitsigns').setup()
 ----------------------------------------------------------------------------
 -- indent indent_blankline setup
 ----------------------------------------------------------------------------
-require("indent_blankline").setup {
-  -- for example, context is off by default, use this to turn it on
-  show_current_context = false,
-  space_char_blankline = " ",
-  show_current_context_start = false,
-  -- show_current_context_start = true,
-}
+-- require "ibl".setup({
+--     scope = { enabled = true },
+-- })
 
 require("luasnip.loaders.from_vscode").lazy_load()
 require("diaglist").init({
