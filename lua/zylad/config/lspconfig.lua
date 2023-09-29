@@ -103,6 +103,13 @@ local handlers =  {
   ["textDocument/signatureHelp"] =  vim.lsp.with(vim.lsp.handlers.signature_help, {border = border }),
 }
 
+local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
+function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
+  opts = opts or {}
+  opts.border = opts.border or border
+  return orig_util_open_floating_preview(contents, syntax, opts, ...)
+end
+
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
@@ -110,6 +117,7 @@ local servers = { "rust_analyzer", "gopls", "pylsp"}
 for _, lsp in ipairs(servers) do
     if lsp == "pylsp" then
         nvim_lsp[lsp].setup {
+            inlay_hints = { enabled = true },
             on_attach = on_attach,
             settings = {
                 plugins = {
@@ -128,7 +136,11 @@ for _, lsp in ipairs(servers) do
             },
         }
     else
-        nvim_lsp[lsp].setup { on_attach = on_attach, handlers = handlers }
+        nvim_lsp[lsp].setup {
+            inlay_hints = { enabled = true },
+            on_attach = on_attach,
+            handlers = handlers
+        }
     end
 end
 
