@@ -99,7 +99,7 @@ local config = {
       -- lualine_c = { 'filename',
       --     { navic.get_location, cond = navic.is_available },
       -- },
-      lualine_x = {'encoding', 'fileformat', 'filetype'},
+      lualine_x = {"vim.fn['zoom#statusline']()", 'encoding', 'fileformat', 'filetype'},
       lualine_y = {'progress'},
       lualine_z = {'location'}
     },
