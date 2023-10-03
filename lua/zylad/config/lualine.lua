@@ -71,9 +71,6 @@ local config = {
     sections = {
       lualine_a = {'mode'},
       lualine_b = {'branch'},
-      -- -- lualine_c = {'filename', 'diff', {'diagnostics', source = {'nvim_lsp'}},
-      -- lualine_c = {'filename', 'diff', {'diagnostics', source = {'nvim_diagnostic'}},
-      -- lualine_c = {'filename', 'diff', {'diagnostics', update_in_insert = false,  source = {'nvim_diagnostic'}},
       lualine_c = {'filename', 'diff', {'diagnostics', update_in_insert = false,  source = {'nvim_diagnostic'}},
       -- {
       --       function()

@@ -43,8 +43,10 @@ vim.api.nvim_command("au FileType go nmap <Leader><Leader>r :GoTestFunc")
 vim.o.encoding = 'utf-8'
 vim.o.relativenumber = true
 -- vim.o.iskeyword = ',:,@,48-57,_,192-255'
+
 vim.o.listchars = "tab:› ,eol:¬,trail:⋅" --- Set the characters for the invisibles
-vim.o.list = true --- show white chars
+vim.o.list = false--- show white chars
+
 vim.o.number = true
 vim.o.ruler = true
 vim.o.t_Co = 256 -- use 256 colors
