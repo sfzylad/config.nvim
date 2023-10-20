@@ -106,7 +106,7 @@ local handlers =  {
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local servers = { "rust_analyzer", "gopls", "pylsp"}
+local servers = { "rust_analyzer", "gopls", "pylsp", "jsonls"}
 for _, lsp in ipairs(servers) do
     if lsp == "pylsp" then
         nvim_lsp[lsp].setup {
@@ -125,6 +125,15 @@ for _, lsp in ipairs(servers) do
             on_attach = on_attach,
             cmd = {
                 "rustup", "run", "stable", "rust-analyzer"
+            },
+        }
+    elseif lsp == "jsonls" then
+        nvim_lsp[lsp].setup {
+            settings = {
+                json = {
+                    schemas = require('schemastore').json.schemas(),
+                    validate = { enable = true },
+                },
             },
         }
     else

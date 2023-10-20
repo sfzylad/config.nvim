@@ -134,6 +134,7 @@ return require('packer').startup(function(use)
   use 'mbbill/undotree'
   use 'dhruvasagar/vim-zoom'
   use 'will133/vim-dirdiff'
+  use "b0o/schemastore.nvim"
 
   -----------------------------------------------------------------------
   -- Fancy icons
