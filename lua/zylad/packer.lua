@@ -19,7 +19,15 @@ return require('packer').startup(function(use)
 
   use 'lewis6991/gitsigns.nvim'
   use 'nvim-lua/plenary.nvim'
-  use {'L3MON4D3/LuaSnip', tag = 'v<CurrentMajor>.*'}
+
+  use({
+	"L3MON4D3/LuaSnip",
+	-- follow latest release.
+	tag = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
+	-- install jsregexp (optional!:).
+	run = "make install_jsregexp"
+  })
+
   use 'rafamadriz/friendly-snippets'
   use 'folke/todo-comments.nvim'
   use "folke/zen-mode.nvim"
@@ -125,8 +133,7 @@ return require('packer').startup(function(use)
   -----------------------------------------------------------------------
   -- Telescope
   -----------------------------------------------------------------------
-  use {'nvim-telescope/telescope.nvim', tag = '0.1.0' }
-  use { "nvim-telescope/telescope.nvim" }
+  use {'nvim-telescope/telescope.nvim', tag = '0.1.3' }
 
   use {
       "SmiteshP/nvim-navic",
@@ -144,6 +151,8 @@ return require('packer').startup(function(use)
 
   use 'mbbill/undotree'
   use 'dhruvasagar/vim-zoom'
+  use 'will133/vim-dirdiff'
+  use "b0o/schemastore.nvim"
 
   -----------------------------------------------------------------------
   -- Fancy icons
