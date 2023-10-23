@@ -12,9 +12,8 @@ require("zylad.config.treesitter").setup()
 require("zylad.config.treesitter-context").setup()
 require("zylad.config.telescope").setup()
 require("zylad.config.smart-split").setup()
-require("zylad.config.undotree")
-require("zylad.config.fugitive")
 require("zylad.config.remap")
+require("zylad.config.bufferline").setup()
 
 -----------------------------------------------------------------------------
 -- git worktree
@@ -35,9 +34,9 @@ require('gitsigns').setup()
 ----------------------------------------------------------------------------
 -- indent indent_blankline setup
 ----------------------------------------------------------------------------
--- require "ibl".setup({
---     scope = { enabled = true },
--- })
+require "ibl".setup({
+    scope = { enabled = true },
+})
 
 require("luasnip.loaders.from_vscode").lazy_load()
 require("diaglist").init({
@@ -95,7 +94,7 @@ require('go').setup({
 -- tabline
 ----------------------------------------------------------------------------
 require('tabline').setup({
-    enable = true,
+    enable = false,
     options = {
         -- section_separators = {'', ''},
         -- component_separators = {'', ''},
@@ -111,3 +110,26 @@ require('tabline').setup({
 
 -- NOTE: This has to go at the end
 require("zylad.config.ui").setup()
+
+-- This module contains a number of default definitions
+-- local rainbow_delimiters = require 'rainbow-delimiters'
+--
+-- vim.g.rainbow_delimiters = {
+--     strategy = {
+--         [''] = rainbow_delimiters.strategy['global'],
+--         vim = rainbow_delimiters.strategy['local'],
+--     },
+--     query = {
+--         [''] = 'rainbow-delimiters',
+--         lua = 'rainbow-blocks',
+--     },
+--     highlight = {
+--         'RainbowDelimiterOrange',
+--         'RainbowDelimiterYellow',
+--         'RainbowDelimiterRed',
+--         'RainbowDelimiterBlue',
+--         'RainbowDelimiterGreen',
+--         'RainbowDelimiterViolet',
+--         'RainbowDelimiterCyan',
+--     },
+-- }

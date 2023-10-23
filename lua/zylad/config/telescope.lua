@@ -11,7 +11,7 @@ function M.setup()
             hidden = false,
             respect_gitignore = false,
             hide_parent_dir = false,
-            hijack_netrw = true,
+            hijack_netrw = false,
             git_status = true,
             theme = "ivy",
             layout_config = {
@@ -100,6 +100,10 @@ function M.setup()
 
   vim.keymap.set('n', '<leader>fg', function()
     builtin.live_grep(themes.get_ivy(theme_opts))
+  end, {expr = false})
+
+  vim.keymap.set('n', '<leader>fs', function()
+    builtin.grep_string({themes.get_ivy(theme_opts), search = vim.fn.input("Grep > ") })
   end, {expr = false})
 
   vim.keymap.set('n', '<leader>fh', function()

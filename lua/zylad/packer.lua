@@ -22,6 +22,18 @@ return require('packer').startup(function(use)
   use {'L3MON4D3/LuaSnip', tag = 'v<CurrentMajor>.*'}
   use 'rafamadriz/friendly-snippets'
   use 'folke/todo-comments.nvim'
+  use "folke/zen-mode.nvim"
+  use({
+      "folke/trouble.nvim",
+      config = function()
+          require("trouble").setup {
+              icons = false,
+              -- your configuration comes here
+              -- or leave it empty to use the default settings
+              -- refer to the configuration section below
+          }
+      end
+  })
 
   use "tpope/vim-fugitive"
   -- use 'mhinz/vim-startify'
@@ -93,7 +105,13 @@ return require('packer').startup(function(use)
 
   use {'nyoom-engineering/oxocarbon.nvim'}
 
-  use({ 'rose-pine/neovim', as = 'rose-pine' })
+  use({
+	  'rose-pine/neovim',
+	  as = 'rose-pine',
+	  config = function()
+		  vim.cmd('colorscheme rose-pine')
+	  end
+  })
 
   -----------------------------------------------------------------------
   -- Workflow improvements
@@ -149,6 +167,8 @@ return require('packer').startup(function(use)
       }
   }
 
+  -- use 'hiphish/rainbow-delimiters.nvim'
+
 
   -----------------------------------------------------------------------
   -- leap / better easy motion
@@ -157,11 +177,13 @@ return require('packer').startup(function(use)
   -----------------------------------------------------------------------
   -- Buffer line
   -----------------------------------------------------------------------
-  -- use {'akinsho/bufferline.nvim', tag = "v3.*", requires = 'nvim-tree/nvim-web-devicons'}
+  use {'akinsho/bufferline.nvim', tag = "*", requires = 'nvim-tree/nvim-web-devicons'}
 
   -----------------------------------------------------------------------
   -- OIL file explorer
   -----------------------------------------------------------------------
   -- use 'stevearc/oil.nvim'
+
+  use 'shaunsingh/nord.nvim'
 
 end)
