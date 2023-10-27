@@ -32,7 +32,7 @@ vim.o.listchars = "tab:› ,eol:¬,trail:⋅" --- Set the characters for the inv
 vim.o.list = false--- show white chars
 
 vim.o.ruler = true
-vim.o.t_Co = 256 -- use 256 colors
+-- vim.o.t_Co = 256 -- use 256 colors
 vim.o.showmatch = true -- highlight search
 vim.o.showmode = true -- show the current mode on the opened buffer
 vim.o.splitbelow = true -- split shows up below by default
@@ -204,3 +204,5 @@ vim.o.scrolloff = 8
 
 --- preserve paster register
 vim.keymap.set("x", "<leader>p", "\"_dP")
+
+vim.g.netrw_banner = 1
