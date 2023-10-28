@@ -26,6 +26,10 @@ keymap('n', '<leader>gn', "<cmd>:lua require('telescope').extensions.git_worktre
 
 keymap('n', '<leader>ev', '<cmd>:e $MYVIMRC<CR>', opts)
 
+vim.keymap.set("n", "[c", function()
+  require("treesitter-context").go_to_context()
+end, { silent = true })
+
 local nnoremap = require('zylad.keymap').nnoremap
 
 nnoremap('<leader>cd', '<Cmd>:cd %:h<CR>')

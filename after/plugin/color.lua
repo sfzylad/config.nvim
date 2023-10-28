@@ -11,4 +11,4 @@ function ColorMyPencils(color)
     require("zylad.config.ui").setup()
 end
 
-ColorMyPencils()
+ColorMyPencils('kanagawa-dragon')

@@ -120,6 +120,15 @@ return require('packer').startup(function(use)
 		  vim.cmd('colorscheme rose-pine')
 	  end
   })
+  use({
+      'rebelot/kanagawa.nvim',
+      as = 'kanagawa',
+      config = function()
+          require('kanagawa').setup({
+              theme = 'dragon',
+          })
+      end
+  })
 
   -----------------------------------------------------------------------
   -- Workflow improvements
