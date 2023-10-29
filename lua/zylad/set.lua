@@ -1,3 +1,4 @@
+---@diagnostic disable: inject-field
 -------------------
 -- NeoVim config --
 -------------------
@@ -43,6 +44,8 @@ vim.o.visualbell = true -- use a visual bell
 vim.o.sessionoptions = "curdir,folds,help,options,tabpages,winsize"
 
 vim.g.fugitive_git_executable = '/usr/local/bin/git'
+
+vim.g.rustfmt_autosave = 1
 
 -- vim.cmd([[
 -- if exists('+termguicolors')
