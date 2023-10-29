@@ -199,7 +199,9 @@ require'lspconfig'.lua_ls.setup {
 
 require("rust-tools").setup{
     server = {
-      on_attach = on_attach,
+        -- automatically call RustReloadWorkspace when writing to a Cargo.toml file.
+        reload_workspace_from_cargo_toml = true,
+        on_attach = on_attach,
     }
 }
 
