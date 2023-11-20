@@ -51,6 +51,10 @@ return require('packer').startup(function(use)
   }
 
   use {
+      "williamboman/mason.nvim"
+  }
+
+  use {
     'numToStr/Comment.nvim',
     config = function()
         require('Comment').setup()
