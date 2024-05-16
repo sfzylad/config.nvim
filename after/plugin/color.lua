@@ -1,9 +1,9 @@
-require("rose-pine").setup({
-    disable_background = false,
-})
+--require("rose-pine").setup({
+--    disable_background = false,
+--})
 
 function ColorMyPencils(color)
-    color = color or "rose-pine"
+    color = color or "kanagawa-dragon"
     vim.cmd.colorscheme(color)
 
     -- vim.api.nvim_set_hl(0, "Normal", { bg = "none" })

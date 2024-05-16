@@ -49,10 +49,26 @@ return require('packer').startup(function(use)
       'goolord/alpha-nvim',
       requires = { 'nvim-tree/nvim-web-devicons' },
   }
+  use { "nvim-neotest/nvim-nio" }
 
   use {
-      "williamboman/mason.nvim"
+      "williamboman/mason.nvim",
+      "williamboman/mason-lspconfig.nvim",
   }
+
+  -- Lua
+  -- use {
+  --   "folke/which-key.nvim",
+  --   config = function()
+  --     vim.o.timeout = true
+  --     vim.o.timeoutlen = 300
+  --     require("which-key").setup {
+  --       -- your configuration comes here
+  --       -- or leave it empty to use the default settings
+  --       -- refer to the configuration section below
+  --     }
+  --   end
+  -- }
 
   use {
     'numToStr/Comment.nvim',
@@ -118,11 +134,11 @@ return require('packer').startup(function(use)
   use {'nyoom-engineering/oxocarbon.nvim'}
 
   use({
-	  'rose-pine/neovim',
-	  as = 'rose-pine',
-	  config = function()
-		  vim.cmd('colorscheme rose-pine')
-	  end
+      'rose-pine/neovim',
+      as = 'rose-pine',
+      config = function()
+    	  vim.cmd('colorscheme rose-pine')
+      end
   })
   use({
       'rebelot/kanagawa.nvim',

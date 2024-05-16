@@ -15,6 +15,23 @@ require("zylad.config.smart-split").setup()
 require("zylad.config.remap")
 require("zylad.config.bufferline").setup()
 
+
+-----------------------------------------------------------------------------
+-- mason
+-----------------------------------------------------------------------------
+require("mason").setup({
+    ui = {
+        icons = {
+            package_installed = "✓",
+            package_pending = "➜",
+            package_uninstalled = "✗"
+        }
+    }
+})
+require("mason-lspconfig").setup {
+    ensure_installed = { "lua_ls", "gopls" },
+}
+
 -----------------------------------------------------------------------------
 -- git worktree
 -----------------------------------------------------------------------------

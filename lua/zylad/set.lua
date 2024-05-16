@@ -43,7 +43,7 @@ vim.o.visualbell = true -- use a visual bell
 -- unloaded buffers or empty windows.
 vim.o.sessionoptions = "curdir,folds,help,options,tabpages,winsize"
 
-vim.g.fugitive_git_executable = '/usr/local/bin/git'
+vim.g.fugitive_git_executable = '/etc/profiles/per-user/dzyla/bin/git'
 
 vim.g.rustfmt_autosave = 1
 
@@ -164,6 +164,7 @@ vim.g.indent_blankline_context_patterns = {
 
 -- Run gofmt + goimport on save
 -- vim.api.nvim_exec([[ autocmd BufWritePre *.go :silent! lua require('go.format').goimport() ]], false)
+
 vim.api.nvim_exec2([[ autocmd BufWritePre *.go :silent! lua require('go.format').goimport() ]], {output = false})
 
 
