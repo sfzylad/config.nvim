@@ -146,6 +146,10 @@ return require('packer').startup(function(use)
       config = function()
           require('kanagawa').setup({
               theme = 'dragon',
+              background = {
+                  dark = 'dragon',
+                  light = "lotus"
+              },
           })
       end
   })
