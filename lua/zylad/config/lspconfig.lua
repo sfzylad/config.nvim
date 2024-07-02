@@ -121,9 +121,24 @@ for _, lsp in ipairs(servers) do
             inlay_hints = { enabled = true },
             on_attach = on_attach,
             settings = {
-                plugins = {
-                    ignore = {'E111', 'E114'},
-                    maxLineLength = 80,
+                pylsp = {
+                    plugins = {
+                        -- formatter options
+                        black = { enabled = true },
+                        autopep8 = { enabled = false },
+                        yapf = { enabled = false },
+                        -- formatter options
+                        pylint = { enabled = true, executable = "pylint" },
+                        pyflakes = { enabled = false },
+                        pycodestyle = { enabled = false },
+                        -- type checker
+                        pylsp_mypy = { enabled = true },
+                        -- import sorting
+                        pyls_isort = { enabled = true },
+                        -- other stuff
+                        ignore = {'E111', 'E114'},
+                        maxLineLength = 80,
+                    },
                 },
             },
             handlers = handlers,
