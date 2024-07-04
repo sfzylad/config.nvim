@@ -124,7 +124,7 @@ for _, lsp in ipairs(servers) do
                 pylsp = {
                     plugins = {
                         -- formatter options
-                        black = { enabled = true },
+                        black = { enabled = true, executable = "black" },
                         autopep8 = { enabled = false },
                         yapf = { enabled = false },
                         -- formatter options
@@ -255,3 +255,5 @@ require'lspconfig'.jsonnet_ls.setup{
       },
 	},
 }
+
+require'lspconfig'.ruff.setup{}

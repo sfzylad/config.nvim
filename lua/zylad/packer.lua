@@ -33,14 +33,6 @@ return require('packer').startup(function(use)
   use "folke/zen-mode.nvim"
   use({
       "folke/trouble.nvim",
-      config = function()
-          require("trouble").setup {
-              icons = false,
-              -- your configuration comes here
-              -- or leave it empty to use the default settings
-              -- refer to the configuration section below
-          }
-      end
   })
 
   use "tpope/vim-fugitive"
@@ -61,15 +53,38 @@ return require('packer').startup(function(use)
       dependencies = { "nvim-lua/plenary.nvim" },
       config = function ()
         local null_ls = require("null-ls")
+        local methods = require("null-ls.methods")
+        local helpers = require("null-ls.helpers")
+
+        local function ruff_fix()
+            return helpers.make_builtin({
+                name = "ruff",
+                meta = {
+                    url = "https://github.com/charliermarsh/ruff/",
+                    description = "An extremely fast Python linter, written in Rust.",
+                },
+                method = methods.internal.FORMATTING,
+                filetypes = { "python" },
+                generator_opts = {
+                    command = "ruff",
+                    args = { "--fix", "-e", "-n", "--stdin-filename", "$FILENAME", "-" },
+                    to_stdin = true
+                },
+                factory = helpers.formatter_factory
+            })
+        end
 
         null_ls.setup({
             sources = {
+                ruff_fix(),
                 null_ls.builtins.diagnostics.ruff,
-                null_ls.builtins.formatting.black,
             }
         })
+
       end
   }
+
+  use {'astral-sh/ruff-lsp'}
 
   -- Lua
   -- use {
@@ -127,6 +142,7 @@ return require('packer').startup(function(use)
   use 'leoluz/nvim-dap-go'
   -- use 'theHamsta/nvim-dap-virtual-text'
   use 'nvim-telescope/telescope-dap.nvim'
+  use 'mfussenegger/nvim-dap-python'
 
   use 'simrat39/symbols-outline.nvim'
   use 'simrat39/rust-tools.nvim'
