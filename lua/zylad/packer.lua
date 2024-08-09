@@ -76,8 +76,10 @@ return require('packer').startup(function(use)
 
         null_ls.setup({
             sources = {
-                ruff_fix(),
-                null_ls.builtins.diagnostics.ruff,
+                -- ruff_fix(),
+                -- null_ls.builtins.diagnostics.ruff,
+                require("none-ls.diagnostics.ruff"),
+                require("none-ls.formatting.black"),
             }
         })
 

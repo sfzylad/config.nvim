@@ -9,6 +9,7 @@ function M.setup()
     local dashboard = require'alpha.themes.dashboard'
     dashboard.section.buttons.val = {
         dashboard.button("e", "  New file", "<cmd>ene <CR>"),
+        dashboard.button("b", "  Browse files", "<cmd>Ex <CR>"),
         dashboard.button("SPC g l", "  Open Git Workspace"),
         dashboard.button("SPC f o", "  Recently opened files"),
         dashboard.button("SPC f g", "  Find word"),

@@ -9,8 +9,9 @@ let g:indent_blankline_use_treesitter=v:true
 
 -- Disable coma to use it as leader.
 -- keymap("", ",", "<Nop>", opts)
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
+-- This is setup in the main init.lua file now.
+-- vim.g.mapleader = " "
+-- vim.g.maplocalleader = " "
 
 -- vim.o.cursorcolumn = true
 vim.o.colorcolumn = "80"

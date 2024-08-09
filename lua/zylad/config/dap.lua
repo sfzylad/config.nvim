@@ -5,7 +5,7 @@ local M = {}
 
 function M.setup()
   require('dap-go').setup()
-  require("dap-python").setup("/etc/profiles/per-user/dzyla/bin/python")
+  require("dap-python").setup("python")
   require('dapui').setup({
       	layouts = {
   		{

@@ -97,6 +97,9 @@ return {
         lazy = true,
     },
     {
+        "vim-test/vim-test",
+    },
+    {
         "nvimtools/none-ls.nvim",
         dependencies = 'nvim-lua/plenary.nvim',
         config = function ()
