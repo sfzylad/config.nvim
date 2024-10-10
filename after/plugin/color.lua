@@ -8,7 +8,7 @@ function ColorMyPencils(color)
 
     -- vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
     -- vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
-    -- require("zylad.config.ui").setup()
+    require("zylad.config.ui").setup()
 end
 
-ColorMyPencils('catppuccin-mocha')
+ColorMyPencils('rose-pine')

@@ -5,12 +5,18 @@ function M.setup()
     --- @usage 'auto'|'main'|'moon'|'dawn'
     variant = 'auto',
     --- @usage 'main'|'moon'|'dawn'
-    dark_variant = 'main',
-    bold_vert_split = false,
-    dim_nc_background = false,
+    dark_variant = 'moon',
+    enable = {
+        terminal = true,
+        legacy_highlights = true, -- Improve compatibility for previous versions of Neovim
+        migrations = true, -- Handle deprecated options automatically
+    },
+    styles = {
+        bold = false,
+        italic = false,
+        transparency = true,
+    },
     disable_background = false,
-    disable_float_background = false,
-    disable_italics = false,
 
     --- @usage string hex value or named color from rosepinetheme.com/palette
     groups = {
@@ -28,16 +34,16 @@ function M.setup()
       info = 'foam',
       warn = 'gold',
 
-      headings = {
-        h1 = 'iris',
-        h2 = 'foam',
-        h3 = 'rose',
-        h4 = 'gold',
-        h5 = 'pine',
-        h6 = 'foam',
-      }
+      -- headings = {
+      --   h1 = 'iris',
+      --   h2 = 'foam',
+      --   h3 = 'rose',
+      --   h4 = 'gold',
+      --   h5 = 'pine',
+      --   h6 = 'foam',
+      -- }
       -- or set all headings at once
-      -- headings = 'subtle'
+      headings = 'subtle',
     },
 
     -- Change specific vim highlight groups
