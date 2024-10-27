@@ -361,6 +361,12 @@ return {
         },
     },
     {
+        'arkav/lualine-lsp-progress',
+        dependencies = {
+          { 'hoob3rt/lualine.nvim', opt=true },
+        },
+    },
+    {
         "akinsho/bufferline.nvim",
         version = "*",
         dependencies = 'nvim-tree/nvim-web-devicons',

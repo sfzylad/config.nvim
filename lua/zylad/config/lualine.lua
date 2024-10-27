@@ -74,7 +74,7 @@ local config = {
       lualine_b = {'branch'},
       lualine_c = {'filename', 'diff', {'diagnostics', update_in_insert = false,  source = {'nvim_diagnostic'}},
     },
-      lualine_x = {"vim.fn['zoom#statusline']()", 'encoding', 'fileformat', 'filetype'},
+      lualine_x = {"lsp_progress", "vim.fn['zoom#statusline']()", 'encoding', 'fileformat', 'filetype'},
       lualine_y = {'progress'},
       lualine_z = {'location'}
     },
