@@ -44,7 +44,7 @@ vim.o.visualbell = true -- use a visual bell
 -- unloaded buffers or empty windows.
 vim.o.sessionoptions = "curdir,folds,help,options,tabpages,winsize"
 
-vim.g.fugitive_git_executable = '/etc/profiles/per-user/dzyla/bin/git'
+vim.g.fugitive_git_executable = '/usr/bin/git'
 
 vim.g.rustfmt_autosave = 1
 
@@ -211,3 +211,8 @@ vim.o.scrolloff = 8
 vim.keymap.set("x", "<leader>p", "\"_dP")
 
 vim.g.netrw_banner = 1
+
+vim.cmd([[
+let g:python_host_prog = '/Users/dzyla/.pyenv/versions/neovim/bin/python'
+let g:python3_host_prog = '/Users/dzyla/.pyenv/versions/neovim/bin/python'
+]])

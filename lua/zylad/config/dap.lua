@@ -5,7 +5,7 @@ local M = {}
 
 function M.setup()
   require('dap-go').setup()
-  require("dap-python").setup("python")
+  require("dap-python").setup("/Users/dzyla/.pyenv/versions/neovim/bin/python")
   require('dapui').setup({
       	layouts = {
   		{

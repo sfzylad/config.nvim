@@ -60,6 +60,12 @@ require("todo-comments").setup {
   -- your configuration comes here
   -- or leave it empty to use the default settings
   -- refer to the configuration section below
+  highlight = {
+    pattern = {
+        [[.*<(KEYWORDS)[()a-zA-Z_]+:]],
+        [[.*<(KEYWORDS)\s*:]]
+    },
+  }
 }
 require("nvim-autopairs").setup {
     fast_wrap = {},
@@ -95,6 +101,10 @@ require('tabline').setup({
         show_devicons = true,
     }
 })
+
+require('lint').linters_by_ft = {
+  sls = {'saltlint'},
+}
 --
 ----------------------------------------------------------------------------
 -- leap

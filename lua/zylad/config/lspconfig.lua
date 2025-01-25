@@ -160,6 +160,13 @@ for _, lsp in ipairs(servers) do
                 },
             },
         }
+    elseif lsp == "clangd" then
+        nvim_lsp[lsp].setup {
+            cmd = {'clangd', '--background-index', '--clang-tidy', '--log=verbose'},
+            init_options = {
+                fallbackFlags = { '-std=c++17' },
+            },
+        }
     else
         nvim_lsp[lsp].setup {
             inlay_hints = { enabled = true },
