@@ -46,7 +46,6 @@ return {
     },
     {
         "folke/trouble.nvim",
-        lazy = true,
         opts = {},
         cmd = "Trouble",
         keys = {
@@ -389,12 +388,7 @@ return {
     -----------------------------------------------------------------------
     -- Fancy icons
     -----------------------------------------------------------------------
-    {
-        "nvim-tree/nvim-web-devicons",
-        config = function()
-            require("nvim-web-devicons").setup { default = true }
-        end,
-    },
+    { "nvim-tree/nvim-web-devicons", opts = {} },
     -----------------------------------------------------------------------
     -- tab line
     -----------------------------------------------------------------------
@@ -417,4 +411,12 @@ return {
         dependencies = 'nvim-tree/nvim-web-devicons',
     },
     { 'rest-nvim/rest.nvim' },
+
+    {
+      "leath-dub/snipe.nvim",
+      keys = {
+        {"gb", function () require("snipe").open_buffer_menu() end, desc = "Open Snipe buffer menu"}
+      },
+      opts = {}
+    }
 }

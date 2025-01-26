@@ -13,7 +13,7 @@ require("zylad.config.treesitter-context").setup()
 require("zylad.config.telescope").setup()
 require("zylad.config.smart-split").setup()
 require("zylad.config.remap")
-require("zylad.config.bufferline").setup()
+-- require("zylad.config.bufferline").setup()
 
 
 -----------------------------------------------------------------------------
@@ -93,7 +93,7 @@ require('go').setup({
 -- tabline
 ----------------------------------------------------------------------------
 require('tabline').setup({
-    enable = false,
+    enable = true,
     options = {
         -- section_separators = {'', ''},
         -- component_separators = {'', ''},
