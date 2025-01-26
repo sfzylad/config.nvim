@@ -88,9 +88,12 @@ function M.setup()
 
 
   -- vim.keymap.set('n', '<leader>fB', '<Cmd>Telescope buffers<CR>')
-  vim.keymap.set('n', '<leader>fB', function()
+  vim.keymap.set('n', 'gB', function()
     builtin.buffers(themes.get_ivy(theme_opts))
   end, {expr = false})
+  -- vim.keymap.set('n', '<leader>fB', function()
+  --   builtin.buffers(themes.get_ivy(theme_opts))
+  -- end, {expr = false})
 
 
   -- vim.keymap.set('n', '<C-p>', '<Cmd>lua Telescope find_files<CR>')
