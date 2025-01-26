@@ -4,7 +4,7 @@
 
 function ColorMyPencils(color)
     color = color or "kanagawa-dragon"
-    if color == "rose-color" then
+    if color == "rose-pine" then
         require("zylad.config.ui").setup()
     end
     vim.cmd.colorscheme(color)
