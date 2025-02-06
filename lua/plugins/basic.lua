@@ -1,14 +1,5 @@
 return {
     {
-        "folke/tokyonight.nvim",
-        lazy = false, -- make sure we load this during startup if it is your main colorscheme
-        priority = 1000, -- make sure to load this before all the other start plugins
-        -- config = function()
-        --   -- load the colorscheme here
-        --   vim.cmd([[colorscheme tokyonight]])
-        -- end,
-    },
-    {
         "ray-x/go.nvim",
         lazy = true,
     },
@@ -142,9 +133,6 @@ return {
         end
     },
     {
-        "astral-sh/ruff-lsp",
-    },
-    {
         "numToStr/Comment.nvim",
         lazy = true,
     },
@@ -164,76 +152,6 @@ return {
     {
         "nvim-treesitter/playground",
     },
-    -- LSP
-    {
-        "neovim/nvim-lspconfig",
-    },
-    {
-        "saadparwaiz1/cmp_luasnip",
-    },
-    {
-        "hrsh7th/cmp-nvim-lsp",
-    },
-    {
-        "hrsh7th/cmp-buffer",
-    },
-    {
-        "hrsh7th/cmp-path",
-    },
-    {
-        "hrsh7th/cmp-cmdline",
-    },
-    {
-        "hrsh7th/nvim-cmp",
-    },
-    {
-        "windwp/nvim-autopairs",
-    },
-    {
-        "lukas-reineke/cmp-rg",
-    },
-    {
-        "onsails/lspkind.nvim",
-    },
-
-    {
-        "onsails/diaglist.nvim",
-    },
-    {
-        "nvim-lualine/lualine.nvim",
-    },
-    {
-        "lukas-reineke/indent-blankline.nvim",
-    },
-    -- Debugging
-    {
-        "mfussenegger/nvim-dap",
-    },
-    {
-        "rcarriga/nvim-dap-ui",
-    },
-    {
-        "leoluz/nvim-dap-go",
-    },
-    {
-        "nvim-telescope/telescope-dap.nvim",
-    },
-    {
-        "mfussenegger/nvim-dap-python",
-    },
-    {
-        'theHamsta/nvim-dap-virtual-text',
-    },
-    {
-        "simrat39/symbols-outline.nvim",
-    },
-    {
-        "simrat39/rust-tools.nvim",
-    },
-    {
-        "google/vim-jsonnet",
-    },
-
 
     -----------------------------------------------------------------------
     -- Workflow improvements
