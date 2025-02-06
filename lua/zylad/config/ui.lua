@@ -3,9 +3,9 @@ local M = {}
 function M.setup()
   require('rose-pine').setup({
     --- @usage 'auto'|'main'|'moon'|'dawn'
-    variant = 'main',
+    variant = 'moon',
     --- @usage 'main'|'moon'|'dawn'
-    dark_variant = 'main',
+    dark_variant = 'moon',
     enable = {
         terminal = true,
         legacy_highlights = true, -- Improve compatibility for previous versions of Neovim
@@ -16,7 +16,7 @@ function M.setup()
         italic = false,
         transparency = true,
     },
-    disable_background = false,
+    disable_background = true,
 
     --- @usage string hex value or named color from rosepinetheme.com/palette
     groups = {
