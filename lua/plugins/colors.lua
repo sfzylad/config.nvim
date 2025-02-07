@@ -69,7 +69,7 @@ return {
                     migrations = true, -- Handle deprecated options automatically
                 },
                 styles = {
-                    bold = false,
+                    bold = true,
                     italic = false,
                     transparency = true,
                 },
