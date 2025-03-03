@@ -61,12 +61,19 @@ return {
         "simrat39/symbols-outline.nvim",
     },
     {
-        "simrat39/rust-tools.nvim",
-    },
-    {
         "google/vim-jsonnet",
     },
     {
         "astral-sh/ruff-lsp",
+    },
+    {
+      'mrcjkb/rustaceanvim',
+      version = '^5', -- Recommended
+      lazy = false, -- This plugin is already lazy
+    },
+    {
+    	"chrisgrieser/nvim-lsp-endhints",
+    	event = "LspAttach",
+    	opts = {}, -- required, even if empty
     },
 }

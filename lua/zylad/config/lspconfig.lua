@@ -35,7 +35,9 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
   buf_set_keymap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
   -- buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
-  buf_set_keymap('n', '<space>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
+  -- buf_set_keymap('n', '<space>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
+  buf_set_keymap('n', '<space>q', '<cmd>Trouble diagnostics<CR>', opts)
+
   buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
   buf_set_keymap("n", "<space>dw", "<cmd>lua require('diaglist').open_all_diagnostics()<CR>", opts)
   buf_set_keymap("n", "<space>d0", "<cmd>lua require('diaglist').open_buffer_diagnostics()<CR>", opts)
@@ -114,7 +116,7 @@ end
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local servers = { "rust_analyzer", "gopls", "perlpls", "pylsp", "jsonls", "clangd", "nil_ls", "ts_ls"}
+local servers = { "gopls", "perlpls", "pylsp", "jsonls", "clangd", "nil_ls", "ts_ls"}
 for _, lsp in ipairs(servers) do
     if lsp == "pylsp" then
         nvim_lsp[lsp].setup {
@@ -145,11 +147,7 @@ for _, lsp in ipairs(servers) do
         }
     elseif lsp == "rust_analyzer" then
         nvim_lsp[lsp].setup {
-            handlers = handlers,
             on_attach = on_attach,
-            cmd = {
-                "rustup", "run", "stable", "rust-analyzer"
-            },
         }
     elseif lsp == "jsonls" then
         nvim_lsp[lsp].setup {
@@ -219,13 +217,13 @@ require'lspconfig'.lua_ls.setup {
   },
 }
 
-require("rust-tools").setup{
-    server = {
-        -- automatically call RustReloadWorkspace when writing to a Cargo.toml file.
-        reload_workspace_from_cargo_toml = true,
-        on_attach = on_attach,
-    }
-}
+-- require("rust-tools").setup{
+--     server = {
+--         -- automatically call RustReloadWorkspace when writing to a Cargo.toml file.
+--         reload_workspace_from_cargo_toml = true,
+--         on_attach = on_attach,
+--     }
+-- }
 
 local util = require 'lspconfig.util'
 
@@ -262,5 +260,7 @@ require'lspconfig'.jsonnet_ls.setup{
       },
 	},
 }
+
+
 
 require'lspconfig'.ruff.setup{}

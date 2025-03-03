@@ -23,9 +23,11 @@ function M.setup()
   )
 
   cmp.setup({
-    -- completion = {
-    --     autocomplete = true,
-    -- },
+    view = {
+        docs = {
+            auto_open = true
+        }
+    },
     snippet = {
       -- REQUIRED - you must specify a snippet engine
       expand = function(args)
@@ -36,11 +38,6 @@ function M.setup()
     window = {
       completion = cmp.config.window.bordered(),
       documentation = cmp.config.window.bordered(),
-      -- completion = {
-      --   -- winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:None",
-      --   col_offset = -3,
-      --   side_padding = 0,
-      -- },
     },
     mapping = cmp.mapping.preset.insert({
       ['<C-b>'] = cmp.mapping.scroll_docs(-4),
@@ -49,8 +46,14 @@ function M.setup()
       ['<C-k>'] = cmp.mapping.select_prev_item(),
       ['<C-Space>'] = cmp.mapping.complete(),
       ['<C-e>'] = cmp.mapping.abort(),
-      -- ['<CR>'] = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Insert, select = false }), -- Accept currently selected item. Set `select` to `false`
       ['<CR>'] = cmp.mapping.confirm({  select = true }), -- Accept currently selected item. Set `select` to `false`
+      ['<C-g>'] = function()
+          if cmp.visible_docs() then
+            cmp.close_docs()
+          else
+            cmp.open_docs()
+          end
+      end,
 
     }),
     sources = cmp.config.sources({
@@ -79,14 +82,6 @@ function M.setup()
           luasnip = "[SNIP]",
         },
       }),
-      -- format = function(entry, vim_item)
-      --   local kind = require("lspkind").cmp_format({ mode = "symbol_text", maxwidth = 50 })(entry, vim_item)
-      --   local strings = vim.split(kind.kind, "%s", { trimempty = true })
-      --   kind.kind = " " .. strings[1] .. " "
-      --   kind.menu = "    (" .. strings[2] .. ")"
-      --
-      --   return kind
-      -- end,
     },
 
   })
