@@ -98,6 +98,15 @@ vim.keymap.set(
     { silent = true, buffer = bufnr }
 
 )
+vim.keymap.set(
+    'n',
+    "gr",
+    function ()
+        vim.lsp.buf.references()
+    end,
+    { silent = true, buffer = bufnr }
+
+)
 
 vim.keymap.set(
     'n',
