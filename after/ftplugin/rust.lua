@@ -117,6 +117,80 @@ vim.keymap.set(
     { silent = true, buffer = bufnr }
 
 )
+vim.keymap.set(
+    'n',
+    "<F5>",
+    function ()
+        require('dap').continue()
+    end,
+    { silent = true, buffer = bufnr }
+
+)
+vim.keymap.set(
+    'n',
+    "<F10>",
+    function ()
+        require('dap').step_over()
+    end,
+    { silent = true, buffer = bufnr }
+
+)
+vim.keymap.set(
+    'n',
+    "<F11>",
+    function ()
+        require('dap').step_into()
+    end,
+    { silent = true, buffer = bufnr }
+
+)
+vim.keymap.set(
+    'n',
+    "<F12>",
+    function ()
+        require('dap').step_out()
+    end,
+    { silent = true, buffer = bufnr }
+
+)
+vim.keymap.set(
+    'n',
+    "<leader>b",
+    function ()
+        require('dap').toggle_breakpoint()
+    end,
+    { silent = true, buffer = bufnr }
+
+)
+vim.keymap.set(
+    'n',
+    "<leader>B",
+    function ()
+        require('dap').set_breakpoint(vim.fn.input('Breakpoint condition: '))
+    end,
+    { silent = true, buffer = bufnr }
+
+)
+vim.keymap.set(
+    'n',
+    "<leader>lp",
+    function ()
+        require('dap').set_breakpoint(nil, nil, vim.fn.input('Log point message: '))
+    end,
+    { silent = true, buffer = bufnr }
+
+)
+vim.keymap.set(
+    'n',
+    "<leader>dr",
+    function ()
+        require('dap').repl_open()
+    end,
+    { silent = true, buffer = bufnr }
+
+)
+
+
 
 local on_attach = function(client, bufnr)
     print("ON ATTACH")

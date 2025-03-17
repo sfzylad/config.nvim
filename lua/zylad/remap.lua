@@ -19,7 +19,8 @@ keymap('n', '<C-t>n', '<Cmd>tabnext<CR>', opts)
 keymap('n', '<leader>s', '<cmd>:set spell!<CR>', opts)
 
 keymap('n', '<leader>dd', "<cmd>lua ColorMyPencils('rose-pine-moon')<CR>", opts)
-keymap('n', '<leader>dl', "<cmd>lua ColorMyPencils('rose-pine-dawn')<CR>", opts)
+keymap('n', '<leader>dl', "<cmd>lua ColorMyPencils('github_light')<CR>", opts)
+-- keymap('n', '<leader>dl', "<cmd>lua ColorMyPencils('rose-pine-dawn')<CR>", opts)
 
 keymap('n', '<leader>gl', "<cmd>:lua require('telescope').extensions.git_worktree.git_worktrees()<CR>", opts)
 keymap('n', '<leader>gn', "<cmd>:lua require('telescope').extensions.git_worktree.create_git_worktree()<CR>", opts)
