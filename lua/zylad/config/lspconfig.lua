@@ -182,6 +182,31 @@ for _, lsp in ipairs(servers) do
                 fallbackFlags = { '-std=c++17' },
             },
         }
+    elseif lsp == "gopls" then
+        nvim_lsp[lsp].setup {
+            inlay_hints = { enabled = true },
+            on_attach = on_attach,
+            handlers = handlers,
+            settings = {
+                gopls = {
+                    analyses = {
+                        unusedparams = true,
+                    },
+                    hints = {
+                        assignVariableTypes = true,
+                        compositeLiteralFields = true,
+                        compositeLiteralTypes = true,
+                        constantValues = true,
+                        functionTypeParameters = true,
+                        parameterNames = true,
+                        rangeVariableTypes = true,
+                    },
+                    staticcheck = true,
+                    gofumpt = true,
+
+                }
+            }
+        }
     else
         nvim_lsp[lsp].setup {
             inlay_hints = { enabled = true },
