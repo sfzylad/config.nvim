@@ -10,7 +10,11 @@ vim.keymap.set("n", "<leader>zz", function()
     vim.wo.wrap = false
     vim.wo.number = true
     vim.wo.rnu = true
-    ColorMyPencils('rose-pine')
+    if vim.g.colors_name == "github_light" then
+        ColorMyPencils('github_light')
+    else
+        ColorMyPencils('rose-pine')
+    end
 end)
 
 
