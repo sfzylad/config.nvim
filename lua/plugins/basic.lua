@@ -223,19 +223,13 @@ return {
             end,
 
               sources = {
+                  -- null_ls doesn't work if I enumerate the files from the plugin
+                  -- hence I use my own functions
                   ruff_fix,
-                  -- null_ls.builtins.diagnostics.ruff,
-                  -- null_ls.builtins.formaters.black,
-                  -- require("none-ls.diagnostics.ruff"),
-                  -- require("none-ls.diagnostics.mypy"),
-                  -- require("none-ls.formatting.black"),
                   gofumpt,
                   golangci_lint,
                   null_ls.builtins.diagnostics.ruff,
                   null_ls.builtins.formatting.gofumpt,
-                  -- require("null_ls.builtins.diagnostics.ruff"),
-                  -- require("null_ls.builtins.diagnostics.mypy"),
-                  -- require("null_ls.builtins.formatting.black"),
               }
           })
 
