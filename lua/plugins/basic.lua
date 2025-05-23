@@ -227,7 +227,7 @@ return {
                   -- hence I use my own functions
                   ruff_fix,
                   gofumpt,
-                  golangci_lint,
+                  -- golangci_lint,
                   null_ls.builtins.diagnostics.ruff,
                   null_ls.builtins.formatting.gofumpt,
               }
@@ -273,7 +273,7 @@ return {
     -----------------------------------------------------------------------
     {
         "nvim-telescope/telescope.nvim",
-        version = '0.1.3',
+        branch = "0.1.x",
     },
     {
         "SmiteshP/nvim-navic",
@@ -290,9 +290,9 @@ return {
     {
         "mbbill/undotree",
     },
-    {
-        'Glench/Vim-Jinja2-Syntax',
-    },
+    -- {
+    --     'Glench/Vim-Jinja2-Syntax',
+    -- },
     {
         'vmware-archive/salt-vim',
     },
