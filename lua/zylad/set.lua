@@ -216,3 +216,8 @@ vim.cmd([[
 let g:python_host_prog = '/Users/dzyla/.pyenv/versions/neovim/bin/python'
 let g:python3_host_prog = '/Users/dzyla/.pyenv/versions/neovim/bin/python'
 ]])
+
+vim.api.nvim_create_autocmd({"Bufread"}, {
+    pattern = {"*.sls"},
+    command = "setlocal ts=2 sts=2 sw=2 expandtab"
+})
