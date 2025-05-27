@@ -65,7 +65,7 @@ local config = {
       always_show_tabline = true,
       globalstatus = false,
       refresh = {
-        statusline = 100,
+        statusline = 500,
         tabline = 100,
         winbar = 100,
       }
