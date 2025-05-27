@@ -89,19 +89,6 @@ require('go').setup({
 
 
 
-----------------------------------------------------------------------------
--- tabline
-----------------------------------------------------------------------------
-require('tabline').setup({
-    enable = true,
-    options = {
-        -- section_separators = {'', ''},
-        -- component_separators = {'', ''},
-        modified_icon = "[+] ",
-        show_devicons = true,
-    }
-})
-
 require('lint').linters_by_ft = {
   sls = {'saltlint'},
 }
