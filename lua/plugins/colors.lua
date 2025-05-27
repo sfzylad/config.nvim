@@ -1,6 +1,15 @@
 function ColorMyPencils(color)
-    color = color or "kanagawa-dragon"
-    vim.cmd.colorscheme(color)
+    if color == "nord" then
+        vim.g.nord_contrast = true
+        vim.g.nord_borders = true
+        vim.g.nord_disable_background = true
+        vim.g.nord_italic = false
+        vim.g.nord_uniform_diff_background = true
+        require('nord').set()
+    else
+        color = color or "kanagawa-dragon"
+        vim.cmd.colorscheme(color)
+    end
 
     vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
     vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
@@ -52,6 +61,15 @@ return {
     },
     {
         "shaunsingh/nord.nvim",
+        config = function ()
+            vim.g.nord_contrast = true
+            vim.g.nord_borders = true
+            vim.g.nord_disable_background = false
+            vim.g.nord_italic = false
+            vim.g.nord_uniform_diff_background = true
+
+            ColorMyPencils('nord')
+        end
     },
     {
         "rose-pine/neovim",
@@ -69,14 +87,14 @@ return {
                     migrations = true, -- Handle deprecated options automatically
                 },
                 styles = {
-                    bold = true,
+                    bold = false,
                     italic = false,
                     transparency = true,
                 },
                 disable_background = true,
             })
 
-            ColorMyPencils('rose-pine')
+            -- ColorMyPencils('rose-pine')
         end
     }
 }
