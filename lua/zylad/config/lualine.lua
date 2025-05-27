@@ -62,10 +62,11 @@ local config = {
       },
       ignore_focus = {},
       always_divide_middle = true,
+      always_show_tabline = true,
       globalstatus = false,
       refresh = {
         statusline = 1000,
-        -- tabline = 1000,
+        tabline = 1000,
         winbar = 1000,
       }
     },
@@ -80,12 +81,22 @@ local config = {
     },
 
     inactive_sections = {
-      lualine_a = {'mode'},
+      -- lualine_a = {'mode'},
+      lualine_a = {},
       lualine_b = {},
       lualine_c = {'filename'},
       lualine_x = {'location'},
       lualine_y = {},
-      lualine_z = {'filetype'},
+      -- lualine_z = {'filetype'},
+      lualine_z = {},
+    },
+    tabline = {
+      lualine_a = {'buffers'},
+      lualine_b = {},
+      lualine_c = {},
+      lualine_x = {},
+      lualine_y = {},
+      lualine_z = {'tabs'},
     },
     extensions = { "nvim-tree", "toggleterm", "quickfix" },
 }
