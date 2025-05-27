@@ -21,6 +21,7 @@
   "go.nvim": { "branch": "master", "commit": "e1b763cab2cfd3c60207873dbc925c9be49913c0" },
   "guihua.lua": { "branch": "master", "commit": "87bea7b98429405caf2a0ce4d029b027bb017c70" },
   "harpoon": { "branch": "harpoon2", "commit": "ed1f853847ffd04b2b61c314865665e1dadf22c7" },
+  "headlines.nvim": { "branch": "master", "commit": "bf17c96a836ea27c0a7a2650ba385a7783ed322e" },
   "hererocks": { "branch": "master", "commit": "344c46ed54df9a4dbc2d2bf510dcd9a9d90497bf" },
   "indent-blankline.nvim": { "branch": "master", "commit": "005b56001b2cb30bfa61b7986bc50657816ba4ba" },
   "kanagawa": { "branch": "master", "commit": "debe91547d7fb1eef34ce26a5106f277fbfdd109" },

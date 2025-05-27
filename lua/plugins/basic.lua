@@ -334,5 +334,10 @@ return {
             -- the default whitespace group:
             require('leap').opts.equivalence_classes = { ' \t\r\n', '([{', ')]}', '\'"`' }
         end
-    }
+    },
+        {
+        "lukas-reineke/headlines.nvim",
+        dependencies = "nvim-treesitter/nvim-treesitter",
+        config = true, -- or `opts = {}`
+    },
 }
