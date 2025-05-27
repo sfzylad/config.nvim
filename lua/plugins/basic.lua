@@ -352,7 +352,7 @@ return {
     -- tab line
     -----------------------------------------------------------------------
     {
-        "kdheepak/tabline.nvim",
+        "nvim-lualine/lualine.nvim",
         dependencies = {
           { 'hoob3rt/lualine.nvim', opt=true },
           {'kyazdani42/nvim-web-devicons', opt = true}
