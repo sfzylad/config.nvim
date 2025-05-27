@@ -57,7 +57,11 @@ function M.setup()
 
     }),
     sources = cmp.config.sources({
-      { name = 'nvim_lsp', group_index = 1 },
+      { name = 'nvim_lsp', group_index = 1, options = {
+          markdown_oxide = {
+              keyword_pattern = [[\(\k\| \|\/\|#\)\+]]
+          }
+      } },
       { name = 'luasnip', group_index = 2 }, -- For luasnip users.
       { name = 'buffer', group_index = 3 },
       { name = "path", group_index = 4 },

@@ -12,10 +12,14 @@ local on_attach = function(client, bufnr)
 
   client.server_capabilities.documentFormattingProvider = false
   client.server_capabilities.documentRangeFormattingProvider = false
-
-  if vim.lsp.inlay_hint then
-    vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+  if client.server_capabilities.inlayHintProvider then
+        -- vim.lsp.buf.inlay_hint(bufnr, true)
+    vim.lsp.inlay_hint.enable(true, {bufnr = bufnr})
   end
+
+  -- if vim.lsp.inlay_hint then
+  --   vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+  -- end
 
   -- Mappings.
   local opts = { noremap=true, silent=true }
@@ -123,7 +127,7 @@ end
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local servers = { "gopls", "perlpls", "pylsp", "jsonls", "clangd", "nil_ls", "ts_ls"}
+local servers = { "gopls", "perlpls", "pylsp", "jsonls", "clangd", "nil_ls", "ts_ls", "markdown_oxide"}
 for _, lsp in ipairs(servers) do
     if lsp == "pylsp" then
         nvim_lsp[lsp].setup {
@@ -206,6 +210,32 @@ for _, lsp in ipairs(servers) do
 
                 }
             }
+        }
+    elseif lsp == "markdown_oxide"  then
+        nvim_lsp[lsp].setup {
+            inlay_hints = { enabled = true },
+            inlayHints = {
+                includeInlayEnumMemberValueHints = true,
+                includeInlayFunctionLikeReturnTypeHints = true,
+                includeInlayFunctionParameterTypeHints = true,
+                includeInlayParameterNameHints = "all", -- 'none' | 'literals' | 'all';
+                includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+                includeInlayPropertyDeclarationTypeHints = true,
+                includeInlayVariableTypeHints = true,
+            },
+            on_attach = on_attach,
+            handlers = handlers,
+            capabilities = vim.tbl_deep_extend(
+                'force',
+                require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities()),
+                {
+                    workspace = {
+                        didChangeWatchedFiles = {
+                            dynamicRegistration = true,
+                        },
+                    },
+                }
+            ),
         }
     else
         nvim_lsp[lsp].setup {
