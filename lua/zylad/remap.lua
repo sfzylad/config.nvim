@@ -19,14 +19,24 @@ keymap('n', '<C-t>n', '<Cmd>tabnext<CR>', opts)
 keymap('n', '<leader>s', '<cmd>:set spell!<CR>', opts)
 
 -- keymap('n', '<leader>dd', "<cmd>lua ColorMyPencils('rose-pine-moon')<CR>", opts)
-keymap('n', '<leader>dd', "<cmd>lua ColorMyPencils('nord')<CR>", opts)
+-- keymap('n', '<leader>dd', "<cmd>lua ColorMyPencils('nord')<CR>", opts)
 -- keymap('n', '<leader>dl', "<cmd>lua ColorMyPencils('github_light')<CR>", opts)
-keymap('n', '<leader>dl', "<cmd>lua ColorMyPencils('rose-pine-dawn')<CR>", opts)
+-- keymap('n', '<leader>dl', "<cmd>lua ColorMyPencils('rose-pine-dawn')<CR>", opts)
 
 keymap('n', '<leader>gl', "<cmd>:lua require('telescope').extensions.git_worktree.git_worktrees()<CR>", opts)
 keymap('n', '<leader>gn', "<cmd>:lua require('telescope').extensions.git_worktree.create_git_worktree()<CR>", opts)
 
 keymap('n', '<leader>ev', '<cmd>:e $MYVIMRC<CR>', opts)
+
+vim.keymap.set("n", "<leader>dd", function()
+    ColorMyPencils('nord')
+    vim.opt.background="dark"
+end, { silent = true })
+
+vim.keymap.set("n", "<leader>dl", function()
+    ColorMyPencils('rose-pine-dawn')
+    vim.opt.background="light"
+end, { silent = true })
 
 vim.keymap.set("n", "[c", function()
   require("treesitter-context").go_to_context()
