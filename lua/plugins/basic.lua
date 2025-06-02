@@ -340,4 +340,7 @@ return {
         dependencies = "nvim-treesitter/nvim-treesitter",
         config = true, -- or `opts = {}`
     },
+    {
+        'rafikdraoui/jj-diffconflicts',
+    },
 }
