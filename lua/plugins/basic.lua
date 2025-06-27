@@ -369,4 +369,10 @@ return {
           map('n', '<leader>sd', function() require('vcsigns').actions.show_diff(0) end, 'Show diff of hunk under the cursor')
         end,
     },
+     {
+      "benomahony/uv.nvim",
+      opts = {
+        picker_integration = true,
+      },
+    }
 }

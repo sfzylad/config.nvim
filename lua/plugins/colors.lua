@@ -69,7 +69,7 @@ return {
             vim.g.nord_italic = false
             vim.g.nord_uniform_diff_background = true
 
-            ColorMyPencils('nord')
+            -- ColorMyPencils('nord')
         end
     },
     {
@@ -97,5 +97,65 @@ return {
 
             -- ColorMyPencils('rose-pine')
         end
+    },
+    {
+        "aktersnurra/no-clown-fiesta.nvim",
+        name = "no-clown-fiesta",
+        config = function ()
+            local opts = {
+              styles = {
+                type = { bold = true },
+                lsp = { underline = false },
+                match_paren = { underline = true },
+              },
+            }
+
+            local function config()
+              local plugin = require "no-clown-fiesta"
+              plugin.setup(opts)
+              return plugin.load()
+            end
+
+            return {
+              "aktersnurra/no-clown-fiesta.nvim",
+              priority = 1000,
+              config = config,
+              lazy = false,
+            }
+
+        end
+    },
+    {
+        "ramojus/mellifluous.nvim",
+        name = "mellifluous",
+        config = function ()
+            require("mellifluous").setup({
+                colorset = "mellifluous",
+                neutral = false,
+                styles = {
+                    main_keywords = {
+                        bold = false,
+                        italic = false,
+                    },
+                    comments = {
+                        bold = false,
+                        italic = false,
+                    },
+                }
+            })
+            ColorMyPencils('mellifluous')
+        end
+    },
+    {
+        "zenbones-theme/zenbones.nvim",
+        name = "zenbones",
+        dependencies = "rktjmp/lush.nvim",
+        lazy = false,
+        priority = 1000,
+        -- you can set set configuration options here
+        -- config = function()
+        --     vim.g.zenbones_darken_comments = 45
+        --     vim.cmd.colorscheme('zenbones')
+        -- end
     }
 }

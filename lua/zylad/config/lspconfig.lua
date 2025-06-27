@@ -24,13 +24,24 @@ local on_attach = function(client, bufnr)
   -- Mappings.
   local opts = { noremap=true, silent=true }
 
+  -- Hover setup
+  local hover_opts = {
+      width = 90,
+      max_width = 90,
+      wrap_at = 80,
+  }
+
+  local on_hover = function()
+    vim.lsp.buf.hover(hover_opts)
+  end
+
   local gs = require("gitsigns")
 
   -- See `:help vim.lsp.*` for documentation on any of the below functions
   buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
   buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
   buf_set_keymap('n', 'gv', '<Cmd>vsplit | lua vim.lsp.buf.definition()<CR>', opts)
-  buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
+  -- buf_set_keymap('n', 'K', "<Cmd>lua vim.lsp.buf.hover(hover_opts)<CR>", opts)
   buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
   buf_set_keymap('n', 'gs', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
   buf_set_keymap('n', '<space>gc', '<cmd>lua vim.lsp.buf.incoming_calls()<CR>', opts)
@@ -81,6 +92,7 @@ local on_attach = function(client, bufnr)
   map("n", "<leader>ghd", gs.diffthis, "Diff This")
   map("n", "<leader>ghD", function() gs.diffthis("~") end, "Diff This ~")
   map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>", "GitSigns Select Hunk")
+  map("n", "K", on_hover, "Information about the symbol under the cursor")
 
   if client.server_capabilities.documentSymbolProvider then
     local navic = require "nvim-navic"
@@ -146,6 +158,12 @@ for _, lsp in ipairs(servers) do
             settings = {
                 pylsp = {
                     plugins = {
+                        ruff = {
+                            enabled = true,
+                            executable = "/opt/homebrew/bin/ruff",
+                            formatEnabled = true,
+                            lineLength = 80,
+                        },
                         -- formatter options
                         black = { enabled = true, executable = "black" },
                         autopep8 = { enabled = false },
