@@ -226,3 +226,12 @@ vim.api.nvim_create_autocmd({"BufRead", "BufNewFile"}, {
     pattern = {"*.md"},
     command = "set wm=2 tw=79"
 })
+
+vim.api.nvim_create_user_command("JJdiff", function ()
+    local lhs = vim.api.nvim_buf_get_lines(0, 0, -1, true)
+    -- close $left
+    vim.cmd.diffoff()
+    vim.cmd.close()
+    -- put content of $left into $output
+    vim.api.nvim_buf_set_lines(0, 0, -1, true, lhs)
+end, { desc = "jj diff setup" })
