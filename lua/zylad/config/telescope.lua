@@ -8,12 +8,12 @@ function M.setup()
   require('telescope').setup{
     extensions = {
         file_browser = {
-            hidden = false,
+            hidden = true,
             respect_gitignore = false,
             hide_parent_dir = false,
             hijack_netrw = false,
             git_status = true,
-            theme = "ivy",
+            theme = "dropdown",
             layout_config = {
               height = 50,
               width = 50,
@@ -27,6 +27,11 @@ function M.setup()
       pickers = {
         find_files = {
             theme = "ivy",
+            layout_strategy = "vertical",
+            layout_config = {
+                width = 0.5,
+            },
+            -- :lua require('telescope.builtin').find_files({layout_strategy='vertical',layout_config={width=0.5}})
         },
         diagnostics = {
             theme = "ivy",
@@ -76,11 +81,13 @@ function M.setup()
   } -- telescope setup
   require("telescope").load_extension "file_browser"
 
+  -- :lua require('telescope.builtin').find_files({layout_strategy='vertical',layout_config={width=0.5}})
   local theme_opts = {
+      layout_strategy = "vertical",
       layout_config = {
-        height = 50,
-        width = 50,
-        preview_cutoff = 10,
+        height = 0.8,
+        width = 0.5,
+        -- preview_cutoff = 10,
       },
   }
   local builtin = require('telescope.builtin')
@@ -89,7 +96,7 @@ function M.setup()
 
   -- vim.keymap.set('n', '<leader>fB', '<Cmd>Telescope buffers<CR>')
   vim.keymap.set('n', 'gB', function()
-    builtin.buffers(themes.get_ivy(theme_opts))
+    builtin.buffers(themes.get_dropdown(theme_opts))
   end, {expr = false})
   -- vim.keymap.set('n', '<leader>fB', function()
   --   builtin.buffers(themes.get_ivy(theme_opts))
@@ -98,27 +105,28 @@ function M.setup()
 
   -- vim.keymap.set('n', '<C-p>', '<Cmd>lua Telescope find_files<CR>')
   vim.keymap.set('n', '<C-p>', function()
-    builtin.find_files(themes.get_ivy(theme_opts))
+    -- builtin.find_files(themes.get_ivy(theme_opts))
+    builtin.find_files(themes.get_dropdown(theme_opts))
   end, {expr = false})
 
   vim.keymap.set('n', '<leader>fg', function()
-    builtin.live_grep(themes.get_ivy(theme_opts))
+    builtin.live_grep(themes.get_dropdown(theme_opts))
   end, {expr = false})
 
   vim.keymap.set('n', '<leader>fs', function()
-    builtin.grep_string({themes.get_ivy(theme_opts), search = vim.fn.input("Grep > ") })
+    builtin.grep_string({themes.get_dropdown(theme_opts), search = vim.fn.input("Grep > ") })
   end, {expr = false})
 
   vim.keymap.set('n', '<leader>fh', function()
-    builtin.help_tags(themes.get_ivy(theme_opts))
+    builtin.help_tags(themes.get_dropdown(theme_opts))
   end, {expr = false})
 
   vim.keymap.set('n', '<leader>fo', function()
-    builtin.oldfiles(themes.get_ivy(theme_opts))
+    builtin.oldfiles(themes.get_dropdown(theme_opts))
   end, {expr = false})
 
   vim.keymap.set('n', '<leader>fd', function()
-    builtin.diagnostics(themes.get_ivy(theme_opts))
+    builtin.diagnostics(themes.get_dropdown(theme_opts))
   end, {expr = false})
 
   vim.keymap.set('n', '<leader>gl', function()
