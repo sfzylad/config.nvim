@@ -127,11 +127,13 @@ return {
     },
     {
         "ramojus/mellifluous.nvim",
-        name = "mellifluous",
         config = function ()
             require("mellifluous").setup({
-                colorset = "mellifluous",
-                neutral = false,
+                mellifluous = {
+                    neutral = true,
+                },
+                -- colorset = "mellifluous",
+                -- neutral = false,
                 styles = {
                     main_keywords = {
                         bold = false,
@@ -141,7 +143,13 @@ return {
                         bold = false,
                         italic = false,
                     },
-                }
+                },
+                transparent_background = {
+                    enabled = true,
+                    telescope = true,
+                    cursor_line = false,
+                    status_line = true
+                },
             })
             ColorMyPencils('mellifluous')
         end
