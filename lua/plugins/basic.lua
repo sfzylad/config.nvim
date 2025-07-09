@@ -360,14 +360,14 @@ return {
             vim.keymap.set(mode, lhs, rhs, options)
           end
 
-          map('n', '[r', function() require('vcsigns').actions.target_older_commit(0, vim.v.count1) end, 'Move diff target back')
-          map('n', ']r', function() require('vcsigns').actions.target_newer_commit(0, vim.v.count1) end, 'Move diff target forward')
-          map('n', '[c', function() require('vcsigns').actions.prev_hunk(0, vim.v.count1) end, 'Go to previous hunk')
-          map('n', ']c', function() require('vcsigns').actions.next_hunk(0, vim.v.count1) end, 'Go to next hunk')
-          map('n', '[C', function() require('vcsigns').actions.prev_hunk(0, 9999) end, 'Go to first hunk')
-          map('n', ']C', function() require('vcsigns').actions.next_hunk(0, 9999) end, 'Go to last hunk')
+          -- map('n', '[r', function() require('vcsigns').actions.target_older_commit(0, vim.v.count1) end, 'Move diff target back')
+          -- map('n', ']r', function() require('vcsigns').actions.target_newer_commit(0, vim.v.count1) end, 'Move diff target forward')
+          map('n', '[c', "<Cmd>lua require('vcsigns').actions.hunk_prev(0, vim.v.count1)<CR>", 'Go to previous hunk')
+          map('n', ']c', "<Cmd>lua require('vcsigns').actions.hunk_next(0, vim.v.count1)<CR>", 'Go to next hunk')
+          map('n', '[C', function() require('vcsigns').actions.hunk_prev(0, 9999) end, 'Go to first hunk')
+          map('n', ']C', function() require('vcsigns').actions.hunk_next(0, 9999) end, 'Go to last hunk')
           map('n', '<leader>su', function() require('vcsigns').actions.hunk_undo(0) end, 'Undo the hunk under the cursor')
-          map('n', '<leader>sd', function() require('vcsigns').actions.show_diff(0) end, 'Show diff of hunk under the cursor')
+          map('n', '<leader>sd', function() require('vcsigns').actions.toggle_hunk_diff(0) end, 'Show diff of hunk under the cursor')
         end,
     },
      {
