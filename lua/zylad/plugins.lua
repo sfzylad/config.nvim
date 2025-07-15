@@ -7,6 +7,7 @@ require("zylad.config.dashboard").setup()
 require("zylad.config.harpoon")
 require("zylad.config.lualine").setup()
 require("zylad.config.lspconfig")
+-- require("zylad.config.lspconfig")
 require("zylad.config.dap").setup()
 require("zylad.config.treesitter").setup()
 require("zylad.config.treesitter-context").setup()
@@ -92,34 +93,4 @@ require('go').setup({
 require('lint').linters_by_ft = {
   sls = {'saltlint'},
 }
---
-----------------------------------------------------------------------------
--- leap
-----------------------------------------------------------------------------
--- require('leap').add_default_mappings()
 
--- NOTE: This has to go at the end
--- require("zylad.config.ui").setup()
-
--- This module contains a number of default definitions
--- local rainbow_delimiters = require 'rainbow-delimiters'
---
--- vim.g.rainbow_delimiters = {
---     strategy = {
---         [''] = rainbow_delimiters.strategy['global'],
---         vim = rainbow_delimiters.strategy['local'],
---     },
---     query = {
---         [''] = 'rainbow-delimiters',
---         lua = 'rainbow-blocks',
---     },
---     highlight = {
---         'RainbowDelimiterOrange',
---         'RainbowDelimiterYellow',
---         'RainbowDelimiterRed',
---         'RainbowDelimiterBlue',
---         'RainbowDelimiterGreen',
---         'RainbowDelimiterViolet',
---         'RainbowDelimiterCyan',
---     },
--- }
