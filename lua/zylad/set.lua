@@ -174,15 +174,28 @@ vim.o.mouse = "a"
 -- on hover diagnostics
 -- vim.o.updatetime = 250
 -- vim.cmd [[autocmd! CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]]
+-- vim.diagnostic.config({
+--     virtual_text = true,
+--     float = {
+--         source = "always",
+--         show_header = true,
+--         border = "rounded",
+--         focusable = true,
+--     },
+--     enabled = true,
+-- })
+
 vim.diagnostic.config({
-    float = {
-        source = "always",
-        show_header = true,
-        border = "rounded",
-        focusable = true,
-    },
-    enabled = true,
+  -- Use the default configuration
+  -- virtual_lines = true
+
+  -- Alternatively, customize specific options
+  virtual_lines = {
+   -- Only show virtual line diagnostics for the current cursor line
+   current_line = true,
+  },
 })
+
 
 vim.api.nvim_set_keymap(
    "n",

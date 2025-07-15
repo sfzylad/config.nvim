@@ -139,7 +139,8 @@ end
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local servers = { "gopls", "perlpls", "pylsp", "jsonls", "clangd", "nil_ls", "ts_ls", "markdown_oxide"}
+-- local servers = { "gopls", "perlpls", "pylsp", "jsonls", "clangd", "nil_ls", "ts_ls", "markdown_oxide"}
+local servers = {"perlpls", "pylsp", "jsonls", "clangd", "nil_ls", "ts_ls", "markdown_oxide"}
 for _, lsp in ipairs(servers) do
     if lsp == "pylsp" then
         nvim_lsp[lsp].setup {
