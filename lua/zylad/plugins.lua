@@ -3,10 +3,9 @@
 -----------------------------------------------------------------------------
 require("zylad.config.cmp").setup()
 require("zylad.config.luasnip")
-require("zylad.config.dashboard").setup()
+-- require("zylad.config.dashboard").setup()
 require("zylad.config.harpoon")
 require("zylad.config.lualine").setup()
-require("zylad.config.lspconfig")
 -- require("zylad.config.lspconfig")
 require("zylad.config.dap").setup()
 require("zylad.config.treesitter").setup()
