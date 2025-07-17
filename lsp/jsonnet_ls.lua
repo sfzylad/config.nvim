@@ -1,5 +1,6 @@
 return {
     cmd = { "jsonnet-language-server", "-t" },
+    filetypes = { 'jsonnet' },
     root_markers = { 'jsonnetfile.json', '.git' },
     settings = {
         ext_vars = {

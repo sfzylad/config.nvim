@@ -99,23 +99,23 @@ return {
 
             local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
-            local function ruff_fix()
-                return helpers.make_builtin({
-                    name = "ruff",
-                    meta = {
-                        url = "https://github.com/charliermarsh/ruff/",
-                        description = "An extremely fast Python linter, written in Rust.",
-                    },
-                    method = methods.internal.FORMATTING,
-                    filetypes = { "python" },
-                    generator_opts = {
-                        command = "ruff",
-                        args = { "--fix", "-e", "-n", "--stdin-filename", "$FILENAME", "-" },
-                        to_stdin = true
-                    },
-                    factory = helpers.formatter_factory
-                })
-            end
+            -- local function ruff_fix()
+            --     return helpers.make_builtin({
+            --         name = "ruff",
+            --         meta = {
+            --             url = "https://github.com/charliermarsh/ruff/",
+            --             description = "An extremely fast Python linter, written in Rust.",
+            --         },
+            --         method = methods.internal.FORMATTING,
+            --         filetypes = { "python" },
+            --         generator_opts = {
+            --             command = "ruff",
+            --             args = { "--fix", "-e", "-n", "--stdin-filename", "$FILENAME", "-" },
+            --             to_stdin = true
+            --         },
+            --         factory = helpers.formatter_factory
+            --     })
+            -- end
             local function gofumpt()
                 local FORMATTING = methods.internal.FORMATTING
                 return helpers.make_builtin({
@@ -154,10 +154,10 @@ return {
                 sources = {
                     -- null_ls doesn't work if I enumerate the files from the plugin
                     -- hence I use my own functions
-                    ruff_fix,
+                    -- ruff_fix,
                     gofumpt,
                     -- golangci_lint,
-                    null_ls.builtins.diagnostics.ruff,
+                    -- null_ls.builtins.diagnostics.ruff,
                     null_ls.builtins.formatting.gofumpt,
                 }
             })

@@ -1,7 +1,7 @@
 return {
-    -- {
-    --     "neovim/nvim-lspconfig",
-    -- },
+    {
+        "neovim/nvim-lspconfig",
+    },
     {
         "saadparwaiz1/cmp_luasnip",
     },

@@ -22,7 +22,7 @@ vim.lsp.enable({
     -- 'pylsp',
     'pyright',
     'ruff',
-    'ts_ls',
+    'typescript-language-server',
 })
 
 -- vim.opt.winborder = "rounded"
