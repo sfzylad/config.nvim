@@ -1,4 +1,3 @@
-
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 vim.keymap.set("n", "<leader>c", "<>terminal<cr>")
 
@@ -26,14 +25,7 @@ keymap('n', '<leader>s', '<cmd>:set spell!<CR>', opts)
 keymap('n', '<leader>dd', "<cmd>set background=dark<CR>", opts)
 keymap('n', '<leader>dl', "<cmd>set background=light<CR>", opts)
 
-keymap('n', '<leader>gl', "<cmd>:lua require('telescope').extensions.git_worktree.git_worktrees()<CR>", opts)
-keymap('n', '<leader>gn', "<cmd>:lua require('telescope').extensions.git_worktree.create_git_worktree()<CR>", opts)
-
 keymap('n', '<leader>ev', '<cmd>:e $MYVIMRC<CR>', opts)
-
--- vim.keymap.set("n", "[c", function()
---   require("treesitter-context").go_to_context()
--- end, { silent = true })
 
 local nnoremap = require('zylad.keymap').nnoremap
 
@@ -50,8 +42,8 @@ map <leader>y "+y
 map <leader>p "+p
 ]])
 
-vim.api.nvim_create_autocmd({"BufWritePre"}, {
-    pattern = {"*.py"},
+vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+    pattern = { "*.py" },
     callback = function(ev)
         vim.lsp.buf.format()
     end

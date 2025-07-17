@@ -51,6 +51,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
             width = 90,
             max_width = 90,
             wrap_at = 80,
+            border = "rounded",
         }
 
         local on_hover = function()

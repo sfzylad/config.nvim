@@ -1,8 +1,4 @@
 return {
-    -- {
-    --     "ray-x/go.nvim",
-    --     lazy = true,
-    -- },
     {
         "ray-x/go.nvim",
         dependencies = { -- optional packages
@@ -39,14 +35,7 @@ return {
         lazy = true,
     },
     {
-        "rafamadriz/friendly-snippets",
-    },
-    {
         "folke/todo-comments.nvim",
-        lazy = true,
-    },
-    {
-        "folke/zen-mode.nvim",
         lazy = true,
     },
     {
@@ -90,12 +79,9 @@ return {
         "tpope/vim-fugitive",
     },
     {
-        "goolord/alpha-nvim",
-        dependencies = 'nvim-tree/nvim-web-devicons',
-    },
-    {
         "nvim-tree/nvim-web-devicons",
     },
+    --  A library for asynchronous IO in Neovim
     {
         "nvim-neotest/nvim-nio",
         lazy = true,
@@ -210,32 +196,13 @@ return {
         "ThePrimeagen/git-worktree.nvim",
     },
 
-    -----------------------------------------------------------------------
-    -- Telescope
-    -----------------------------------------------------------------------
-    {
-        "nvim-telescope/telescope.nvim",
-        tag = '0.1.8',
-        dependencies = { 'nvim-lua/plenary.nvim' }
-    },
     {
         "SmiteshP/nvim-navic",
         dependencies = "neovim/nvim-lspconfig",
     },
     {
-        "nvim-telescope/telescope-file-browser.nvim",
-        dependencies = {
-            "nvim-telescope/telescope.nvim",
-            "nvim-lua/plenary.nvim",
-            "SmiteshP/nvim-navic",
-        },
-    },
-    {
         "mbbill/undotree",
     },
-    -- {
-    --     'Glench/Vim-Jinja2-Syntax',
-    -- },
     {
         'vmware-archive/salt-vim',
     },
@@ -308,24 +275,15 @@ return {
         },
     },
     {
-        "akinsho/bufferline.nvim",
-        version = "*",
-        dependencies = 'nvim-tree/nvim-web-devicons',
+        'rest-nvim/rest.nvim'
     },
-    { 'rest-nvim/rest.nvim' },
-
+    -- used with the 'gB' keymap
     {
         "leath-dub/snipe.nvim",
         keys = {
             { "gb", function() require("snipe").open_buffer_menu() end, desc = "Open Snipe buffer menu" }
         },
         opts = {}
-    },
-    {
-        "williamboman/mason.nvim",
-        config = function()
-            require("mason").setup()
-        end
     },
     {
         "ggandor/leap.nvim",
@@ -389,11 +347,30 @@ return {
             -- refer to the configuration section below
             animate = { enabled = false },
             bigfile = { enabled = true },
-            dashboard = { enabled = true },
+            dashboard = {
+                enabled = true,
+                width = 60,
+                preset = {
+                    keys = {
+                        { icon = " ", key = "f", desc = "Find File", action = ":lua Snacks.dashboard.pick('files')" },
+                        { icon = " ", key = "b", desc = "Browse files", action = "<cmd>:Ex<CR>" },
+                        { icon = " ", key = "n", desc = "New File", action = ":ene | startinsert" },
+                        { icon = " ", key = "g", desc = "Find Text", action = ":lua Snacks.dashboard.pick('live_grep')" },
+                        { icon = " ", key = "r", desc = "Recent Files", action = ":lua Snacks.dashboard.pick('oldfiles')" },
+                        { icon = " ", key = "c", desc = "Config", action = ":lua Snacks.dashboard.pick('files', {cwd = vim.fn.stdpath('config')})" },
+                        { icon = " ", key = "s", desc = "Restore Session", section = "session" },
+                        { icon = "󰒲 ", key = "L", desc = "Lazy", action = ":Lazy", enabled = package.loaded.lazy ~= nil },
+                        { icon = " ", key = "q", desc = "Quit", action = ":qa" },
+                    },
+                },
+            },
             explorer = { enabled = false },
+            files = { enabled = true, hidden = true },
             indent = { enabled = true },
             input = { enabled = true },
-            picker = { enabled = true },
+            picker = {
+                enabled = true,
+            },
             notifier = { enabled = true },
             quickfile = { enabled = true },
             scope = { enabled = false },
@@ -401,5 +378,36 @@ return {
             statuscolumn = { enabled = true },
             words = { enabled = true },
         },
+
+        vim.keymap.set('n', '<C-p>', function()
+            Snacks.picker.files({ hidden = true })
+        end, { expr = false }),
+
+        vim.keymap.set('n', 'gB', function()
+            Snacks.picker.buffers()
+        end, { expr = false }),
+
+        vim.keymap.set('n', '<leader>fg', function()
+            Snacks.picker.grep()
+        end, { expr = false }),
+        vim.keymap.set({ 'n', 'v' }, '<leader>fs', function()
+            Snacks.picker.grep_word()
+        end, { expr = false }),
+
+        vim.keymap.set('n', '<leader>fh', function()
+            Snacks.picker.help()
+        end, { expr = false }),
+
+        vim.keymap.set('n', '<leader>fd', function()
+            Snacks.picker.diagnostics()
+        end, { expr = false }),
+
+        vim.keymap.set('n', '<leader>fD', function()
+            Snacks.picker.diagnostics_buffer()
+        end, { expr = false }),
+
+        vim.keymap.set('n', '<leader>fr', function()
+            Snacks.picker.resume()
+        end, { expr = false }),
     }
 }

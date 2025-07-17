@@ -3,38 +3,25 @@
 -----------------------------------------------------------------------------
 require("zylad.config.cmp").setup()
 require("zylad.config.luasnip")
--- require("zylad.config.dashboard").setup()
 require("zylad.config.harpoon")
 require("zylad.config.lualine").setup()
 -- require("zylad.config.lspconfig")
 require("zylad.config.dap").setup()
 require("zylad.config.treesitter").setup()
 require("zylad.config.treesitter-context").setup()
-require("zylad.config.telescope").setup()
 require("zylad.config.smart-split").setup()
 require("zylad.config.remap")
--- require("zylad.config.bufferline").setup()
 
 
 -----------------------------------------------------------------------------
 -- git worktree
 -----------------------------------------------------------------------------
-require("git-worktree").setup({
-    -- change_directory_command = <str> -- default: "cd",
-    -- update_on_change = <boolean> -- default: true,
-    -- update_on_change_command = <str> -- default: "e .",
-    -- clearjumps_on_change = <boolean> -- default: true,
-    -- autopush = <boolean> -- default: false,
-})
+require("git-worktree").setup({})
 
 ----------------------------------------------------------------------------
 -- gitsigns.nvim setup
 ----------------------------------------------------------------------------
 require('gitsigns').setup()
-
-require "ibl".setup({
-    scope = { enabled = true },
-})
 
 require("luasnip.loaders.from_vscode").lazy_load()
 require("diaglist").init({
@@ -45,13 +32,6 @@ require("diaglist").init({
   -- increase for noisy servers
   debounce_ms = 150,
 })
-
-----------------------------------------------------------------------------
--- symbols outline
-----------------------------------------------------------------------------
-require("symbols-outline").setup()
-vim.keymap.set('n', '<leader>p', '<Cmd>SymbolsOutline<CR>')
-
 
 ----------------------------------------------------------------------------
 -- todo-comments.nvim
