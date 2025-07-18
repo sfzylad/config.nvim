@@ -11,15 +11,15 @@ require("zylad.plugins")
 require("zylad.remap")
 
 vim.lsp.enable({
-    'clangd',
+    -- 'clangd',
     'gopls',
     'jsonls',
-    'jsonnet_ls',
+    -- 'jsonnet_ls',
     'lua_ls',
     'markdown_oxide',
     'nil_ls',
-    'perlpls',
-    -- 'pylsp',
+    -- 'perlpls',
+    -- -- 'pylsp',
     'pyright',
     'ruff',
     'typescript-language-server',
@@ -85,6 +85,25 @@ vim.api.nvim_create_autocmd('LspAttach', {
         end
         if client:supports_method('textDocument/hover') then
             vim.lsp.with(vim.lsp.handlers.hover, { border = border })
+        end
+
+        if client.name == "markdown_oxide" then
+            vim.api.nvim_create_user_command(
+                "Daily",
+                function(args)
+                    local input = args.args
+
+                    client:exec_cmd({ title = "Open daily note", command = "jump", arguments = { input } })
+                end,
+                { desc = 'Open daily note', nargs = "*" }
+            )
+            vim.api.nvim_create_user_command(
+                "Today",
+                function(args)
+                    client:exec_cmd({ title = "Open daily note", command = "jump", arguments = { "today" } })
+                end,
+                { desc = 'Open daily note', nargs = "*" }
+            )
         end
 
         -- keymaps I want everywhere

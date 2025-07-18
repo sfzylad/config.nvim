@@ -99,23 +99,6 @@ return {
 
             local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
-            -- local function ruff_fix()
-            --     return helpers.make_builtin({
-            --         name = "ruff",
-            --         meta = {
-            --             url = "https://github.com/charliermarsh/ruff/",
-            --             description = "An extremely fast Python linter, written in Rust.",
-            --         },
-            --         method = methods.internal.FORMATTING,
-            --         filetypes = { "python" },
-            --         generator_opts = {
-            --             command = "ruff",
-            --             args = { "--fix", "-e", "-n", "--stdin-filename", "$FILENAME", "-" },
-            --             to_stdin = true
-            --         },
-            --         factory = helpers.formatter_factory
-            --     })
-            -- end
             local function gofumpt()
                 local FORMATTING = methods.internal.FORMATTING
                 return helpers.make_builtin({
@@ -196,10 +179,10 @@ return {
         "ThePrimeagen/git-worktree.nvim",
     },
 
-    {
-        "SmiteshP/nvim-navic",
-        dependencies = "neovim/nvim-lspconfig",
-    },
+    -- {
+    --     "SmiteshP/nvim-navic",
+    --     dependencies = "neovim/nvim-lspconfig",
+    -- },
     {
         "mbbill/undotree",
     },
@@ -338,6 +321,21 @@ return {
     },
     {
         'Exafunction/windsurf.vim',
-        event = 'BufEnter'
+        event = 'BufEnter',
+        config = function()
+            local function map(mode, lhs, rhs, desc, opts)
+                local options = { noremap = true, silent = true, desc = desc }
+                if opts then options = vim.tbl_extend('force', options, opts) end
+                vim.keymap.set(mode, lhs, rhs, options)
+            end
+            vim.g.codeium_workspace_root_hints = { '.bzr', '.git', '.hg', '.jj', '.svn', '_FOSSIL_', 'package.json' }
+            vim.g.codeium_enabled = false
+            map('n', '<leader>ct', function()
+                vim.api.nvim_call_function("CodeiumToggle", {})
+            end, "Toggle Windsurf")
+            map('i', '<M-;>', function()
+                vim.api.nvim_call_function("CodeiumToggle", {})
+            end, "Toggle Windsurf")
+        end,
     },
 }

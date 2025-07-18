@@ -1,7 +1,7 @@
 -----------------------------------------------------------------------------
 -- Set up plugins
 -----------------------------------------------------------------------------
-require("zylad.config.cmp").setup()
+-- require("zylad.config.cmp").setup()
 require("zylad.config.luasnip")
 require("zylad.config.harpoon")
 require("zylad.config.lualine").setup()
