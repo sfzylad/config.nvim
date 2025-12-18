@@ -1,42 +1,57 @@
 local M = {}
 
-local icons = require "zylad.icons"
 local lualine = require "lualine"
-local colors = require "zylad.colors"
--- local winbar = require("zylad.winbar")
 
+local gruber_colors = {
+    bg       = '#181818', -- The main background
+    quartz   = '#95a99f', -- Soft grey-green (text)
+    niagara  = '#303540', -- Subtle blue-grey (active section)
+    wisteria = '#9e95c7', -- Purple (accents)
+    yellow   = '#ffdd33', -- Warning/Notice
+}
 
-local function separator()
-    return "%="
-end
-
-local function tab_stop()
-    return icons.ui.Tab .. " " .. vim.bo.shiftwidth
-end
-
-local function show_macro_recording()
-    local rec_reg = vim.fn.reg_recording()
-    if rec_reg == "" then
-        return ""
-    else
-        return "recording @" .. rec_reg
-    end
+local function get_short_mode()
+    local mode_code = vim.api.nvim_get_mode().mode
+    local modes = {
+        ['n'] = 'N',
+        ['i'] = 'I',
+        ['v'] = 'V',
+        ['V'] = 'VL',
+        [''] = 'VB',
+        ['c'] = 'C',
+        ['R'] = 'R',
+    }
+    return modes[mode_code] or mode_code:upper()
 end
 
 local config = {
     options = {
-        icons_enabled = true,
-        theme = 'iceberg_dark',
+        icons_enabled = false,
+        theme = {
+            normal = {
+                a = { fg = gruber_colors.bg, bg = gruber_colors.quartz, gui = 'bold' },
+                b = { fg = gruber_colors.quartz, bg = gruber_colors.niagara },
+                c = { fg = gruber_colors.quartz, bg = gruber_colors.bg },
+            },
+            insert = {
+                a = { fg = gruber_colors.bg, bg = gruber_colors.wisteria, gui = 'bold' },
+            },
+            visual = {
+                a = { fg = gruber_colors.bg, bg = gruber_colors.yellow, gui = 'bold' },
+            },
+        },
+        -- theme = 'iceberg_dark',
         -- theme = 'auto',
+
+        -- Fancy separators most likely I will never want
         -- component_separators = { left = '', right = '' },
         -- section_separators = { left = '', right = '' },
-
-        component_separators = { left = '', right = '' },
-        section_separators = { left = '', right = '' },
-
+        --
         -- component_separators = '|',
         -- section_separators = { left = '', right = '' },
 
+        component_separators = { left = '', right = '' },
+        section_separators = { left = '', right = '' },
 
         disabled_filetypes = {
             statusline = {},
@@ -72,27 +87,30 @@ local config = {
         }
     },
     sections = {
-        lualine_a = { 'mode' },
-        lualine_b = { 'branch' },
-        lualine_c = { 'filename', 'diff', { 'diagnostics', update_in_insert = false, source = { 'nvim_diagnostic' } } },
-        lualine_x = { "lsp_progress", "vim.fn['zoom#statusline']()", 'encoding', 'fileformat', 'filetype' },
+        -- lualine_a = { 'mode' },
+        lualine_a = { get_short_mode },
+        -- lualine_a = {},
+        -- lualine_b = { 'branch' },
+        lualine_b = {},
+        lualine_c = { { 'filename', path = 3 }, 'diff', { 'diagnostics', update_in_insert = false, source = { 'nvim_diagnostic' } }, "lsp_progress" },
+        -- lualine_x = { "lsp_progress", "vim.fn['zoom#statusline']()", 'encoding', 'fileformat', 'filetype', },
+        lualine_x = { 'filetype', },
         lualine_y = { 'progress' },
         lualine_z = { 'location' }
     },
 
     inactive_sections = {
-        lualine_a = { 'mode' },
-        lualine_b = { 'branch' },
-        -- lualine_a = {},
-        -- lualine_b = {},
-        -- lualine_c = { 'filename' },
+        -- lualine_a = { 'mode' },
+        lualine_a = { get_short_mode },
+        lualine_b = {},
+        lualine_c = { { 'filename', path = 3 } },
         -- lualine_x = { 'location' },
 
-        lualine_x = { "lsp_progress", "vim.fn['zoom#statusline']()", 'encoding', 'fileformat', 'filetype' },
-        lualine_y = { 'progress' },
-        lualine_z = { 'location' }
+        -- lualine_x = { "vim.fn['zoom#statusline']()", 'encoding', 'fileformat', 'filetype' },
+        lualine_x = {},
+        lualine_y = {},
+        lualine_z = {}
 
-        -- lualine_y = {},
         -- lualine_y = { 'progress' },
         -- lualine_z = { 'location' }
         -- lualine_z = {'filetype'},
@@ -100,13 +118,13 @@ local config = {
     },
     tabline = {
         lualine_a = { 'buffers' },
-        lualine_b = {},
+        lualine_b = { 'lsp_progress' },
         lualine_c = {},
         lualine_x = {},
         lualine_y = {},
         lualine_z = { 'tabs' },
     },
-    extensions = { "nvim-tree", "toggleterm", "quickfix" },
+    extensions = { "nvim-tree", "toggleterm", "quickfix", "trouble", "symbols-outline", "nvim-dap-ui" },
 }
 
 function M.setup()

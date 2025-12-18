@@ -6,6 +6,29 @@ vim.keymap.set("n", "<leader>c", "<>terminal<cr>")
 local keymap = vim.api.nvim_set_keymap
 local opts = { noremap = true, silent = true }
 
+local function lightTheme()
+    vim.opt.background = "light" -- Set background first
+    vim.cmd("highlight clear")   -- Clear existing overrides
+    if vim.fn.exists("syntax_on") then
+        vim.cmd("syntax reset")
+    end
+    ColorMyPencils('solarized')
+    print("Theme: Solarized Light")
+end
+
+local function darktTheme()
+    vim.opt.background = "dark"
+    vim.cmd("highlight clear")
+    if vim.fn.exists("syntax_on") then
+        vim.cmd("syntax reset")
+    end
+    ColorMyPencils('gruber-darker')
+    print("Theme: Gruber-Darker")
+end
+
+vim.keymap.set('n', '<leader>dd', darktTheme, { desc = "Change theme to dark" })
+vim.keymap.set('n', '<leader>dl', lightTheme, { desc = "Change theme to light" })
+
 -- remove current file from buffer
 keymap('n', '<leader>d', '<Cmd>bd<CR>', opts)
 keymap('n', '<leader>/', '<Nop>', opts)
@@ -17,13 +40,8 @@ keymap('n', '<C-t>n', '<Cmd>tabnext<CR>', opts)
 
 keymap('n', '<leader>s', '<cmd>:set spell!<CR>', opts)
 
--- keymap('n', '<leader>dd', "<cmd>lua ColorMyPencils('rose-pine-moon')<CR>", opts)
--- keymap('n', '<leader>dd', "<cmd>lua ColorMyPencils('nord')<CR>", opts)
--- keymap('n', '<leader>dl', "<cmd>lua ColorMyPencils('github_light')<CR>", opts)
--- keymap('n', '<leader>dl', "<cmd>lua ColorMyPencils('rose-pine-dawn')<CR>", opts)
-
-keymap('n', '<leader>dd', "<cmd>set background=dark<CR>", opts)
-keymap('n', '<leader>dl', "<cmd>set background=light<CR>", opts)
+-- keymap('n', '<leader>dd', "<cmd>set background=dark<CR>", opts)
+-- keymap('n', '<leader>dl', "<cmd>set background=light<CR>", opts)
 
 keymap('n', '<leader>ev', '<cmd>:e $MYVIMRC<CR>', opts)
 
@@ -44,7 +62,7 @@ map <leader>p "+p
 
 vim.api.nvim_create_autocmd({ "BufWritePre" }, {
     pattern = { "*.py" },
-    callback = function(ev)
+    callback = function(_)
         vim.lsp.buf.format()
     end
 })

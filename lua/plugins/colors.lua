@@ -1,16 +1,12 @@
 function ColorMyPencils(color)
-    if color == "nord" then
-        vim.g.nord_contrast = false
-        vim.g.nord_borders = true
-        vim.g.nord_disable_background = true
-        vim.g.nord_italic = false
-        vim.g.nord_uniform_diff_background = true
-        vim.g.nord_bold = false
-        require('nord').set()
-    else
-        color = color or "kanagawa-dragon"
-        vim.cmd.colorscheme(color)
-    end
+    color = color or "kanagawa-dragon"
+    vim.cmd.colorscheme(color)
+
+    -- settings for gruber-darker
+    vim.api.nvim_set_hl(0, "ColorColumn", { bg = "#141414" })
+    vim.api.nvim_set_hl(0, "LspReferenceText", { bg = "#252525", underline = true })
+    vim.api.nvim_set_hl(0, "Visual", { bg = "#2a2a2a", fg = "NONE" })
+    vim.api.nvim_set_hl(0, "SpellBad", { bg = "#442222", fg = "NONE" })
 
     vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
     vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
@@ -20,7 +16,7 @@ end
 return {
     {
         "folke/tokyonight.nvim",
-        lazy = false, -- make sure we load this during startup if it is your main colorscheme
+        lazy = false,    -- make sure we load this during startup if it is your main colorscheme
         priority = 1000, -- make sure to load this before all the other start plugins
         -- config = function()
         --   -- load the colorscheme here
@@ -62,7 +58,7 @@ return {
     },
     {
         "shaunsingh/nord.nvim",
-        config = function ()
+        config = function()
             vim.g.nord_contrast = true
             vim.g.nord_borders = true
             vim.g.nord_disable_background = false
@@ -75,7 +71,7 @@ return {
     {
         "rose-pine/neovim",
         name = 'rose-pine',
-        config = function ()
+        config = function()
             require('rose-pine').setup({
 
                 --- @usage 'auto'|'main'|'moon'|'dawn'
@@ -85,7 +81,7 @@ return {
                 enable = {
                     terminal = true,
                     legacy_highlights = true, -- Improve compatibility for previous versions of Neovim
-                    migrations = true, -- Handle deprecated options automatically
+                    migrations = true,        -- Handle deprecated options automatically
                 },
                 styles = {
                     bold = false,
@@ -101,33 +97,32 @@ return {
     {
         "aktersnurra/no-clown-fiesta.nvim",
         name = "no-clown-fiesta",
-        config = function ()
+        config = function()
             local opts = {
-              styles = {
-                type = { bold = true },
-                lsp = { underline = false },
-                match_paren = { underline = true },
-              },
+                styles = {
+                    type = { bold = true },
+                    lsp = { underline = false },
+                    match_paren = { underline = true },
+                },
             }
 
             local function config()
-              local plugin = require "no-clown-fiesta"
-              plugin.setup(opts)
-              return plugin.load()
+                local plugin = require "no-clown-fiesta"
+                plugin.setup(opts)
+                return plugin.load()
             end
 
             return {
-              "aktersnurra/no-clown-fiesta.nvim",
-              priority = 1000,
-              config = config,
-              lazy = false,
+                "aktersnurra/no-clown-fiesta.nvim",
+                priority = 1000,
+                config = config,
+                lazy = false,
             }
-
         end
     },
     {
         "ramojus/mellifluous.nvim",
-        config = function ()
+        config = function()
             require("mellifluous").setup({
                 mellifluous = {
                     neutral = true,
@@ -151,7 +146,32 @@ return {
                     status_line = true
                 },
             })
-            ColorMyPencils('mellifluous')
+            --     -- ColorMyPencils('mellifluous')
+        end
+    },
+    {
+        "blazkowolf/gruber-darker.nvim",
+        config = function()
+            require("gruber-darker").setup({
+                bold = false,
+                invert = {
+                    signs = true,
+                    tabline = true,
+                    visual = true
+                },
+                italic = {
+                    strings = true,
+                    comments = true,
+                    operators = false,
+                    folds = true,
+                },
+                undercurl = false,
+                underline = false,
+            })
+            ColorMyPencils('gruber-darker')
+            vim.api.nvim_set_hl(0, "ColorColumn", { bg = "#141414" })
+            vim.api.nvim_set_hl(0, "LspReferenceText", { bg = "#252525", underline = true })
+            vim.api.nvim_set_hl(0, "Visual", { bg = "#2a2a2a", fg = "NONE" })
         end
     },
     {

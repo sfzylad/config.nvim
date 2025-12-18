@@ -23,6 +23,9 @@ vim.o.equalalways = false
 
 vim.api.nvim_command("au FileType go nmap <Leader><Leader>r :GoTestFunc")
 
+-- file path in the winbar
+-- vim.opt.winbar = "%F"
+
 
 vim.o.encoding = 'utf-8'
 

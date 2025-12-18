@@ -1,5 +1,15 @@
 return {
     settings = {
+        capabilities = {
+            textDocument = {
+                completion = {
+                    completionItem = {
+                        snippetSupport = true,
+                    },
+                },
+            },
+            offsetEncoding = { 'utrf-8', 'utf-16' },
+        },
         pyright = {
             -- Using Ruff's import organizer
             disableOrganizeImports = true,

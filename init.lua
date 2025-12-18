@@ -11,21 +11,16 @@ require("zylad.plugins")
 require("zylad.remap")
 
 vim.lsp.enable({
-    -- 'clangd',
     'gopls',
     'jsonls',
-    -- 'jsonnet_ls',
     'lua_ls',
     'markdown_oxide',
     'nil_ls',
-    -- 'perlpls',
-    -- -- 'pylsp',
     'pyright',
     'ruff',
     'typescript-language-server',
 })
 
--- vim.opt.winborder = "rounded"
 
 vim.api.nvim_create_autocmd('LspAttach', {
     group = vim.api.nvim_create_augroup('my.lsp', {}),

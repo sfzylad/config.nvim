@@ -1,8 +1,37 @@
+function apply_gruber_snacks()
+    local colors = {
+        bg_dark  = "#181818",
+        quartz   = "#95a99f",
+        niagara  = "#303540",
+        wisteria = "#9e95c7",
+        yellow   = "#ffdd33",
+    }
+
+    local hl = {
+        -- The Picker UI
+        SnacksPickerBorder      = { fg = colors.niagara, bg = colors.bg_dark },
+        SnacksPickerTitle       = { fg = colors.wisteria, bg = colors.bg_dark, bold = true },
+        SnacksPickerPromptTitle = { fg = colors.bg_dark, bg = colors.wisteria, bold = true },
+        SnacksPickerMatch       = { fg = colors.yellow, bold = true },
+        SnacksPickerSelected    = { bg = colors.niagara },
+        SnacksPickerInput       = { fg = colors.quartz },
+
+        -- The Dashboard (Start Screen)
+        SnacksDashboardHeader   = { fg = colors.wisteria },
+        SnacksDashboardDesc     = { fg = colors.quartz },
+        SnacksDashboardKey      = { fg = colors.yellow },
+        SnacksDashboardIcon     = { fg = colors.niagara },
+    }
+
+    for group, settings in pairs(hl) do
+        -- Use force = true to overwrite existing theme settings
+        vim.api.nvim_set_hl(0, group, vim.tbl_extend("force", settings, { force = true }))
+    end
+end
+
 return {
     {
         "folke/snacks.nvim",
-        priority = 1000,
-        lazy = false,
         ---@type snacks.Config
         opts = {
             -- your configuration comes here
@@ -33,6 +62,10 @@ return {
             input = { enabled = true },
             picker = {
                 enabled = true,
+                layout = {
+                    cycle = true,
+                },
+                ui_select = false,
             },
             notifier = { enabled = true },
             quickfile = { enabled = true },
@@ -41,36 +74,51 @@ return {
             statuscolumn = { enabled = true },
             words = { enabled = true },
         },
+        config = function(_, opts)
+            require("snacks").setup(opts)
 
-        vim.keymap.set('n', '<C-p>', function()
-            Snacks.picker.files({ hidden = true })
-        end, { expr = false }),
+            vim.api.nvim_create_autocmd("ColorScheme", {
+                callback = function()
+                    local colors = {
+                        bg_dark  = "#181818",
+                        quartz   = "#95a99f",
+                        niagara  = "#303540",
+                        wisteria = "#9e95c7",
+                    }
 
-        vim.keymap.set('n', 'gB', function()
-            Snacks.picker.buffers()
-        end, { expr = false }),
+                    local hl = {
+                        SnacksPickerBorder      = { fg = colors.niagara, bg = colors.bg_dark },
+                        SnacksPickerTitle       = { fg = colors.wisteria, bg = colors.bg_dark, bold = true },
+                        SnacksPickerPromptTitle = { fg = colors.bg_dark, bg = colors.wisteria, bold = true },
+                        SnacksPickerMatch       = { fg = "#ffdd33", bold = true },
+                        -- SnacksPickerSelected    = { bg = colors.niagara },
+                        SnacksPickerSelected    = { bg = "#303540", fg = "#95a99f", bold = true },
+                        SnacksPickerIcon        = { fg = "#95a99f" },
+                        SnacksPickerInput       = { fg = colors.quartz },
+                        -- Dashboard specific colors
+                        SnacksDashboardHeader   = { fg = colors.wisteria },
+                        SnacksDashboardDesc     = { fg = colors.quartz },
+                        SnacksDashboardKey      = { fg = "#ffdd33" },
+                    }
 
-        vim.keymap.set('n', '<leader>fg', function()
-            Snacks.picker.grep()
-        end, { expr = false }),
-        vim.keymap.set({ 'n', 'v' }, '<leader>fs', function()
-            Snacks.picker.grep_word()
-        end, { expr = false }),
+                    for group, settings in pairs(hl) do
+                        vim.api.nvim_set_hl(0, group, settings)
+                    end
+                end,
+            })
+        end,
+        priority = 1000,
+        lazy = false,
 
-        vim.keymap.set('n', '<leader>fh', function()
-            Snacks.picker.help()
-        end, { expr = false }),
+        keys = {
+            { "<C-p>",      function() Snacks.picker.files({ hidden = true }) end, desc = "Find Files" },
+            { "gB",         function() Snacks.picker.buffers() end,                desc = "Buffers" },
+            { "<leader>fg", function() Snacks.picker.grep() end,                   desc = "Grep" },
+            { "<leader>fs", function() Snacks.picker.grep_word() end,              mode = { "n", "v" },   desc = "Grep Selection" },
+            { "<leader>fh", function() Snacks.picker.help() end,                   desc = "Help" },
+            { "<leader>fd", function() Snacks.picker.diagnostics() end,            desc = "Diagnostics" },
+            { "<leader>fr", function() Snacks.picker.resume() end,                 desc = "Resume Picker" },
+        },
 
-        vim.keymap.set('n', '<leader>fd', function()
-            Snacks.picker.diagnostics()
-        end, { expr = false }),
-
-        vim.keymap.set('n', '<leader>fD', function()
-            Snacks.picker.diagnostics_buffer()
-        end, { expr = false }),
-
-        vim.keymap.set('n', '<leader>fr', function()
-            Snacks.picker.resume()
-        end, { expr = false }),
     }
 }
