@@ -1,16 +1,36 @@
 function ColorMyPencils(color)
-    color = color or "kanagawa-dragon"
+    color = color or "gruber-darker"
     vim.cmd.colorscheme(color)
 
-    -- settings for gruber-darker
-    vim.api.nvim_set_hl(0, "ColorColumn", { bg = "#141414" })
-    vim.api.nvim_set_hl(0, "LspReferenceText", { bg = "#252525", underline = true })
-    vim.api.nvim_set_hl(0, "Visual", { bg = "#2a2a2a", fg = "NONE" })
-    vim.api.nvim_set_hl(0, "SpellBad", { bg = "#442222", fg = "NONE" })
+    if color == "gruber-darker" then
+        -- Your existing overrides
+        vim.api.nvim_set_hl(0, "ColorColumn", { bg = "#141414" })
+        vim.api.nvim_set_hl(0, "LspReferenceText", { bg = "#252525", underline = true })
+        vim.api.nvim_set_hl(0, "Visual", { bg = "#2a2a2a", fg = "NONE" })
+        vim.api.nvim_set_hl(0, "SpellBad", { bg = "#442222", fg = "NONE" })
 
-    vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-    vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
-    vim.api.nvim_set_hl(0, "FloatBorder", { bg = "none" })
+        vim.api.nvim_set_hl(0, "Normal", { bg = "#101010" })
+        vim.api.nvim_set_hl(0, "NormalNC", { bg = "#181818" })
+    end
+
+    if color == "zenbones" then
+        vim.g.zenbones_darkness = "stark"
+        vim.g.zenbones_solid_vert_split = true
+        vim.g.zenbones_solid_line_nr = true
+        vim.g.zenbones_solid_float_border = true
+        vim.g.zenbones_darken_noncurrent_window = true
+        vim.g.zenbones_lighten_noncurrent_window = true
+        vim.g.zenbones_lighten_comments = 50
+        vim.g.zenbones_lighten_line_nr = 40
+        vim.g.zenbones_lighten_cursor_line = 10
+
+        vim.api.nvim_set_hl(0, "ColorColumn", { bg = "#2b2421" })
+
+        -- setup for Snacks picker so the select bar is visible
+        vim.api.nvim_set_hl(0, "SnacksPicker", { bg = "none", ctermbg = "none" })
+        vim.api.nvim_set_hl(0, "SnacksPickerBorder", { bg = "none", ctermbg = "none" })
+        vim.api.nvim_set_hl(0, "SnacksPickerInput", { bg = "none", ctermbg = "none" })
+    end
 end
 
 return {
@@ -163,15 +183,12 @@ return {
                     strings = true,
                     comments = true,
                     operators = false,
-                    folds = true,
+                    folds = false,
                 },
                 undercurl = false,
                 underline = false,
             })
-            ColorMyPencils('gruber-darker')
-            vim.api.nvim_set_hl(0, "ColorColumn", { bg = "#141414" })
-            vim.api.nvim_set_hl(0, "LspReferenceText", { bg = "#252525", underline = true })
-            vim.api.nvim_set_hl(0, "Visual", { bg = "#2a2a2a", fg = "NONE" })
+            -- ColorMyPencils('gruber-darker')
         end
     },
     {
@@ -180,10 +197,14 @@ return {
         dependencies = "rktjmp/lush.nvim",
         lazy = false,
         priority = 1000,
+        -- config = function()
+        --     ColorMyPencils("zenbones")
+        -- end
         -- you can set set configuration options here
         -- config = function()
         --     vim.g.zenbones_darken_comments = 45
         --     vim.cmd.colorscheme('zenbones')
         -- end
-    }
+    },
+    { 'p00f/alabaster.nvim' }
 }

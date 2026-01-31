@@ -21,7 +21,6 @@ vim.lsp.enable({
     'typescript-language-server',
 })
 
-
 vim.api.nvim_create_autocmd('LspAttach', {
     group = vim.api.nvim_create_augroup('my.lsp', {}),
     callback = function(args)
@@ -58,6 +57,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
         local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
         if client:supports_method('textDocument/implementation') then
             -- Create a keymap for vim.lsp.buf.implementation ...
+            print("textDocument/implementation encountered")
         end
         -- Enable auto-completion. Note: Use CTRL-Y to select an item. |complete_CTRL-Y|
         if client:supports_method('textDocument/completion') then

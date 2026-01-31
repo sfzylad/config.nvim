@@ -1,34 +1,3 @@
-function apply_gruber_snacks()
-    local colors = {
-        bg_dark  = "#181818",
-        quartz   = "#95a99f",
-        niagara  = "#303540",
-        wisteria = "#9e95c7",
-        yellow   = "#ffdd33",
-    }
-
-    local hl = {
-        -- The Picker UI
-        SnacksPickerBorder      = { fg = colors.niagara, bg = colors.bg_dark },
-        SnacksPickerTitle       = { fg = colors.wisteria, bg = colors.bg_dark, bold = true },
-        SnacksPickerPromptTitle = { fg = colors.bg_dark, bg = colors.wisteria, bold = true },
-        SnacksPickerMatch       = { fg = colors.yellow, bold = true },
-        SnacksPickerSelected    = { bg = colors.niagara },
-        SnacksPickerInput       = { fg = colors.quartz },
-
-        -- The Dashboard (Start Screen)
-        SnacksDashboardHeader   = { fg = colors.wisteria },
-        SnacksDashboardDesc     = { fg = colors.quartz },
-        SnacksDashboardKey      = { fg = colors.yellow },
-        SnacksDashboardIcon     = { fg = colors.niagara },
-    }
-
-    for group, settings in pairs(hl) do
-        -- Use force = true to overwrite existing theme settings
-        vim.api.nvim_set_hl(0, group, vim.tbl_extend("force", settings, { force = true }))
-    end
-end
-
 return {
     {
         "folke/snacks.nvim",
@@ -64,8 +33,9 @@ return {
                 enabled = true,
                 layout = {
                     cycle = true,
+                    preset = "default"
                 },
-                ui_select = false,
+                ui_select = true,
             },
             notifier = { enabled = true },
             quickfile = { enabled = true },
@@ -87,14 +57,19 @@ return {
                     }
 
                     local hl = {
-                        SnacksPickerBorder      = { fg = colors.niagara, bg = colors.bg_dark },
+                        -- vim.api.nvim_set_hl(0, "SnacksPicker", { bg = "none", ctermbg = "none" })
+                        -- vim.api.nvim_set_hl(0, "SnacksPickerBorder", { bg = "none", ctermbg = "none" })
+                        -- vim.api.nvim_set_hl(0, "SnacksPickerInput", { bg = "none", ctermbg = "none" })
+
+                        SnacksPicker            = { bg = "none", ctermbg = "none" },
+                        SnacksPickerBorder      = { bg = "none", ctermbg = "none" },
+                        SnacksPickerInput       = { bg = "none", ctermbg = "none" },
                         SnacksPickerTitle       = { fg = colors.wisteria, bg = colors.bg_dark, bold = true },
                         SnacksPickerPromptTitle = { fg = colors.bg_dark, bg = colors.wisteria, bold = true },
                         SnacksPickerMatch       = { fg = "#ffdd33", bold = true },
-                        -- SnacksPickerSelected    = { bg = colors.niagara },
-                        SnacksPickerSelected    = { bg = "#303540", fg = "#95a99f", bold = true },
+                        SnacksPickerSelected    = { bg = colors.niagara },
+                        -- SnacksPickerSelected    = { bg = "#303540", fg = "#95a99f", bold = true },
                         SnacksPickerIcon        = { fg = "#95a99f" },
-                        SnacksPickerInput       = { fg = colors.quartz },
                         -- Dashboard specific colors
                         SnacksDashboardHeader   = { fg = colors.wisteria },
                         SnacksDashboardDesc     = { fg = colors.quartz },
@@ -106,6 +81,11 @@ return {
                     end
                 end,
             })
+
+
+            vim.api.nvim_set_hl(0, "SnacksPicker", { bg = "none", ctermbg = "none" })
+            vim.api.nvim_set_hl(0, "SnacksPickerBorder", { bg = "none", ctermbg = "none" })
+            vim.api.nvim_set_hl(0, "SnacksPickerInput", { bg = "none", ctermbg = "none" })
         end,
         priority = 1000,
         lazy = false,

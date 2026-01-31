@@ -27,19 +27,22 @@ end
 local config = {
     options = {
         icons_enabled = false,
-        theme = {
-            normal = {
-                a = { fg = gruber_colors.bg, bg = gruber_colors.quartz, gui = 'bold' },
-                b = { fg = gruber_colors.quartz, bg = gruber_colors.niagara },
-                c = { fg = gruber_colors.quartz, bg = gruber_colors.bg },
-            },
-            insert = {
-                a = { fg = gruber_colors.bg, bg = gruber_colors.wisteria, gui = 'bold' },
-            },
-            visual = {
-                a = { fg = gruber_colors.bg, bg = gruber_colors.yellow, gui = 'bold' },
-            },
-        },
+        theme = "zenbones",
+        -- Theme settings for gruber-darker theme
+        --
+        -- theme = {
+        --     normal = {
+        --         a = { fg = gruber_colors.bg, bg = gruber_colors.quartz, gui = 'bold' },
+        --         b = { fg = gruber_colors.quartz, bg = gruber_colors.niagara },
+        --         c = { fg = gruber_colors.quartz, bg = gruber_colors.bg },
+        --     },
+        --     insert = {
+        --         a = { fg = gruber_colors.bg, bg = gruber_colors.wisteria, gui = 'bold' },
+        --     },
+        --     visual = {
+        --         a = { fg = gruber_colors.bg, bg = gruber_colors.yellow, gui = 'bold' },
+        --     },
+        -- },
         -- theme = 'iceberg_dark',
         -- theme = 'auto',
 
