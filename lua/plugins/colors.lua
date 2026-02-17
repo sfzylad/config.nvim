@@ -31,6 +31,14 @@ function ColorMyPencils(color)
         vim.api.nvim_set_hl(0, "SnacksPickerBorder", { bg = "none", ctermbg = "none" })
         vim.api.nvim_set_hl(0, "SnacksPickerInput", { bg = "none", ctermbg = "none" })
     end
+
+    if color == "neomones" then
+        vim.api.nvim_set_hl(0, "ColorColumn", { bg = "#192830" })
+    end
+
+    vim.api.nvim_set_hl(0, "SnacksPicker", { bg = "none", ctermbg = "none" })
+    vim.api.nvim_set_hl(0, "SnacksPickerBorder", { bg = "none", ctermbg = "none" })
+    vim.api.nvim_set_hl(0, "SnacksPickerInput", { bg = "none", ctermbg = "none" })
 end
 
 return {

@@ -27,7 +27,7 @@ end
 local config = {
     options = {
         icons_enabled = false,
-        theme = "zenbones",
+        theme = "neobones",
         -- Theme settings for gruber-darker theme
         --
         -- theme = {
