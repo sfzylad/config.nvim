@@ -11,6 +11,7 @@ end
 
 local function darkTheme()
     vim.opt.background = "dark"
+    vim.api.nvim_set_hl(0, "ColorColumn", { bg = "#192830" })
 end
 
 
