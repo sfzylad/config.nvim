@@ -3,7 +3,6 @@ function ColorMyPencils(color)
     vim.cmd.colorscheme(color)
 
     if color == "gruber-darker" then
-        -- Your existing overrides
         vim.api.nvim_set_hl(0, "ColorColumn", { bg = "#141414" })
         vim.api.nvim_set_hl(0, "LspReferenceText", { bg = "#252525", underline = true })
         vim.api.nvim_set_hl(0, "Visual", { bg = "#2a2a2a", fg = "NONE" })

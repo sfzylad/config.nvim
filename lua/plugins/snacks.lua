@@ -36,6 +36,14 @@ return {
                     preset = "default"
                 },
                 ui_select = true,
+                win = {
+                    list = {
+                        wo = {
+                            winhighlight = "Normal:SnacksPicker,FloatBorder:SnacksPickerBorder",
+                            winblend = 0,
+                        },
+                    },
+                },
             },
             notifier = { enabled = true },
             quickfile = { enabled = true },
@@ -46,46 +54,6 @@ return {
         },
         config = function(_, opts)
             require("snacks").setup(opts)
-
-            vim.api.nvim_create_autocmd("ColorScheme", {
-                callback = function()
-                    local colors = {
-                        bg_dark  = "#181818",
-                        quartz   = "#95a99f",
-                        niagara  = "#303540",
-                        wisteria = "#9e95c7",
-                    }
-
-                    local hl = {
-                        -- vim.api.nvim_set_hl(0, "SnacksPicker", { bg = "none", ctermbg = "none" })
-                        -- vim.api.nvim_set_hl(0, "SnacksPickerBorder", { bg = "none", ctermbg = "none" })
-                        -- vim.api.nvim_set_hl(0, "SnacksPickerInput", { bg = "none", ctermbg = "none" })
-
-                        SnacksPicker            = { bg = "none", ctermbg = "none" },
-                        SnacksPickerBorder      = { bg = "none", ctermbg = "none" },
-                        SnacksPickerInput       = { bg = "none", ctermbg = "none" },
-                        SnacksPickerTitle       = { fg = colors.wisteria, bg = colors.bg_dark, bold = true },
-                        SnacksPickerPromptTitle = { fg = colors.bg_dark, bg = colors.wisteria, bold = true },
-                        SnacksPickerMatch       = { fg = "#ffdd33", bold = true },
-                        SnacksPickerSelected    = { bg = colors.niagara },
-                        -- SnacksPickerSelected    = { bg = "#303540", fg = "#95a99f", bold = true },
-                        SnacksPickerIcon        = { fg = "#95a99f" },
-                        -- Dashboard specific colors
-                        SnacksDashboardHeader   = { fg = colors.wisteria },
-                        SnacksDashboardDesc     = { fg = colors.quartz },
-                        SnacksDashboardKey      = { fg = "#ffdd33" },
-                    }
-
-                    for group, settings in pairs(hl) do
-                        vim.api.nvim_set_hl(0, group, settings)
-                    end
-                end,
-            })
-
-
-            vim.api.nvim_set_hl(0, "SnacksPicker", { bg = "none", ctermbg = "none" })
-            vim.api.nvim_set_hl(0, "SnacksPickerBorder", { bg = "none", ctermbg = "none" })
-            vim.api.nvim_set_hl(0, "SnacksPickerInput", { bg = "none", ctermbg = "none" })
         end,
         priority = 1000,
         lazy = false,

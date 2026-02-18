@@ -12,13 +12,13 @@ local fmta = require("luasnip.extras.fmt").fmta
 local rep = require("luasnip.extras").rep
 
 local date_input = function(args, snip, old_state, fmt)
-	local fmt = fmt or "[[%Y-%m-%d-%A]]"
-	return sn(nil, i(1, os.date(fmt)))
+    local fmt = fmt or "[[%Y-%m-%d-%A]]"
+    return sn(nil, i(1, os.date(fmt)))
 end
 
 local dd = date_input()
 local footer = "[[INSERT CONNECTION]]"
-local info = debug.getinfo(1,'S');
+local info = debug.getinfo(1, 'S');
 
 ls.add_snippets("markdown", {
     s("core",

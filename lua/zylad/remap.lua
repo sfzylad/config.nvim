@@ -10,8 +10,13 @@ local function lightTheme()
 end
 
 local function darkTheme()
+    local THEME = "neobones"
     vim.opt.background = "dark"
+    ColorMyPencils(THEME)
+    vim.api.nvim_set_hl(0, "SnacksPicker", { bg = "#1C1C1C" })
+    vim.api.nvim_set_hl(0, "SnacksPickerBorder", { fg = "#B2B2B2", bg = "#1C1C1C" })
     vim.api.nvim_set_hl(0, "ColorColumn", { bg = "#192830" })
+    vim.api.nvim_set_hl(0, "SnacksPickerInput", { bg = "#262626" })
 end
 
 

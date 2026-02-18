@@ -68,7 +68,13 @@ vim.g.rosebones_lighten_cursor_line = 10
 vim.opt.background = "dark"
 ColorMyPencils(THEME)
 
-vim.api.nvim_set_hl(0, "SnacksPicker", { bg = "none", ctermbg = "none" })
-vim.api.nvim_set_hl(0, "SnacksPickerBorder", { bg = "none", ctermbg = "none" })
-vim.api.nvim_set_hl(0, "SnacksPickerInput", { bg = "none", ctermbg = "none" })
+
+-- vim.api.nvim_set_hl(0, "SnacksPicker", { bg = "#1e1e2e" })
+-- vim.api.nvim_set_hl(0, "SnacksPickerBorder", { fg = "#89b4fa", bg = "#1e1e2e" })
+-- vim.api.nvim_set_hl(0, "SnacksPickerPreview", { bg = "#181825" })
+
+
 vim.api.nvim_set_hl(0, "ColorColumn", { bg = "#192830" })
+vim.api.nvim_set_hl(0, "SnacksPicker", { bg = "#1C1C1C" })
+vim.api.nvim_set_hl(0, "SnacksPickerBorder", { fg = "#B2B2B2", bg = "#1C1C1C" })
+vim.api.nvim_set_hl(0, "SnacksPickerInput", { bg = "#262626" })

@@ -14,8 +14,8 @@ local rep = require("luasnip.extras").rep
 -- Returns a snippet_node wrapped around an insertNode whose initial
 -- text value is set to the current date in the desired format.
 local date_input = function(args, snip, old_state, fmt)
-	local fmt = fmt or "[[%Y-%m-%d-%A]]"
-	return sn(nil, i(1, os.date(fmt)))
+    local fmt = fmt or "[[%Y-%m-%d-%A]]"
+    return sn(nil, i(1, os.date(fmt)))
 end
 local dd = date_input()
 local journal_reference = "[[Journal]]"
@@ -40,23 +40,26 @@ ls.add_snippets("markdown", {
         ##### 🌜 Last night, after work, I...
         - {1}
 
-        ---
+
         ##### 🙌 One thing I'm excited about right now is...
         - {2}
 
-        ---
+
         ##### 🚀 One+ thing I plan to accomplish today is...
         - [ ] {3}
 
-        ---
+
         ##### 👎 One thing I'm struggling with today is...
         - {4}
 
-        ---
-        ## Notes
+        ## Gratitude note
         - {5}
 
-        ---
+
+        ## Notes
+        - {6}
+
+
         ## More notes
 
         ### Notes created today
@@ -70,7 +73,7 @@ ls.add_snippets("markdown", {
         List FROM "" WHERE file.mday = date("2025-01-06") SORT file.mtime asc
         ```
 
-        ---
+
         ## Related
         - {footer}
 
@@ -82,6 +85,7 @@ ls.add_snippets("markdown", {
                 i(3, ""),
                 i(4, ""),
                 i(5, ""),
+                i(6, ""),
             }
         )
     ),
