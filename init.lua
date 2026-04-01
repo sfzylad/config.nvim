@@ -19,7 +19,13 @@ vim.lsp.enable({
     'pyright',
     'ruff',
     'typescript-language-server',
+    -- 'rust-analyzer',
 })
+
+-- vim.api.nvim_create_autocmd('FileType', {
+--     pattern = { 'go', 'lua', 'rust', 'zig', 'javascript', 'typescript' },
+--     callback = function() vim.treesitter.start() end,
+-- })
 
 vim.api.nvim_create_autocmd('LspAttach', {
     group = vim.api.nvim_create_augroup('my.lsp', {}),

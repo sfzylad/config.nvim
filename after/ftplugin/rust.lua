@@ -1,4 +1,12 @@
 local bufnr = vim.api.nvim_get_current_buf()
+
+vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+
+vim.api.nvim_create_autocmd('FileType', {
+    pattern = { 'rust' },
+    callback = function() vim.treesitter.start() end,
+})
+
 vim.keymap.set(
     "n",
     "<leader>a",

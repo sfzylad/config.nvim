@@ -146,12 +146,12 @@ return {
     },
     {
         'mrcjkb/rustaceanvim',
-        version = '^5', -- Recommended
+        version = '^9', -- Recommended
         lazy = false,   -- This plugin is already lazy
         config = function()
             vim.g.rustaceanvim = {
                 server = {
-                    cmd = { 'rustup', 'run', 'stable', 'rust-analyzer' },
+                    -- cmd = { 'rustup', 'run', 'stable', 'rust-analyzer' },
                     -- on_attach = on_attach,
                     status_notify_level = 'info',
                 },
