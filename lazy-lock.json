@@ -71,6 +71,7 @@
   "uv.nvim": { "branch": "main", "commit": "b0bce1b61584fde99c316aa0587a4996c52df206" },
   "vclib.nvim": { "branch": "main", "commit": "e682b8284da31a5791ad308f4ff5350b8db93fbb" },
   "vcsigns.nvim": { "branch": "main", "commit": "486b6a1f95fc3863aa4b21279fc92b599bdae6f7" },
+  "vesper.nvim": { "branch": "main", "commit": "1717b1ad657c94bec3fc2bdebb0c55452d9fe46d" },
   "vim": { "branch": "master", "commit": "84fbc42bdd11639157f358b65e01338d88c69be3" },
   "vim-dirdiff": { "branch": "master", "commit": "84bc8999fde4b3c2d8b228b560278ab30c7ea4c9" },
   "vim-fugitive": { "branch": "master", "commit": "3b753cf8c6a4dcde6edee8827d464ba9b8c4a6f0" },

@@ -6,11 +6,13 @@ local keymap = vim.api.nvim_set_keymap
 local opts = { noremap = true, silent = true }
 
 local function lightTheme()
+    ColorMyPencils("zenbones")
     vim.opt.background = "light"
 end
 
 local function darkTheme()
-    local THEME = "neobones"
+    -- local THEME = "neobones"
+    local THEME = "vesper"
     vim.opt.background = "dark"
     ColorMyPencils(THEME)
     vim.api.nvim_set_hl(0, "SnacksPicker", { bg = "#1C1C1C" })

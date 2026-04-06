@@ -1,4 +1,5 @@
-local THEME = "neobones"
+-- local THEME = "neobones"
+local THEME = "vesper"
 vim.g.kanagawabones_darkness = "stark"
 vim.g.kanagawabones_lightness = "dim"
 vim.g.kanagawabones_solid_vert_split = true

@@ -213,5 +213,6 @@ return {
         --     vim.cmd.colorscheme('zenbones')
         -- end
     },
-    { 'p00f/alabaster.nvim' }
+    { 'p00f/alabaster.nvim' },
+    { 'datsfilipe/vesper.nvim' },
 }

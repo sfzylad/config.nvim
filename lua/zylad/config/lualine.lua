@@ -27,7 +27,8 @@ end
 local config = {
     options = {
         icons_enabled = false,
-        theme = "neobones",
+        theme = "auto",
+        -- theme = "neobones",
         -- Theme settings for gruber-darker theme
         --
         -- theme = {
