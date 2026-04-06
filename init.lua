@@ -22,6 +22,26 @@ vim.lsp.enable({
     -- 'rust-analyzer',
 })
 
+vim.api.nvim_create_autocmd('FileType', {
+    pattern = {
+        -- golang
+        'go', 'gowork', 'gomod',
+        'rust',
+        'python',
+        -- typescript
+        "typescript", "typescriptreact",
+        -- zig
+        "zig", "zir",
+        -- C
+        "c", "cpp",
+        "json",
+        "yaml",
+        "markdown",
+        "nix", "flake",
+    },
+    callback = function() vim.treesitter.start() end,
+})
+
 -- vim.api.nvim_create_autocmd('FileType', {
 --     pattern = { 'go', 'lua', 'rust', 'zig', 'javascript', 'typescript' },
 --     callback = function() vim.treesitter.start() end,

@@ -236,9 +236,6 @@ return {
         end
     },
     {
-        'nvim-treesitter/playground',
-    },
-    {
         "nvim-treesitter/nvim-treesitter-context",
     },
 
