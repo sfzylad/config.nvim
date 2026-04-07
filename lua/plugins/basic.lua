@@ -413,8 +413,6 @@ return {
                 vim.keymap.set(mode, lhs, rhs, options)
             end
 
-            -- map('n', '[r', function() require('vcsigns').actions.target_older_commit(0, vim.v.count1) end, 'Move diff target back')
-            -- map('n', ']r', function() require('vcsigns').actions.target_newer_commit(0, vim.v.count1) end, 'Move diff target forward')
             map('n', '[c', "<Cmd>lua require('vcsigns').actions.hunk_prev(0, vim.v.count1)<CR>", 'Go to previous hunk')
             map('n', ']c', "<Cmd>lua require('vcsigns').actions.hunk_next(0, vim.v.count1)<CR>", 'Go to next hunk')
             map('n', '[C', function() require('vcsigns').actions.hunk_prev(0, 9999) end, 'Go to first hunk')
@@ -423,6 +421,7 @@ return {
                 'Undo the hunk under the cursor')
             map('n', '<leader>sd', function() require('vcsigns').actions.toggle_hunk_diff(0) end,
                 'Show diff of hunk under the cursor')
+            map('n', '<leader>sf', function() require('vcsigns.fold').toggle(0) end, 'Fold outside hunks')
         end,
     },
     {
@@ -448,6 +447,41 @@ return {
             map('i', '<M-;>', function()
                 vim.api.nvim_call_function("CodeiumToggle", {})
             end, "Toggle Windsurf")
+        end,
+    },
+    {
+        "ahkohd/difft.nvim",
+        keys = {
+            {
+                "<leader>gd",
+                function()
+                    if Difft.is_visible() then
+                        Difft.hide()
+                    else
+                        Difft.diff()
+                    end
+                end,
+                desc = "Toggle Difft",
+            },
+        },
+        config = function()
+            require("difft").setup({
+                -- command = "GIT_EXTERNAL_DIFF='difft --color=always' git diff", -- or "jj diff --no-pager"
+                command = "jj diff --no-pager", -- or "jj diff --no-pager"
+                -- layout = "ivy_taller",                                              -- nil (buffer), "float", or "ivy_taller"
+                header = {
+                    content = function(filename, step, language)
+                        if step then
+                            return string.format("[%d/%d] %s (%s)", step.current, step.of, filename, language)
+                        end
+                        return string.format("%s (%s)", filename, language)
+                    end,
+                    highlight = {
+                        link = "FloatTitle",
+                        full_width = true,
+                    },
+                }
+            })
         end,
     },
 }

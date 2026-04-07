@@ -1,5 +1,6 @@
 -- local THEME = "neobones"
-local THEME = "vesper"
+-- local THEME = "vesper"
+local THEME = "alabaster"
 vim.g.kanagawabones_darkness = "stark"
 vim.g.kanagawabones_lightness = "dim"
 vim.g.kanagawabones_solid_vert_split = true
@@ -66,8 +67,28 @@ vim.g.rosebones_lighten_comments = 50
 vim.g.rosebones_lighten_line_nr = 40
 vim.g.rosebones_lighten_cursor_line = 10
 
+vim.g.alabaster_floatborder = true
+
+require('vesper').setup({
+    transparent = false,   -- Boolean: Sets the background to transparent
+    italics = {
+        comments = false,  -- Boolean: Italicizes comments
+        keywords = false,  -- Boolean: Italicizes keywords
+        functions = false, -- Boolean: Italicizes functions
+        strings = false,   -- Boolean: Italicizes strings
+        variables = false, -- Boolean: Italicizes variables
+    },
+    overrides = {},        -- A dictionary of group names, can be a function returning a dictionary or a table.
+    palette_overrides = {}
+})
+
 vim.opt.background = "dark"
+
+
 ColorMyPencils(THEME)
+if THEME == "vesper" then
+    vim.api.nvim_set_hl(0, "DiffText", { fg = "NvimLightGreen" })
+end
 
 
 -- vim.api.nvim_set_hl(0, "SnacksPicker", { bg = "#1e1e2e" })
@@ -75,7 +96,8 @@ ColorMyPencils(THEME)
 -- vim.api.nvim_set_hl(0, "SnacksPickerPreview", { bg = "#181825" })
 
 
-vim.api.nvim_set_hl(0, "ColorColumn", { bg = "#192830" })
-vim.api.nvim_set_hl(0, "SnacksPicker", { bg = "#1C1C1C" })
-vim.api.nvim_set_hl(0, "SnacksPickerBorder", { fg = "#B2B2B2", bg = "#1C1C1C" })
-vim.api.nvim_set_hl(0, "SnacksPickerInput", { bg = "#262626" })
+-- vim.api.nvim_set_hl(0, "ColorColumn", { bg = "#192830" })
+--
+-- vim.api.nvim_set_hl(0, "SnacksPicker", { bg = "#1C1C1C" })
+-- vim.api.nvim_set_hl(0, "SnacksPickerBorder", { fg = "#B2B2B2", bg = "#1C1C1C" })
+-- vim.api.nvim_set_hl(0, "SnacksPickerInput", { bg = "#262626" })

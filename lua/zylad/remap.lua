@@ -6,19 +6,19 @@ local keymap = vim.api.nvim_set_keymap
 local opts = { noremap = true, silent = true }
 
 local function lightTheme()
-    ColorMyPencils("zenbones")
+    ColorMyPencils("alabaster")
     vim.opt.background = "light"
 end
 
 local function darkTheme()
     -- local THEME = "neobones"
-    local THEME = "vesper"
+    local THEME = "alabaster"
     vim.opt.background = "dark"
     ColorMyPencils(THEME)
-    vim.api.nvim_set_hl(0, "SnacksPicker", { bg = "#1C1C1C" })
-    vim.api.nvim_set_hl(0, "SnacksPickerBorder", { fg = "#B2B2B2", bg = "#1C1C1C" })
-    vim.api.nvim_set_hl(0, "ColorColumn", { bg = "#192830" })
-    vim.api.nvim_set_hl(0, "SnacksPickerInput", { bg = "#262626" })
+    -- vim.api.nvim_set_hl(0, "SnacksPicker", { bg = "#1C1C1C" })
+    -- vim.api.nvim_set_hl(0, "SnacksPickerBorder", { fg = "#B2B2B2", bg = "#1C1C1C" })
+    -- vim.api.nvim_set_hl(0, "ColorColumn", { bg = "#192830" })
+    -- vim.api.nvim_set_hl(0, "SnacksPickerInput", { bg = "#262626" })
 end
 
 
