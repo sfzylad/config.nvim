@@ -1,0 +1,65 @@
+vim.g.kanagawabones_darkness = "stark"
+vim.g.kanagawabones_lightness = "dim"
+vim.g.kanagawabones_solid_vert_split = true
+vim.g.kanagawabones_solid_line_nr = true
+vim.g.kanagawabones_solid_float_border = true
+vim.g.kanagawabones_darken_noncurrent_window = true
+vim.g.kanagawabones_lighten_noncurrent_window = true
+vim.g.kanagawabones_lighten_comments = 50
+vim.g.kanagawabones_lighten_line_nr = 40
+vim.g.kanagawabones_lighten_cursor_line = 10
+
+vim.g.tokyobones_darkness = "stark"
+vim.g.tokyobones_lightness = "dim"
+vim.g.tokyobones_solid_vert_split = true
+vim.g.tokyobones_solid_line_nr = true
+vim.g.tokyobones_solid_float_border = true
+vim.g.tokyobones_darken_noncurrent_window = true
+vim.g.tokyobones_lighten_noncurrent_window = true
+vim.g.tokyobones_lighten_comments = 50
+vim.g.tokyobones_lighten_line_nr = 40
+vim.g.tokyobones_lighten_cursor_line = 10
+
+vim.g.neobones_darkness = "stark"
+vim.g.neobones_lightness = "dim"
+vim.g.neobones_solid_vert_split = true
+vim.g.neobones_solid_line_nr = true
+vim.g.neobones_solid_float_border = false
+vim.g.neobones_darken_noncurrent_window = true
+vim.g.neobones_lighten_noncurrent_window = true
+vim.g.neobones_lighten_comments = 50
+vim.g.neobones_lighten_line_nr = 40
+vim.g.neobones_lighten_cursor_line = 10
+
+vim.g.zenwritten_darkness = "stark"
+vim.g.zenwritten_lightness = "dim"
+vim.g.zenwritten_solid_vert_split = true
+vim.g.zenwritten_solid_line_nr = true
+vim.g.zenwritten_solid_float_border = true
+vim.g.zenwritten_darken_noncurrent_window = true
+vim.g.zenwritten_lighten_noncurrent_window = true
+vim.g.zenwritten_lighten_comments = 50
+vim.g.zenwritten_lighten_line_nr = 40
+vim.g.zenwritten_lighten_cursor_line = 10
+
+vim.g.zenbones_darkness = "stark"
+vim.g.zenbones_lightness = "dim"
+vim.g.zenbones_solid_vert_split = true
+vim.g.zenbones_solid_line_nr = true
+vim.g.zenbones_solid_float_border = true
+vim.g.zenbones_darken_noncurrent_window = true
+vim.g.zenbones_lighten_noncurrent_window = true
+vim.g.zenbones_lighten_comments = 50
+vim.g.zenbones_lighten_line_nr = 40
+vim.g.zenbones_lighten_cursor_line = 10
+
+vim.g.rosebones_darkness = "stark"
+vim.g.rosebones_lightness = "dim"
+vim.g.rosebones_solid_vert_split = true
+vim.g.rosebones_solid_line_nr = true
+vim.g.rosebones_solid_float_border = true
+vim.g.rosebones_darken_noncurrent_window = true
+vim.g.rosebones_lighten_noncurrent_window = true
+vim.g.rosebones_lighten_comments = 50
+vim.g.rosebones_lighten_line_nr = 40
+vim.g.rosebones_lighten_cursor_line = 10

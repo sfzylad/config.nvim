@@ -468,7 +468,7 @@ return {
             require("difft").setup({
                 -- command = "GIT_EXTERNAL_DIFF='difft --color=always' git diff", -- or "jj diff --no-pager"
                 command = "jj diff --no-pager", -- or "jj diff --no-pager"
-                -- layout = "ivy_taller",                                              -- nil (buffer), "float", or "ivy_taller"
+                layout = "ivy_taller",                                              -- nil (buffer), "float", or "ivy_taller"
                 header = {
                     content = function(filename, step, language)
                         if step then
