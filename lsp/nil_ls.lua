@@ -1,4 +1,4 @@
 return {
-    filetypes = { 'nix', 'flake' },
-    inlay_hints = { enabled = true },
+   filetypes = { 'nix', 'flake' },
+   inlay_hints = { enabled = true },
 }

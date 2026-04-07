@@ -143,29 +143,29 @@ vim.o.cursorline = true
 
 
 vim.g.indent_blankline_context_patterns = {
-    'class',
-    'function',
-    'method',
-    '^if',
-    '^while',
-    '^typedef',
-    '^for',
-    '^object',
-    '^table',
-    'block',
-    'arguments',
-    'typedef',
-    'while',
-    '^public',
-    'return',
-    'if_statement',
-    'else_clause',
-    'jsx_element',
-    'jsx_self_closing_element',
-    'try_statement',
-    'catch_clause',
-    'import_statement',
-    'labeled_statement'
+   'class',
+   'function',
+   'method',
+   '^if',
+   '^while',
+   '^typedef',
+   '^for',
+   '^object',
+   '^table',
+   'block',
+   'arguments',
+   'typedef',
+   'while',
+   '^public',
+   'return',
+   'if_statement',
+   'else_clause',
+   'jsx_element',
+   'jsx_self_closing_element',
+   'try_statement',
+   'catch_clause',
+   'import_statement',
+   'labeled_statement'
 }
 
 -- Run gofmt + goimport on save
@@ -191,28 +191,28 @@ vim.o.mouse = "a"
 -- })
 
 vim.diagnostic.config({
-    -- Use the default configuration
-    -- virtual_lines = true
+   -- Use the default configuration
+   -- virtual_lines = true
 
-    -- Alternatively, customize specific options
-    virtual_lines = {
-        -- Only show virtual line diagnostics for the current cursor line
-        current_line = true,
-    },
+   -- Alternatively, customize specific options
+   virtual_lines = {
+      -- Only show virtual line diagnostics for the current cursor line
+      current_line = true,
+   },
 })
 
 
 vim.api.nvim_set_keymap(
-    "n",
-    "<leader>fb",
-    "<cmd>lua require 'telescope'.extensions.file_browser.file_browser()<CR>",
-    { noremap = true }
+   "n",
+   "<leader>fb",
+   "<cmd>lua require 'telescope'.extensions.file_browser.file_browser()<CR>",
+   { noremap = true }
 )
 
 
 vim.api.nvim_create_user_command('Rg', function(cmd_opts)
-    require('zylad.utils.rg').rg(cmd_opts.args)
-    vim.cmd("copen 15")
+   require('zylad.utils.rg').rg(cmd_opts.args)
+   vim.cmd("copen 15")
 end, { nargs = '*' })
 
 
@@ -236,20 +236,20 @@ let g:python3_host_prog = '/Users/dzyla/.pyenv/versions/neovim/bin/python'
 ]])
 
 vim.api.nvim_create_autocmd({ "Bufread" }, {
-    pattern = { "*.sls" },
-    command = "setlocal ts=2 sts=2 sw=2 expandtab"
+   pattern = { "*.sls" },
+   command = "setlocal ts=2 sts=2 sw=2 expandtab"
 })
 
 vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
-    pattern = { "*.md" },
-    command = "set wm=2 tw=79"
+   pattern = { "*.md" },
+   command = "set wm=2 tw=79"
 })
 
 vim.api.nvim_create_user_command("JJdiff", function()
-    local lhs = vim.api.nvim_buf_get_lines(0, 0, -1, true)
-    -- close $left
-    vim.cmd.diffoff()
-    vim.cmd.close()
-    -- put content of $left into $output
-    vim.api.nvim_buf_set_lines(0, 0, -1, true, lhs)
+   local lhs = vim.api.nvim_buf_get_lines(0, 0, -1, true)
+   -- close $left
+   vim.cmd.diffoff()
+   vim.cmd.close()
+   -- put content of $left into $output
+   vim.api.nvim_buf_set_lines(0, 0, -1, true, lhs)
 end, { desc = "jj diff setup" })

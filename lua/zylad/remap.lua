@@ -5,57 +5,62 @@ vim.keymap.set("n", "<leader>c", "<>terminal<cr>")
 local keymap = vim.api.nvim_set_keymap
 local opts = { noremap = true, silent = true }
 
-local function lightTheme()
-    ColorMyPencils("alabaster")
-    vim.opt.background = "light"
+local function light_theme()
+   local THEME = require('zylad.config.theme').current()
+   ColorMyPencils(THEME)
+   vim.opt.background = "light"
 end
 
-local function darkTheme()
-    -- local THEME = "neobones"
-    local THEME = "alabaster"
-    vim.opt.background = "dark"
-    ColorMyPencils(THEME)
-    -- vim.api.nvim_set_hl(0, "SnacksPicker", { bg = "#1C1C1C" })
-    -- vim.api.nvim_set_hl(0, "SnacksPickerBorder", { fg = "#B2B2B2", bg = "#1C1C1C" })
-    -- vim.api.nvim_set_hl(0, "ColorColumn", { bg = "#192830" })
-    -- vim.api.nvim_set_hl(0, "SnacksPickerInput", { bg = "#262626" })
+local function dark_theme()
+   local THEME = require('zylad.config.theme').current()
+   vim.opt.background = "dark"
+   ColorMyPencils(THEME)
 end
 
-
-vim.keymap.set('n', '<leader>dd', darkTheme, { desc = "Change theme to dark" })
-vim.keymap.set('n', '<leader>dl', lightTheme, { desc = "Change theme to light" })
+-- cycling between dark and light themes.
+vim.keymap.set('n', '<leader>dd', dark_theme, { desc = "Change theme to dark" })
+vim.keymap.set('n', '<leader>dl', light_theme, { desc = "Change theme to light" })
 
 -- remove current file from buffer
 keymap('n', '<leader>d', '<Cmd>bd<CR>', opts)
+
+-- reset the search hightlight
 keymap('n', '<leader>/', '<Nop>', opts)
 keymap('n', '<leader>/', '<Cmd>nohlsearch<CR>', opts)
 
+-- tab specific mappings
 keymap('n', '<C-t>', '<Cmd>tabnew<CR>', opts)
 keymap('n', '<C-t>p', '<Cmd>tabprevious<CR>', opts)
 keymap('n', '<C-t>n', '<Cmd>tabnext<CR>', opts)
 
+-- toggle spelling
 keymap('n', '<leader>s', '<cmd>:set spell!<CR>', opts)
 
+-- edit configuration
 keymap('n', '<leader>ev', '<cmd>:e $MYVIMRC<CR>', opts)
 
 local nnoremap = require('zylad.keymap').nnoremap
 
-nnoremap('<leader>cd', '<Cmd>:cd %:h<CR>')
-nnoremap('<leader>lcd', '<Cmd>:lcd %:h<CR>')
-nnoremap('<BS>', '<C-W>h')
+-- TODO: I don't use this so probaby not needed.
+-- change CWD
+-- nnoremap('<leader>cd', '<Cmd>:cd %:h<CR>')
+-- nnoremap('<leader>lcd', '<Cmd>:lcd %:h<CR>')
+-- nnoremap('<BS>', '<C-W>h')
 
 local map = require("zylad.keymap").map
 map('j', 'gj')
 map('k', 'gk')
 
+-- yank to system clipboard
 vim.cmd([[
 map <leader>y "+y
 map <leader>p "+p
 ]])
 
+-- FIXME: This is probably not needed.
 vim.api.nvim_create_autocmd({ "BufWritePre" }, {
-    pattern = { "*.py" },
-    callback = function(_)
-        vim.lsp.buf.format()
-    end
+   pattern = { "*.py" },
+   callback = function(_)
+      vim.lsp.buf.format()
+   end
 })

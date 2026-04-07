@@ -1,4 +1,4 @@
 return {
-    filetypes = { 'perl' },
-    inlay_hints = { enabled = true },
+   filetypes = { 'perl' },
+   inlay_hints = { enabled = true },
 }

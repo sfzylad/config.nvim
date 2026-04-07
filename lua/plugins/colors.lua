@@ -1,3 +1,6 @@
+--- Function for setting up themes
+-- This function should be used across my entire config.
+-- @param color string: Name of the theme to be set.
 function ColorMyPencils(color)
    color = color or "gruber-darker"
    vim.cmd.colorscheme(color)
@@ -11,33 +14,6 @@ function ColorMyPencils(color)
       vim.api.nvim_set_hl(0, "Normal", { bg = "#101010" })
       vim.api.nvim_set_hl(0, "NormalNC", { bg = "#181818" })
    end
-
-   if color == "zenbones" then
-      vim.g.zenbones_darkness = "stark"
-      vim.g.zenbones_solid_vert_split = true
-      vim.g.zenbones_solid_line_nr = true
-      vim.g.zenbones_solid_float_border = true
-      vim.g.zenbones_darken_noncurrent_window = true
-      vim.g.zenbones_lighten_noncurrent_window = true
-      vim.g.zenbones_lighten_comments = 50
-      vim.g.zenbones_lighten_line_nr = 40
-      vim.g.zenbones_lighten_cursor_line = 10
-
-      vim.api.nvim_set_hl(0, "ColorColumn", { bg = "#2b2421" })
-
-      -- setup for Snacks picker so the select bar is visible
-      vim.api.nvim_set_hl(0, "SnacksPicker", { bg = "none", ctermbg = "none" })
-      vim.api.nvim_set_hl(0, "SnacksPickerBorder", { bg = "none", ctermbg = "none" })
-      vim.api.nvim_set_hl(0, "SnacksPickerInput", { bg = "none", ctermbg = "none" })
-   end
-
-   if color == "neomones" then
-      vim.api.nvim_set_hl(0, "ColorColumn", { bg = "#192830" })
-   end
-
-   vim.api.nvim_set_hl(0, "SnacksPicker", { bg = "none", ctermbg = "none" })
-   vim.api.nvim_set_hl(0, "SnacksPickerBorder", { bg = "none", ctermbg = "none" })
-   vim.api.nvim_set_hl(0, "SnacksPickerInput", { bg = "none", ctermbg = "none" })
 end
 
 return {
@@ -45,10 +21,6 @@ return {
       "folke/tokyonight.nvim",
       lazy = false,    -- make sure we load this during startup if it is your main colorscheme
       priority = 1000, -- make sure to load this before all the other start plugins
-      -- config = function()
-      --   -- load the colorscheme here
-      --   vim.cmd([[colorscheme tokyonight]])
-      -- end,
    },
    {
       "dracula/vim",

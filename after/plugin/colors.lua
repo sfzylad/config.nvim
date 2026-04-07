@@ -2,7 +2,7 @@ require("zylad.config.zenbones")
 
 -- Theme to be used. Themes that I liked so far: alabaster, vesper,
 -- zenbones (neobones variant), mellifluous, kanagawa (dragon variant), rose-pine
-local THEME = "alabaster"
+local THEME = require("zylad.config.theme").current()
 
 -- Whether or not to make any changes to the default highlights that are coming
 -- with the theme. Better not to sat it.
@@ -23,10 +23,6 @@ if THEME == "vesper" then
 end
 
 if CUSTOM_HIGHLIGHTS then
-   -- vim.api.nvim_set_hl(0, "SnacksPicker", { bg = "#1e1e2e" })
-   -- vim.api.nvim_set_hl(0, "SnacksPickerBorder", { fg = "#89b4fa", bg = "#1e1e2e" })
-   -- vim.api.nvim_set_hl(0, "SnacksPickerPreview", { bg = "#181825" })
-
    vim.api.nvim_set_hl(0, "ColorColumn", { bg = "#192830" })
 
    vim.api.nvim_set_hl(0, "SnacksPicker", { bg = "#1C1C1C" })

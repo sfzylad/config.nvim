@@ -25,51 +25,50 @@ require('gitsigns').setup()
 
 require("luasnip.loaders.from_vscode").lazy_load()
 require("diaglist").init({
-  -- optional settings
-  -- below are defaults
-  debug = false,
+   -- optional settings
+   -- below are defaults
+   debug = false,
 
-  -- increase for noisy servers
-  debounce_ms = 150,
+   -- increase for noisy servers
+   debounce_ms = 150,
 })
 
 ----------------------------------------------------------------------------
 -- todo-comments.nvim
 ----------------------------------------------------------------------------
 require("todo-comments").setup {
-  -- your configuration comes here
-  -- or leave it empty to use the default settings
-  -- refer to the configuration section below
-  highlight = {
-    pattern = {
-        [[.*<(KEYWORDS)[()a-zA-Z_]+:]],
-        [[.*<(KEYWORDS)\s*:]]
-    },
-  }
+   -- your configuration comes here
+   -- or leave it empty to use the default settings
+   -- refer to the configuration section below
+   highlight = {
+      pattern = {
+         [[.*<(KEYWORDS)[()a-zA-Z_]+:]],
+         [[.*<(KEYWORDS)\s*:]]
+      },
+   }
 }
 require("nvim-autopairs").setup {
-    fast_wrap = {},
+   fast_wrap = {},
 }
 
 ----------------------------------------------------------------------------
 -- go setup
 ----------------------------------------------------------------------------
 require('go').setup({
-    lsp_inlay_hints = {
-        enable = true,
-        show_variable_name = true,
-        -- prefix for parameter hints
-        parameter_hints_prefix = "󰊕 ",
-        show_parameter_hints = true,
-        -- prefix for all the other hints (type, chaining)
-        other_hints_prefix = "=> ",
-        highlight = "Comment",
-    }
+   lsp_inlay_hints = {
+      enable = true,
+      show_variable_name = true,
+      -- prefix for parameter hints
+      parameter_hints_prefix = "󰊕 ",
+      show_parameter_hints = true,
+      -- prefix for all the other hints (type, chaining)
+      other_hints_prefix = "=> ",
+      highlight = "Comment",
+   }
 })
 
 
 
 require('lint').linters_by_ft = {
-  sls = {'saltlint'},
+   sls = { 'saltlint' },
 }
-
