@@ -1,8 +1,10 @@
-require("zylad.config.zenbones")
-
 -- Theme to be used. Themes that I liked so far: alabaster, vesper,
 -- zenbones (neobones variant), mellifluous, kanagawa (dragon variant), rose-pine
 local THEME = require("zylad.config.theme").current()
+
+if THEME == "zenbones" then
+   require("zylad.config.zenbones")
+end
 
 -- Whether or not to make any changes to the default highlights that are coming
 -- with the theme. Better not to sat it.

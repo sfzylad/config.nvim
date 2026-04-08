@@ -39,14 +39,6 @@ keymap('n', '<leader>s', '<cmd>:set spell!<CR>', opts)
 -- edit configuration
 keymap('n', '<leader>ev', '<cmd>:e $MYVIMRC<CR>', opts)
 
-local nnoremap = require('zylad.keymap').nnoremap
-
--- TODO: I don't use this so probaby not needed.
--- change CWD
--- nnoremap('<leader>cd', '<Cmd>:cd %:h<CR>')
--- nnoremap('<leader>lcd', '<Cmd>:lcd %:h<CR>')
--- nnoremap('<BS>', '<C-W>h')
-
 local map = require("zylad.keymap").map
 map('j', 'gj')
 map('k', 'gk')

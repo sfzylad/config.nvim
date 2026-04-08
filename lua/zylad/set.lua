@@ -21,6 +21,7 @@ vim.o.winwidth = 10
 vim.o.winminwidth = 10
 vim.o.equalalways = false
 
+-- FIXME: Move it somewhere else (remap?)
 vim.api.nvim_command("au FileType go nmap <Leader><Leader>r :GoTestFunc")
 
 -- file path in the winbar
@@ -47,6 +48,8 @@ vim.o.visualbell = true -- use a visual bell
 -- unloaded buffers or empty windows.
 vim.o.sessionoptions = "curdir,folds,help,options,tabpages,winsize"
 
+-- FIXME: Add a wrapper with something like which git to make it work on
+-- NixOS and any other system.
 vim.g.fugitive_git_executable = '/usr/bin/git'
 
 vim.g.rustfmt_autosave = 1
@@ -168,53 +171,9 @@ vim.g.indent_blankline_context_patterns = {
    'labeled_statement'
 }
 
--- Run gofmt + goimport on save
--- vim.api.nvim_exec([[ autocmd BufWritePre *.go :silent! lua require('go.format').goimport() ]], false)
-
 vim.api.nvim_exec2([[ autocmd BufWritePre *.go :silent! lua require('go.format').goimport() ]], { output = false })
 
-
 vim.o.mouse = "a"
-
--- on hover diagnostics
--- vim.o.updatetime = 250
--- vim.cmd [[autocmd! CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]]
--- vim.diagnostic.config({
---     virtual_text = true,
---     float = {
---         source = "always",
---         show_header = true,
---         border = "rounded",
---         focusable = true,
---     },
---     enabled = true,
--- })
-
-vim.diagnostic.config({
-   -- Use the default configuration
-   -- virtual_lines = true
-
-   -- Alternatively, customize specific options
-   virtual_lines = {
-      -- Only show virtual line diagnostics for the current cursor line
-      current_line = true,
-   },
-})
-
-
-vim.api.nvim_set_keymap(
-   "n",
-   "<leader>fb",
-   "<cmd>lua require 'telescope'.extensions.file_browser.file_browser()<CR>",
-   { noremap = true }
-)
-
-
-vim.api.nvim_create_user_command('Rg', function(cmd_opts)
-   require('zylad.utils.rg').rg(cmd_opts.args)
-   vim.cmd("copen 15")
-end, { nargs = '*' })
-
 
 vim.o.updatetime = 750
 
@@ -229,11 +188,6 @@ vim.o.scrolloff = 8
 vim.keymap.set("x", "<leader>p", "\"_dP")
 
 vim.g.netrw_banner = 1
-
-vim.cmd([[
-let g:python_host_prog = '/Users/dzyla/.pyenv/versions/neovim/bin/python'
-let g:python3_host_prog = '/Users/dzyla/.pyenv/versions/neovim/bin/python'
-]])
 
 vim.api.nvim_create_autocmd({ "Bufread" }, {
    pattern = { "*.sls" },

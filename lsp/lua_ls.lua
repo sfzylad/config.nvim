@@ -30,7 +30,8 @@ return {
          },
          completion = {
             autoRequire = true,
-            callSnippet = true,
+            -- callSnippet = true,
+            callSnippet = "Replace",
          },
       },
    },

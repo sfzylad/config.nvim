@@ -9,6 +9,11 @@ require("zylad.set")
 require("zylad.plugins")
 require("zylad.remap")
 
+-- Ensures the menu appears even for a single match and uses the native popup window.
+vim.opt.completeopt = "menu,menuone,noinsert,popup"
+vim.opt.pumheight = 10 -- Keep the menu short and clean
+vim.opt.pumblend = 5   -- Slight transparency
+
 vim.lsp.enable({
    'clangd',
    'gopls',
@@ -66,7 +71,8 @@ vim.api.nvim_create_autocmd('LspAttach', {
          width = 90,
          max_width = 90,
          wrap_at = 80,
-         border = "rounded",
+         -- border = "rounded",
+         border = { "🭽", "▔", "🭾", "▕", "🭿", "▁", "🭼", "▏" },
       }
 
       local on_hover = function()
@@ -122,6 +128,20 @@ vim.api.nvim_create_autocmd('LspAttach', {
          )
       end
 
+      vim.diagnostic.config({
+         signs = true,
+         underline = true,
+         virtual_text = false,
+         virtual_lines = false,
+         update_in_insert = true,
+         float = {
+            -- border = 'rounded',
+            border = { "🭽", "▔", "🭾", "▕", "🭿", "▁", "🭼", "▏" },
+            focusable = true,
+         },
+         jump = { float = true }
+      })
+
       -- keymaps I want everywhere
       buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
       buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
@@ -137,8 +157,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
       buf_set_keymap('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
       buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
       buf_set_keymap('n', '<Leader>e', '<cmd>lua vim.diagnostic.open_float(nil, {focus=false})<CR>', opts)
-      buf_set_keymap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
-      buf_set_keymap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
       buf_set_keymap('n', '<space>q', '<cmd>Trouble diagnostics<CR>', opts)
       buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
       buf_set_keymap("n", "<space>dw", "<cmd>lua require('diaglist').open_all_diagnostics()<CR>", opts)

@@ -38,13 +38,19 @@ return {
             snippet = {
                -- REQUIRED - you must specify a snippet engine
                expand = function(args)
-                  require('luasnip').lsp_expand(args.body)       -- For `luasnip` users.
+                  require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
                end,
             },
             preselect = cmp.PreselectMode.Item,
             window = {
-               completion = cmp.config.window.bordered(),
-               documentation = cmp.config.window.bordered(),
+               -- completion = cmp.config.window.bordered(),
+               completion = {
+                  border = { "🭽", "▔", "🭾", "▕", "🭿", "▁", "🭼", "▏" },
+               },
+               -- documentation = cmp.config.window.bordered(),
+               documentation = {
+                  border = { "🭽", "▔", "🭾", "▕", "🭿", "▁", "🭼", "▏" },
+               },
             },
             mapping = cmp.mapping.preset.insert({
                ['<C-b>'] = cmp.mapping.scroll_docs(-4),
@@ -53,7 +59,7 @@ return {
                ['<C-k>'] = cmp.mapping.select_prev_item(),
                ['<C-Space>'] = cmp.mapping.complete(),
                ['<C-e>'] = cmp.mapping.abort(),
-               ['<CR>'] = cmp.mapping.confirm({ select = true }),      -- Accept currently selected item. Set `select` to `false`
+               ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false`
                ['<C-g>'] = function()
                   if cmp.visible_docs() then
                      cmp.close_docs()
@@ -73,7 +79,7 @@ return {
                      }
                   }
                },
-               { name = 'luasnip', group_index = 2 },      -- For luasnip users.
+               { name = 'luasnip', group_index = 2 }, -- For luasnip users.
                { name = 'buffer',  group_index = 3 },
                { name = "path",    group_index = 4 },
             }),
@@ -146,8 +152,8 @@ return {
    },
    {
       'mrcjkb/rustaceanvim',
-      version = '^9',   -- Recommended
-      lazy = false,     -- This plugin is already lazy
+      version = '^9', -- Recommended
+      lazy = false,   -- This plugin is already lazy
       config = function()
          vim.g.rustaceanvim = {
             server = {
@@ -169,6 +175,6 @@ return {
    {
       "chrisgrieser/nvim-lsp-endhints",
       event = "LspAttach",
-      opts = {},   -- required, even if empty
+      opts = {}, -- required, even if empty
    },
 }
