@@ -1,3 +1,19 @@
+vim.g.rustaceanvim = {
+   server = {
+      -- cmd = { 'rustup', 'run', 'stable', 'rust-analyzer' },
+      -- on_attach = on_attach,
+      status_notify_level = 'info',
+   },
+   tools = {
+      hover_actions = {
+         replace_builtin_hover = false,
+      },
+      float_win_config = {
+         border = 'rounded',
+      }
+   }
+}
+
 local bufnr = vim.api.nvim_get_current_buf()
 
 vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
