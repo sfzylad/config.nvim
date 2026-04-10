@@ -19,6 +19,10 @@ vim.opt.background = "dark"
 -- This function sets the theme.
 ColorMyPencils(THEME)
 
+if THEME == "alabaster" then
+   vim.api.nvim_set_hl(0, "FloatBorder", { bg = "#192830" })
+end
+
 -- Default DiffText highlights in vesper theme are really bad, so I overwrite them.
 if THEME == "vesper" then
    vim.api.nvim_set_hl(0, "DiffText", { fg = "NvimLightGreen" })

@@ -12,7 +12,7 @@ conform.setup({
       graphql = { "prettier" },
       lua = { "stylua" },
       python = { "ruff" },
-      go = { "goimports", "gofmt" },
+      go = { "goimports", "gofumt" },
       rust = { "rustfmt", lsp_format = "fallback" },
       sh = { "beautysh" },
       bash = { "beautysh" },

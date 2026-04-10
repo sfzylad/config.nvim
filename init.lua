@@ -63,17 +63,18 @@ vim.api.nvim_create_autocmd("FileType", {
 vim.api.nvim_create_autocmd("LspAttach", {
    group = vim.api.nvim_create_augroup("my.lsp", {}),
    callback = function(args)
-      local border = {
-         { "🭽", "FloatBorder" },
-
-         { "▔", "FloatBorder" },
-         { "🭾", "FloatBorder" },
-         { "▕", "FloatBorder" },
-         { "🭿", "FloatBorder" },
-         { "▁", "FloatBorder" },
-         { "🭼", "FloatBorder" },
-         { "▏", "FloatBorder" },
-      }
+      -- local border = {
+      --    { "🭽", "FloatBorder" },
+      --
+      --    { "▔", "FloatBorder" },
+      --    { "🭾", "FloatBorder" },
+      --    { "▕", "FloatBorder" },
+      --    { "🭿", "FloatBorder" },
+      --    { "▁", "FloatBorder" },
+      --    { "🭼", "FloatBorder" },
+      --    { "▏", "FloatBorder" },
+      -- }
+      local border = { "╔", "═", "╗", "║", "╝", "═", "╚", "║" }
 
       local function map(mode, l, r, desc)
          vim.keymap.set(mode, l, r, { buffer = args.buf, desc = desc })
@@ -84,8 +85,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
          width = 90,
          max_width = 90,
          wrap_at = 80,
-         -- border = "rounded",
-         border = { "🭽", "▔", "🭾", "▕", "🭿", "▁", "🭼", "▏" },
+         border = border,
       }
 
       local on_hover = function()
@@ -109,7 +109,11 @@ vim.api.nvim_create_autocmd("LspAttach", {
          vim.lsp.completion.enable(true, client.id, args.buf, { autotrigger = false })
       end
       if client:supports_method("textDocument/hover") then
-         vim.lsp.with(vim.lsp.handlers.hover, { border = border })
+         vim.lsp.with(vim.lsp.handlers.hover, {
+            border = border,
+            max_height = 25,
+            max_width = 120,
+         })
       end
 
       if client.name == "markdown_oxide" then
@@ -126,12 +130,12 @@ vim.api.nvim_create_autocmd("LspAttach", {
       vim.diagnostic.config({
          signs = true,
          underline = true,
-         virtual_text = false,
+         virtual_text = true,
          virtual_lines = false,
          update_in_insert = true,
          float = {
             -- border = 'rounded',
-            border = { "🭽", "▔", "🭾", "▕", "🭿", "▁", "🭼", "▏" },
+            border = border,
             focusable = true,
          },
          jump = { float = true },

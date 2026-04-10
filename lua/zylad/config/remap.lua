@@ -31,6 +31,9 @@ local function dark_theme()
    local THEME = require("zylad.config.theme").current()
    vim.opt.background = "dark"
    ColorMyPencils(THEME)
+   if THEME == "alabaster" then
+      vim.api.nvim_set_hl(0, "FloatBorder", { bg = "#192830" })
+   end
 end
 
 -- cycling between dark and light themes.

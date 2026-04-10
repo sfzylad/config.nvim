@@ -14,16 +14,16 @@ return {
    settings = {
       gopls = {
          completeUnimported = true,
-         usePlaceholders = true,
+         usePlaceholders = false,
          analyses = {
             unusedparams = true,
          },
-         ["ui.inlayhint.hints"] = {
-            compositeLiteralFields = true,
-            constantValues = true,
-            parameterNames = true,
-            rangeVariableTypes = true,
-         },
+         -- ["ui.inlayhint.hints"] = {
+         --    compositeLiteralFields = true,
+         --    constantValues = true,
+         --    parameterNames = true,
+         --    rangeVariableTypes = true,
+         -- },
       },
    },
 }
