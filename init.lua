@@ -7,6 +7,9 @@ end
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
+-- set borders for floating windows
+vim.o.winborder = "double"
+
 -- FIXME: Clean this up along with the lazy configuration.
 -- require("config.lazy")
 require("zylad.set")
