@@ -1,6 +1,6 @@
 vim.g.rustaceanvim = {
    server = {
-      -- cmd = { 'rustup', 'run', 'stable', 'rust-analyzer' },
+      cmd = { 'rustup', 'run', 'stable', 'rust-analyzer' },
       -- on_attach = on_attach,
       status_notify_level = 'info',
    },

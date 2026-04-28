@@ -7,7 +7,7 @@ conform.setup({
       javascriptreact = { "prettier" },
       typescriptreact = { "prettier" },
       json = { "prettier" },
-      yaml = { "prettier" },
+      -- yaml = { "prettier" },
       markdown = { "prettier" },
       graphql = { "prettier" },
       lua = { "stylua" },

@@ -18,7 +18,7 @@ require("zylad.plugins")
 -- Ensures the menu appears even for a single match and uses the native popup window.
 vim.opt.completeopt = "menu,menuone,noinsert,popup"
 vim.opt.pumheight = 10 -- Keep the menu short and clean
-vim.opt.pumblend = 5 -- Slight transparency
+vim.opt.pumblend = 5   -- Slight transparency
 
 vim.lsp.enable({
    "clangd",
@@ -184,6 +184,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
       buf_set_keymap("n", "<Leader><Leader>dl", "<cmd>lua function() require('dap').repl_open()<CR>", opts)
       buf_set_keymap("n", "<Leader>dt", "<cmd>lua require('dap-go').debug_test()<CR>", opts)
       buf_set_keymap("n", "<Leader>k", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
+      -- buf_set_keymap("n", "K", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
 
       map("n", "K", on_hover, "Information about the symbol under the cursor")
    end,

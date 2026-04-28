@@ -10,6 +10,7 @@ require("go").setup({
    lsp_inlay_hints = {
       enable = false,
    },
+   lsp_keymaps = false,
 })
 
 vim.api.nvim_command("au FileType go nmap <Leader><Leader>r :GoTestFunc")
